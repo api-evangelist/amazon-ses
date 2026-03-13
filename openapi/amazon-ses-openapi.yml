@@ -1,0 +1,333 @@
+openapi: 3.0.0
+info:
+  title: Amazon Simple Email Service (SES)
+  description: Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.
+  version: '2019-09-27'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ses/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://email.amazonaws.com
+    description: Amazon SES API endpoint
+paths:
+  /v2/email/outbound-emails:
+    post:
+      operationId: SendEmail
+      summary: Send Email
+      description: Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                FromEmailAddress:
+                  type: string
+                  description: The email address to use as the From address.
+                Destination:
+                  type: object
+                  description: An object that contains the recipients of the email message.
+                  properties:
+                    ToAddresses:
+                      type: array
+                      items:
+                        type: string
+                    CcAddresses:
+                      type: array
+                      items:
+                        type: string
+                    BccAddresses:
+                      type: array
+                      items:
+                        type: string
+                Content:
+                  $ref: '#/components/schemas/EmailMessage'
+                ReplyToAddresses:
+                  type: array
+                  items:
+                    type: string
+                ConfigurationSetName:
+                  type: string
+              required:
+                - Content
+      responses:
+        '200':
+          description: Email sent successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  MessageId:
+                    type: string
+      tags:
+        - Email Sending
+
+  /v2/email/identities:
+    post:
+      operationId: CreateEmailIdentity
+      summary: Create Email Identity
+      description: Starts the process of verifying an email identity, which can be either an email address or a domain.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EmailIdentity:
+                  type: string
+                  description: The email address or domain to verify.
+                DkimSigningAttributes:
+                  type: object
+                  properties:
+                    DomainSigningSelector:
+                      type: string
+                    DomainSigningPrivateKey:
+                      type: string
+                ConfigurationSetName:
+                  type: string
+              required:
+                - EmailIdentity
+      responses:
+        '200':
+          description: Email identity creation initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  IdentityType:
+                    type: string
+                  VerifiedForSendingStatus:
+                    type: boolean
+                  DkimAttributes:
+                    type: object
+      tags:
+        - Identities
+
+    get:
+      operationId: ListEmailIdentities
+      summary: List Email Identities
+      description: Returns a list of all email identities that are associated with your AWS account.
+      parameters:
+        - name: NextToken
+          in: query
+          schema:
+            type: string
+        - name: PageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of email identities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  EmailIdentities:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        IdentityType:
+                          type: string
+                        IdentityName:
+                          type: string
+                        SendingEnabled:
+                          type: boolean
+                  NextToken:
+                    type: string
+      tags:
+        - Identities
+
+  /v2/email/identities/{EmailIdentity}:
+    get:
+      operationId: GetEmailIdentity
+      summary: Get Email Identity
+      description: Provides information about a specific email identity, including its verification status and authentication settings.
+      parameters:
+        - name: EmailIdentity
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Email identity details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  IdentityType:
+                    type: string
+                  VerifiedForSendingStatus:
+                    type: boolean
+                  DkimAttributes:
+                    type: object
+                  MailFromAttributes:
+                    type: object
+                  Policies:
+                    type: object
+      tags:
+        - Identities
+
+  /v2/email/contact-lists:
+    post:
+      operationId: CreateContactList
+      summary: Create Contact List
+      description: Creates a contact list for managing email subscription preferences.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ContactListName:
+                  type: string
+                  description: The name of the contact list.
+                Description:
+                  type: string
+                Topics:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      TopicName:
+                        type: string
+                      DisplayName:
+                        type: string
+                      Description:
+                        type: string
+                      DefaultSubscriptionStatus:
+                        type: string
+                        enum:
+                          - OPT_IN
+                          - OPT_OUT
+              required:
+                - ContactListName
+      responses:
+        '200':
+          description: Contact list created successfully.
+      tags:
+        - Contact Lists
+
+  /v2/email/templates:
+    post:
+      operationId: CreateEmailTemplate
+      summary: Create Email Template
+      description: Creates an email template for use with sending emails using the SendEmail operation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                TemplateName:
+                  type: string
+                  description: The name of the email template.
+                TemplateContent:
+                  type: object
+                  properties:
+                    Subject:
+                      type: string
+                    Text:
+                      type: string
+                    Html:
+                      type: string
+              required:
+                - TemplateName
+                - TemplateContent
+      responses:
+        '200':
+          description: Email template created successfully.
+      tags:
+        - Templates
+
+components:
+  schemas:
+    EmailMessage:
+      type: object
+      description: An object that defines the email message content including simple, raw, and template options.
+      properties:
+        Simple:
+          type: object
+          description: The simple email message with subject and body.
+          properties:
+            Subject:
+              type: object
+              properties:
+                Data:
+                  type: string
+                  description: The content of the message subject.
+                Charset:
+                  type: string
+                  description: The character set for the content.
+              required:
+                - Data
+            Body:
+              type: object
+              properties:
+                Text:
+                  type: object
+                  properties:
+                    Data:
+                      type: string
+                    Charset:
+                      type: string
+                  required:
+                    - Data
+                Html:
+                  type: object
+                  properties:
+                    Data:
+                      type: string
+                    Charset:
+                      type: string
+                  required:
+                    - Data
+          required:
+            - Subject
+            - Body
+        Raw:
+          type: object
+          description: The raw email message.
+          properties:
+            Data:
+              type: string
+              format: byte
+              description: The raw email message in MIME format.
+          required:
+            - Data
+        Template:
+          type: object
+          description: The template email message.
+          properties:
+            TemplateName:
+              type: string
+              description: The name of the template.
+            TemplateArn:
+              type: string
+            TemplateData:
+              type: string
+              description: JSON object of replacement values for template variables.
+
+tags:
+  - name: Email Sending
+    description: Operations for sending email messages.
+  - name: Identities
+    description: Operations for managing email identities.
+  - name: Contact Lists
+    description: Operations for managing contact lists.
+  - name: Templates
+    description: Operations for managing email templates.

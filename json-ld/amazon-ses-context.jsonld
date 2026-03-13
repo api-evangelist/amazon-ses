@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aws": "https://aws.amazon.com/ses/schemas/",
+    "ses": "https://docs.aws.amazon.com/ses/latest/APIReference-V2/",
+    "EmailMessage": {
+      "@id": "schema:EmailMessage",
+      "@context": {
+        "Subject": "schema:about",
+        "Body": "schema:text",
+        "FromEmailAddress": "schema:sender",
+        "Destination": "schema:recipient",
+        "ReplyToAddresses": "schema:replyToUrl"
+      }
+    },
+    "EmailIdentity": {
+      "@id": "aws:EmailIdentity",
+      "@context": {
+        "IdentityType": "schema:additionalType",
+        "IdentityName": "schema:name",
+        "VerifiedForSendingStatus": "aws:verifiedStatus",
+        "SendingEnabled": "aws:sendingEnabled",
+        "DkimAttributes": "aws:dkimAttributes"
+      }
+    },
+    "ContactList": {
+      "@id": "aws:ContactList",
+      "@context": {
+        "ContactListName": "schema:name",
+        "Description": "schema:description",
+        "Topics": "aws:topics",
+        "CreatedTimestamp": "schema:dateCreated",
+        "LastUpdatedTimestamp": "schema:dateModified"
+      }
+    },
+    "EmailTemplate": {
+      "@id": "aws:EmailTemplate",
+      "@context": {
+        "TemplateName": "schema:name",
+        "TemplateContent": "schema:text",
+        "Subject": "schema:about",
+        "Html": "schema:encodingFormat",
+        "Text": "schema:text"
+      }
+    },
+    "Destination": {
+      "@id": "aws:Destination",
+      "@context": {
+        "ToAddresses": "schema:recipient",
+        "CcAddresses": "schema:ccRecipient",
+        "BccAddresses": "schema:bccRecipient"
+      }
+    },
+    "ConfigurationSet": {
+      "@id": "aws:ConfigurationSet",
+      "@context": {
+        "ConfigurationSetName": "schema:name",
+        "TrackingOptions": "aws:trackingOptions",
+        "SendingOptions": "aws:sendingOptions",
+        "ReputationOptions": "aws:reputationOptions"
+      }
+    }
+  }
+}
