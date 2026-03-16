@@ -1,4 +1,4 @@
-name: Amazon Simple Email Service (SES)
+name: Amazon SES
 description: Amazon Simple Email Service (SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails, providing a reliable and scalable infrastructure for email communication.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/ses/
