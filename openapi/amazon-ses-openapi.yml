@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Amazon Simple Email Service (SES)
+  title: Amazon SES Amazon Simple Email Service (SES)
   description: Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.
   version: '2019-09-27'
   contact:
@@ -17,7 +17,7 @@ paths:
   /v2/email/outbound-emails:
     post:
       operationId: SendEmail
-      summary: Send Email
+      summary: Amazon SES Send Email
       description: Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options.
       requestBody:
         required: true
@@ -71,7 +71,7 @@ paths:
   /v2/email/identities:
     post:
       operationId: CreateEmailIdentity
-      summary: Create Email Identity
+      summary: Amazon SES Create Email Identity
       description: Starts the process of verifying an email identity, which can be either an email address or a domain.
       requestBody:
         required: true
@@ -113,7 +113,7 @@ paths:
 
     get:
       operationId: ListEmailIdentities
-      summary: List Email Identities
+      summary: Amazon SES List Email Identities
       description: Returns a list of all email identities that are associated with your AWS account.
       parameters:
         - name: NextToken
@@ -151,7 +151,7 @@ paths:
   /v2/email/identities/{EmailIdentity}:
     get:
       operationId: GetEmailIdentity
-      summary: Get Email Identity
+      summary: Amazon SES Get Email Identity
       description: Provides information about a specific email identity, including its verification status and authentication settings.
       parameters:
         - name: EmailIdentity
@@ -183,7 +183,7 @@ paths:
   /v2/email/contact-lists:
     post:
       operationId: CreateContactList
-      summary: Create Contact List
+      summary: Amazon SES Create Contact List
       description: Creates a contact list for managing email subscription preferences.
       requestBody:
         required: true
@@ -224,7 +224,7 @@ paths:
   /v2/email/templates:
     post:
       operationId: CreateEmailTemplate
-      summary: Create Email Template
+      summary: Amazon SES Create Email Template
       description: Creates an email template for use with sending emails using the SendEmail operation.
       requestBody:
         required: true
