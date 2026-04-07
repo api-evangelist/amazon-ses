@@ -323,11 +323,11 @@ components:
               description: JSON object of replacement values for template variables.
 
 tags:
+  - name: Contact Lists
+    description: Operations for managing contact lists.
   - name: Email Sending
     description: Operations for sending email messages.
   - name: Identities
     description: Operations for managing email identities.
-  - name: Contact Lists
-    description: Operations for managing contact lists.
   - name: Templates
     description: Operations for managing email templates.

@@ -128,11 +128,11 @@ maintainer:
   email: kin@apievangelist.com
 
 tags:
+  - AWS
   - Email
+  - Email Deliverability
   - Email Service
-  - Transactional Email
   - Marketing Email
   - Notifications
   - SMTP
-  - Email Deliverability
-  - AWS
+  - Transactional Email
