@@ -1,0 +1,75 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon SES Amazon Simple Email Service (SES)
+  description: Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.
+  tags:
+  - Amazon Ses
+  - AWS
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_SES_API_KEY: AMAZON_SES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ses
+    baseUri: https://email.amazonaws.com
+    description: Amazon SES Amazon Simple Email Service (SES)
+    authentication:
+      type: bearer
+      token: '{{AWS_ACCESS_KEY}}'
+    resources:
+    - name: v2
+      path: /v2/email/outbound-emails
+      description: v2 operations
+      operations:
+      - name: SendEmail
+        method: POST
+        description: Amazon SES Send Email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: ListEmailIdentities
+        method: GET
+        description: Amazon SES List Email Identities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: CreateEmailIdentity
+        method: POST
+        description: Amazon SES Create Email Identity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: GetEmailIdentity
+        method: GET
+        description: Amazon SES Get Email Identity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: CreateContactList
+        method: POST
+        description: Amazon SES Create Contact List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: CreateEmailTemplate
+        method: POST
+        description: Amazon SES Create Email Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.

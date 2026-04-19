@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/json-schema/amazon-ses-openapi-email-message-schema.json",
+  "title": "EmailMessage",
+  "description": "An object that defines the email message content including simple, raw, and template options.",
+  "type": "object",
+  "properties": {
+    "Simple": {
+      "type": "object",
+      "description": "The simple email message with subject and body.",
+      "properties": {
+        "Subject": {
+          "type": "object",
+          "properties": {
+            "Data": {
+              "type": "string",
+              "description": "The content of the message subject."
+            },
+            "Charset": {
+              "type": "string",
+              "description": "The character set for the content."
+            }
+          },
+          "required": [
+            "Data"
+          ]
+        },
+        "Body": {
+          "type": "object",
+          "properties": {
+            "Text": {
+              "type": "object",
+              "properties": {
+                "Data": {
+                  "type": "string"
+                },
+                "Charset": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Data"
+              ]
+            },
+            "Html": {
+              "type": "object",
+              "properties": {
+                "Data": {
+                  "type": "string"
+                },
+                "Charset": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Data"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "Subject",
+        "Body"
+      ]
+    },
+    "Raw": {
+      "type": "object",
+      "description": "The raw email message.",
+      "properties": {
+        "Data": {
+          "type": "string",
+          "format": "byte",
+          "description": "The raw email message in MIME format."
+        }
+      },
+      "required": [
+        "Data"
+      ]
+    },
+    "Template": {
+      "type": "object",
+      "description": "The template email message.",
+      "properties": {
+        "TemplateName": {
+          "type": "string",
+          "description": "The name of the template."
+        },
+        "TemplateArn": {
+          "type": "string"
+        },
+        "TemplateData": {
+          "type": "string",
+          "description": "JSON object of replacement values for template variables."
+        }
+      }
+    }
+  }
+}

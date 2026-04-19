@@ -1,0 +1,36 @@
+{
+  "Simple": {
+    "Subject": {
+      "Data": "example-value",
+      "Charset": "UTF-8"
+    },
+    "Body": {
+      "Text": {},
+      "Html": {}
+    }
+  },
+  "Raw": {
+    "Data": "example-value"
+  },
+  "Template": {
+    "TemplateName": "Example Resource",
+    "TemplateArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+    "TemplateData": "example-value"
+  },
+  "FromEmailAddress": "user@example.com",
+  "Destination": {
+    "ToAddresses": [
+      "example-value"
+    ],
+    "CcAddresses": [
+      "example-value"
+    ],
+    "BccAddresses": [
+      "example-value"
+    ]
+  },
+  "ReplyToAddresses": [
+    "example-value"
+  ],
+  "ConfigurationSetName": "Example Resource"
+}

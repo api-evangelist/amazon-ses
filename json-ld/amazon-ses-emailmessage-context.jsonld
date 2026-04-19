@@ -1,0 +1,90 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aws": "https://aws.amazon.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "EmailMessage": "aws:EmailMessage",
+    "Simple": {
+      "@id": "aws:Simple",
+      "@type": "xsd:string"
+    },
+    "Subject": {
+      "@id": "aws:Subject",
+      "@type": "xsd:string"
+    },
+    "Data": {
+      "@id": "aws:Data",
+      "@type": "xsd:string"
+    },
+    "Charset": {
+      "@id": "aws:Charset",
+      "@type": "xsd:string"
+    },
+    "Body": {
+      "@id": "aws:Body",
+      "@type": "xsd:string"
+    },
+    "Text": {
+      "@id": "aws:Text",
+      "@type": "xsd:string"
+    },
+    "Html": {
+      "@id": "aws:Html",
+      "@type": "xsd:string"
+    },
+    "Raw": {
+      "@id": "aws:Raw",
+      "@type": "xsd:string"
+    },
+    "Template": {
+      "@id": "aws:Template",
+      "@type": "xsd:string"
+    },
+    "TemplateName": {
+      "@id": "aws:TemplateName",
+      "@type": "xsd:string"
+    },
+    "TemplateArn": {
+      "@id": "aws:TemplateArn",
+      "@type": "xsd:string"
+    },
+    "TemplateData": {
+      "@id": "aws:TemplateData",
+      "@type": "xsd:string"
+    },
+    "FromEmailAddress": {
+      "@id": "aws:FromEmailAddress",
+      "@type": "xsd:string"
+    },
+    "Destination": {
+      "@id": "aws:Destination",
+      "@type": "xsd:string"
+    },
+    "ToAddresses": {
+      "@id": "aws:ToAddresses",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CcAddresses": {
+      "@id": "aws:CcAddresses",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "BccAddresses": {
+      "@id": "aws:BccAddresses",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ReplyToAddresses": {
+      "@id": "aws:ReplyToAddresses",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ConfigurationSetName": {
+      "@id": "aws:ConfigurationSetName",
+      "@type": "xsd:string"
+    }
+  }
+}

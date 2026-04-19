@@ -1,0 +1,48 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon Ses Operations
+  description: Workflow capability for Amazon Ses. Enables automation of Amazon Ses resources for cloud operations teams.
+  tags:
+  - Amazon Ses
+  - AWS
+  - Cloud Operations
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY: AWS_ACCESS_KEY
+    AWS_SECRET_KEY: AWS_SECRET_KEY
+capability:
+  consumes:
+  - import: amazon-ses
+    location: ./shared/amazon-ses.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: amazon-ses-api
+    description: Unified REST API for Amazon Ses operations.
+    resources:
+    - path: /v1/resources
+      name: resources
+      description: Amazon Ses resources
+      operations:
+      - method: GET
+        name: list-resources
+        description: List Amazon Ses resources
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: amazon-ses-mcp
+    transport: http
+    description: MCP server for AI-assisted Amazon Ses operations.
+    tools:
+    - name: list-amazon-ses-resources
+      description: List Amazon Ses resources
+      hints:
+        readOnly: true
+      outputParameters:
+      - type: object
+        mapping: $.

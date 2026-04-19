@@ -1,0 +1,20 @@
+{
+  "Simple": {
+    "Subject": {
+      "Data": "example-value",
+      "Charset": "example-value"
+    },
+    "Body": {
+      "Text": {},
+      "Html": {}
+    }
+  },
+  "Raw": {
+    "Data": "example-value"
+  },
+  "Template": {
+    "TemplateName": "Example Resource",
+    "TemplateArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+    "TemplateData": "example-value"
+  }
+}

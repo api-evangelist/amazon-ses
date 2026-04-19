@@ -1,0 +1,55 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon Ses
+  description: Vocabulary for Amazon Ses APIs covering operational and capability dimensions
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon Ses
+    namespace: amazon-ses
+    status: active
+  resources:
+  - name: v2
+    api: amazon-ses-openapi
+    actions:
+    - SendEmail
+  actions:
+  - name: post
+    httpMethod: POST
+    pattern: write
+  - name: list
+    httpMethod: GET
+    pattern: read
+  - name: create
+    httpMethod: POST
+    pattern: write
+  - name: get
+    httpMethod: GET
+    pattern: read
+  schemas:
+    core:
+    - amazon-ses-emailmessage
+    - amazon-ses-openapi-email-message
+  authentication:
+    schemes:
+    - type: bearer
+      description: AWS Signature V4
+capability:
+  workflows:
+  - name: Amazon Ses Operations
+    file: capabilities/amazon-ses.yaml
+    description: Automation workflow for Amazon Ses
+  personas:
+  - id: cloud-engineer
+    name: Cloud Engineer
+    description: Engineer managing Amazon Ses resources
+  domains:
+  - name: Cloud Operations
+    description: AWS cloud resource management
+crossReference:
+- resource: v2
+  operations:
+  - SendEmail
+  workflows:
+  - Amazon Ses Operations
