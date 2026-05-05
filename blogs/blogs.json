@@ -1,0 +1,13 @@
+{
+  "repo": "amazon-ses",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/messaging-and-targeting/",
+      "feed_url": "https://aws.amazon.com/blogs/messaging-and-targeting/feed/",
+      "saved": 10,
+      "title": "AWS Messaging Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:21:49Z"
+}
