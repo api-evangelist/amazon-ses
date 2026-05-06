@@ -1,4 +1,4 @@
-naftiko: 1.0.0-alpha1
+naftiko: 1.0.0-alpha2
 info:
   label: Amazon Ses Operations
   description: Workflow capability for Amazon Ses. Enables automation of Amazon Ses resources for cloud operations teams.
@@ -7,7 +7,7 @@ info:
   - AWS
   - Cloud Operations
   created: '2026-04-19'
-  modified: '2026-04-19'
+  modified: '2026-05-06'
 binds:
 - namespace: env
   keys:
@@ -15,8 +15,66 @@ binds:
     AWS_SECRET_KEY: AWS_SECRET_KEY
 capability:
   consumes:
-  - import: amazon-ses
-    location: ./shared/amazon-ses.yaml
+  - type: http
+    namespace: amazon-ses
+    baseUri: https://email.amazonaws.com
+    description: Amazon SES Amazon Simple Email Service (SES)
+    authentication:
+      type: bearer
+      token: '{{AWS_ACCESS_KEY}}'
+    resources:
+    - name: v2
+      path: /v2/email/outbound-emails
+      description: v2 operations
+      operations:
+      - name: SendEmail
+        method: POST
+        description: Amazon SES Send Email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: ListEmailIdentities
+        method: GET
+        description: Amazon SES List Email Identities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: CreateEmailIdentity
+        method: POST
+        description: Amazon SES Create Email Identity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: GetEmailIdentity
+        method: GET
+        description: Amazon SES Get Email Identity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: CreateContactList
+        method: POST
+        description: Amazon SES Create Contact List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: CreateEmailTemplate
+        method: POST
+        description: Amazon SES Create Email Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
   - type: rest
     port: 8080
