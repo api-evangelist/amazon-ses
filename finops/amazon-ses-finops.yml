@@ -1,73 +1,33 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Amazon SES
+providerId: amazon-ses
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - AWS
+  - Email
+  - SES
+  - Cost Management
+description: 'FOCUS-aligned FinOps for Amazon SES: per-1,000-message rates for outbound and inbound mail,
+  per-GB attachment fees, monthly Dedicated IP charges (Standard or Managed with tiered per-message),
+  and a 12-month 3,000-message-per-month Free Tier.'
+sources:
+  - https://aws.amazon.com/ses/pricing/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: Amazon SES
-providerId: amazon-ses
-publisherName: Amazon SES
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - AWS
-  - Email
-  - Email Deliverability
-  - Email Service
-  - Marketing Email
-  - Notifications
-  - SMTP
-  - Transactional Email
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Amazon SES API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: Amazon Web Services, Inc.
+serviceCategory: Communication / Email
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Pay-As-You-Go
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
@@ -76,110 +36,71 @@ billingModel:
     - Tax
     - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
-  ServiceName: Amazon SES
-  ServiceCategory: Developer Tools / API
-  ProviderName: Amazon SES
-  PublisherName: Amazon SES
-  InvoiceIssuerName: Amazon SES
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: Amazon Simple Email Service
+  ServiceCategory: Networking and Content Delivery
+  ServiceSubcategory: Email
+  ProviderName: AWS
+  PublisherName: Amazon Web Services, Inc.
+  InvoiceIssuerName: Amazon Web Services, Inc.
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: outbound_messages
+    unit: email
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
+      - configuration_set
+      - sending_identity
+  - name: outbound_attachment_gb
     unit: GB
     aggregation: sum
     dimensions:
-      - api
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - configuration_set
+  - name: inbound_messages
+    unit: email
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Amazon SES Documentation
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES Documentation
-    serviceCategory: API
-  - name: Amazon SES OpenAPI
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES OpenAPI
-    serviceCategory: API
-  - name: Amazon SES OpenAPI (APIs.guru)
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES OpenAPI (APIs.guru)
-    serviceCategory: API
-  - name: Amazon SES JSON Schema
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES JSON Schema
-    serviceCategory: API
-  - name: Amazon SES JSON-LD Context
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES JSON-LD Context
-    serviceCategory: API
-  - name: Amazon SES Pricing
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES Pricing
-    serviceCategory: API
-  - name: Amazon SES Getting Started
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES Getting Started
-    serviceCategory: API
-  - name: Amazon SES FAQ
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES FAQ
-    serviceCategory: API
-  - name: Amazon SES User Guide
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES User Guide
-    serviceCategory: API
-  - name: Amazon SES API Reference
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES API Reference
-    serviceCategory: API
-  - name: Amazon SES CLI Reference
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES CLI Reference
-    serviceCategory: API
-  - name: Amazon SES Security
-    baseURL: ''
-    tags: []
-    serviceName: Amazon SES Security
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
-maintainers: []
+      - region
+      - rule_set
+      - recipient_domain
+  - name: inbound_chunks
+    unit: chunk
+    aggregation: sum
+    dimensions:
+      - region
+      - rule_set
+  - name: dedicated_ip_months
+    unit: ip-month
+    aggregation: sum
+    dimensions:
+      - region
+      - ip_pool_type
+  - name: vdm_processed_messages
+    unit: email
+    aggregation: sum
+    dimensions:
+      - region
+principles:
+  - name: Visibility
+    description: Use SES sending statistics, CloudWatch SES metrics (Send, Bounce, Complaint, Reject),
+      and CUR / FOCUS export for per-configuration-set cost.
+  - name: Allocation
+    description: Tag configuration sets with Application, Channel, Team; set X-SES-CONFIGURATION-SET on
+      sends; enable cost allocation tags.
+  - name: Optimization
+    description: Use Managed Dedicated IPs to consolidate the IP fee and benefit from tiered per-message
+      pricing at scale; suppress invalid recipients; reduce attachment size; use VDM only on streams that
+      need deliverability insights.
+  - name: Accountability
+    description: Set AWS Budgets per configuration-set tag, alert on bounce/complaint rate (which can pause
+      sending), and review monthly IP-pool utilization.
+maintainers:
+  - name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+  - name: Amazon Web Services
+    email: support@aws.amazon.com
+    url: https://aws.amazon.com

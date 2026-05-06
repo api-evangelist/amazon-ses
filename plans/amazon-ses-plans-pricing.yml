@@ -4,168 +4,162 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Amazon SES
 providerId: amazon-ses
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
+  - Amazon
   - AWS
   - Email
-  - Email Deliverability
-  - Email Service
-  - Marketing Email
-  - Notifications
-  - SMTP
   - Transactional Email
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Marketing Email
+description: Amazon Simple Email Service (SES) is pay-as-you-go - $0.10 per 1,000 outbound emails, $0.12/GB
+  for outbound attachment data, and $0.10/1,000 inbound emails plus $0.09 per 1,000 incoming email chunks.
+  Dedicated IPs are $24.95/IP/month (Standard) or $15/account/month (Managed) with tiered per-message
+  rates. New customers receive 3,000 free message charges per month for 12 months as part of AWS Free
+  Tier.
+sources:
+  - https://aws.amazon.com/ses/pricing/
 plans:
-  - id: amazon-ses-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Amazon SES API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: amazon-ses-pay-as-you-go
+    name: Pay-As-You-Go
+    type: usage-based
+    description: Default per-message and per-byte pricing for outbound and inbound email.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Amazon SES Documentation
-      - name: Amazon SES OpenAPI
-      - name: Amazon SES OpenAPI (APIs.guru)
-      - name: Amazon SES JSON Schema
-      - name: Amazon SES JSON-LD Context
-      - name: Amazon SES Pricing
-      - name: Amazon SES Getting Started
-      - name: Amazon SES FAQ
-  - id: amazon-ses-pro
-    name: Professional
-    type: paid
-    description: Production tier for Amazon SES. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Outbound emails
+        name: outbound_emails
         type: metered
-        metric: requests
+        metric: email
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000
+        price: '0.10'
+        userMultiplied: false
+      - label: Outbound attachment data
+        name: outbound_attachments
+        type: metered
+        metric: gb
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.12'
+        userMultiplied: false
+      - label: Inbound emails
+        name: inbound_emails
+        type: metered
+        metric: email
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000
+        price: '0.10'
+        userMultiplied: false
+      - label: Incoming email chunks
+        name: inbound_chunks
+        type: metered
+        metric: chunk
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000
+        price: '0.09'
+        userMultiplied: false
+    elements:
+      - name: Send via SMTP or HTTP API
+      - name: Bounce, complaint, delivery notifications
+      - name: Configurable sending identities
+  - id: amazon-ses-dedicated-ip-standard
+    name: Dedicated IP - Standard
+    type: subscription
+    description: Reserved sending IPs at a flat per-IP monthly rate.
+    entries:
+      - label: Dedicated IP per month
+        name: dedicated_ip_standard
+        type: subscription
+        metric: ip-month
         limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '24.95'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Amazon SES Documentation
-      - name: Amazon SES OpenAPI
-      - name: Amazon SES OpenAPI (APIs.guru)
-      - name: Amazon SES JSON Schema
-      - name: Amazon SES JSON-LD Context
-      - name: Amazon SES Pricing
-      - name: Amazon SES Getting Started
-      - name: Amazon SES FAQ
-      - name: Amazon SES User Guide
-      - name: Amazon SES API Reference
-      - name: Amazon SES CLI Reference
-      - name: Amazon SES Security
-  - id: amazon-ses-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Amazon SES. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+      - name: Per-IP reservation
+      - name: Customer manages IP reputation
+  - id: amazon-ses-dedicated-ip-managed
+    name: Dedicated IP - Managed
+    type: subscription
+    description: SES manages IP warm-up and rotation; flat monthly account fee plus tiered per-message
+      rates.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Managed IP monthly fee
+        name: managed_ip_fee
+        type: subscription
+        metric: account-month
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
+        price: '15.00'
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
+      - label: Managed tier 1 per-message
+        name: managed_tier1
+        type: tiered
+        metric: email
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000
+        price: '0.08'
+        userMultiplied: false
+      - label: Managed tier 2 per-message
+        name: managed_tier2
+        type: tiered
+        metric: email
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000
+        price: '0.04'
+        userMultiplied: false
+      - label: Managed tier 3 per-message
+        name: managed_tier3
+        type: tiered
+        metric: email
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000
+        price: '0.02'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Amazon SES Documentation
-      - name: Amazon SES OpenAPI
-      - name: Amazon SES OpenAPI (APIs.guru)
-      - name: Amazon SES JSON Schema
-      - name: Amazon SES JSON-LD Context
-      - name: Amazon SES Pricing
-      - name: Amazon SES Getting Started
-      - name: Amazon SES FAQ
-      - name: Amazon SES User Guide
-      - name: Amazon SES API Reference
-      - name: Amazon SES CLI Reference
-      - name: Amazon SES Security
-maintainers: []
+      - name: AWS-managed warm-up
+      - name: Reputation pooling
+      - name: Tiered per-message discount
+  - id: amazon-ses-free-tier
+    name: AWS Free Tier
+    type: freemium
+    description: New customers receive 3,000 message charges per month for 12 months. Covers outbound,
+      inbound, and Virtual Deliverability Manager processing combined.
+    entries:
+      - label: Free monthly message charges
+        name: free_messages
+        type: quota
+        metric: email
+        limit: 3000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: 12-month duration for new accounts
+      - name: Combined outbound + inbound + VDM allowance
+maintainers:
+  - name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+  - name: Amazon Web Services
+    email: support@aws.amazon.com
+    url: https://aws.amazon.com
