@@ -11,7 +11,7 @@ apis:
 - name: Amazon SES Documentation
   description: Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references, and tutorials for email sending and management.
   url: https://docs.aws.amazon.com/ses/
-  type: documentation
+  type: Documentation
 
 - name: Amazon SES OpenAPI
   description: The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing identities, contact lists, and email templates.
@@ -76,7 +76,7 @@ common:
 - type: website
   url: https://aws.amazon.com/ses/
 
-- type: docs
+- type: Documentation
   url: https://docs.aws.amazon.com/ses/
 
 - type: terms
@@ -97,13 +97,13 @@ common:
 - type: console
   url: https://console.aws.amazon.com/ses/
 
-- type: signup
+- type: SignUp
   url: https://portal.aws.amazon.com/billing/signup
 
 - type: login
   url: https://signin.aws.amazon.com/
 
-- type: status
+- type: StatusPage
   url: https://health.aws.amazon.com/health/status
 
 - type: knowledge-center
@@ -124,11 +124,11 @@ common:
 - type: compliance
   url: https://aws.amazon.com/compliance/
 
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-ses-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-ses-emailmessage-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-ses-openapi-email-message-context.jsonld
 - type: JSONSchema
   url: json-schema/amazon-ses-emailmessage-schema.json
