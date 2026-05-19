@@ -1,129 +1,120 @@
 name: Amazon SES
-description: Amazon Simple Email Service (SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional 
-  emails, providing a reliable and scalable infrastructure for email communication.
+description: Amazon Simple Email Service (SES) is a cloud-based email sending service designed to help digital marketers and
+  application developers send marketing, notification, and transactional emails, providing a reliable and scalable infrastructure
+  for email communication.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/apis.yml
 created: '2024-01-15'
-modified: '2026-04-19'
-
+modified: '2026-05-19'
 apis:
-
 - name: Amazon SES Documentation
-  description: Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references, and tutorials for email sending and management.
+  description: Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references,
+    and tutorials for email sending and management.
   url: https://docs.aws.amazon.com/ses/
   type: Documentation
-
+  properties:
+  - type: NaftikoCapability
+    url: capabilities/amazon-ses-contact-lists.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ses-email-sending.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ses-identities.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ses-templates.yaml
 - name: Amazon SES OpenAPI
-  description: The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing identities, contact lists, and email templates.
+  description: The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing
+    identities, contact lists, and email templates.
   url: openapi/amazon-ses-openapi.yml
   type: openapi
-
+  properties: []
 - name: Amazon SES OpenAPI (APIs.guru)
   description: The APIs.guru maintained OpenAPI definition for the Amazon SES API.
   url: https://api.apis.guru/v2/specs/amazonaws.com/sesv2/2019-09-27/openapi.yaml
   type: openapi
-
+  properties: []
 - name: Amazon SES JSON Schema
   description: JSON Schema definitions for the Amazon SES API request and response objects.
   url: json-schema/amazon-ses-emailmessage-schema.json
   type: json-schema
-
+  properties: []
 - name: Amazon SES JSON-LD Context
   description: JSON-LD context document for Amazon SES API resources providing semantic linked data mappings.
   url: json-ld/amazon-ses-context.jsonld
   type: json-ld
-
+  properties: []
 - name: Amazon SES Pricing
   description: Pricing details for Amazon SES including email sending, receiving, and additional features.
   url: https://aws.amazon.com/ses/pricing/
   type: pricing
-
+  properties: []
 - name: Amazon SES Getting Started
   description: Getting started guide for Amazon SES, helping new users set up and begin sending emails.
   url: https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html
   type: getting-started
-
+  properties: []
 - name: Amazon SES FAQ
   description: Frequently asked questions about Amazon SES covering features, pricing, deliverability, and compliance.
   url: https://aws.amazon.com/ses/faqs/
   type: faq
-
+  properties: []
 - name: Amazon SES User Guide
   description: Comprehensive user guide for Amazon SES covering all features and best practices for email communication.
   url: https://docs.aws.amazon.com/ses/latest/dg/Welcome.html
   type: user-guide
-
+  properties: []
 - name: Amazon SES API Reference
-  description: Complete API reference documentation for Amazon SES with detailed descriptions of all operations, parameters, and data types.
+  description: Complete API reference documentation for Amazon SES with detailed descriptions of all operations, parameters,
+    and data types.
   url: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
   type: api-reference
-
+  properties: []
 - name: Amazon SES CLI Reference
   description: AWS CLI reference for Amazon SES, providing command-line access to all SES operations.
   url: https://docs.aws.amazon.com/cli/latest/reference/sesv2/
   type: cli-reference
-
+  properties: []
 - name: Amazon SES Security
   description: Security documentation for Amazon SES covering authentication, authorization, and encryption.
   url: https://docs.aws.amazon.com/ses/latest/dg/security.html
   type: security
-
+  properties: []
 common:
-
 - type: portal
   url: https://aws.amazon.com/
-
 - type: website
   url: https://aws.amazon.com/ses/
-
 - type: Documentation
   url: https://docs.aws.amazon.com/ses/
-
 - type: terms
   url: https://aws.amazon.com/service-terms/
-
 - type: privacy
   url: https://aws.amazon.com/privacy/
-
 - type: support
   url: https://aws.amazon.com/support/
-
 - type: blog
   url: https://aws.amazon.com/blogs/messaging-and-targeting/
-
 - type: github
   url: https://github.com/aws
-
 - type: console
   url: https://console.aws.amazon.com/ses/
-
 - type: SignUp
   url: https://portal.aws.amazon.com/billing/signup
-
 - type: login
   url: https://signin.aws.amazon.com/
-
 - type: StatusPage
   url: https://health.aws.amazon.com/health/status
-
 - type: knowledge-center
   url: https://repost.aws/knowledge-center
-
 - type: youtube
   url: https://www.youtube.com/user/AmazonWebServices
-
 - type: stack-overflow
   url: https://stackoverflow.com/questions/tagged/amazon-ses
-
 - type: contact
   url: https://aws.amazon.com/contact-us/
-
 - type: security
   url: https://aws.amazon.com/security/
-
 - type: compliance
   url: https://aws.amazon.com/compliance/
-
 - type: JSONLD
   url: json-ld/amazon-ses-context.jsonld
 - type: JSONLD
@@ -142,10 +133,6 @@ common:
   url: examples/amazon-ses-emailmessage-example.json
 - type: Example
   url: examples/amazon-ses-openapi-email-message-example.json
-- type: NaftikoCapability
-  url: capabilities/amazon-ses.yaml
-- type: NaftikoCapability
-  url: capabilities/shared/amazon-ses.yaml
 - type: SpectralRules
   url: rules/amazon-ses-spectral-rules.yml
 - type: Vocabulary
@@ -157,7 +144,6 @@ common:
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
-
 tags:
 - AWS
 - Email
@@ -168,12 +154,12 @@ tags:
 - SMTP
 - Transactional Email
 integrations:
-  - name: Sign in
-  - name: Agent Mode
-  - name: 'Why AWS Marketplace?'
-  - name: Get started in AWS Marketplace
-  - name: Industry
-  - name: Resources
-  - name: Become a Channel Partner
-  - name: Sell in AWS Marketplace
-  - name: Manage Your Account
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account

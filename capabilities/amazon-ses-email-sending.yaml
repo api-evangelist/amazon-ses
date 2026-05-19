@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon SES Amazon Simple Email Service (SES) — Email Sending
+  description: 'Amazon SES Amazon Simple Email Service (SES) — Email Sending. 1 operations. Lead operation: Amazon SES Send
+    Email. Self-contained Naftiko capability covering one Amazon Ses business surface.'
+  tags:
+  - Amazon Ses
+  - Email Sending
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_SES_API_KEY: AMAZON_SES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ses-email-sending
+    baseUri: https://email.amazonaws.com
+    description: Amazon SES Amazon Simple Email Service (SES) — Email Sending business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: v2-email-outbound-emails
+      path: /v2/email/outbound-emails
+      operations:
+      - name: sendemail
+        method: POST
+        description: Amazon SES Send Email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: amazon-ses-email-sending-rest
+    port: 8080
+    description: REST adapter for Amazon SES Amazon Simple Email Service (SES) — Email Sending. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/email/outbound-emails
+      name: v2-email-outbound-emails
+      description: REST surface for v2-email-outbound-emails.
+      operations:
+      - method: POST
+        name: sendemail
+        description: Amazon SES Send Email
+        call: amazon-ses-email-sending.sendemail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ses-email-sending-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon SES Amazon Simple Email Service (SES) — Email Sending. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: amazon-ses-send-email
+      description: Amazon SES Send Email
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ses-email-sending.sendemail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
