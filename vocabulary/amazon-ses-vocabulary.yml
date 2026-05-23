@@ -1,0 +1,13 @@
+name: Amazon SES Domain Vocabulary
+provider: Amazon SES
+providerId: amazon-ses
+description: Tag-derived vocabulary for the Amazon SES API surface; sourced from openapi/ tags.
+terms:
+- term: Contact Lists
+  description: Operations for managing contact lists.
+- term: Email Sending
+  description: Operations for sending email messages.
+- term: Identities
+  description: Operations for managing email identities.
+- term: Templates
+  description: Operations for managing email templates.

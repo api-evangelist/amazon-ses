@@ -1,0 +1,72 @@
+{
+  "provider": "Amazon SES",
+  "providerId": "amazon-ses",
+  "kind": "json-structure",
+  "description": "Structural overview of the Amazon SES API surface; extracted from openapi/.",
+  "schemaCount": 1,
+  "operationCount": 6,
+  "schemas": [
+    {
+      "name": "EmailMessage",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/v2/email/outbound-emails",
+      "operationId": "SendEmail",
+      "summary": "Amazon SES Send Email",
+      "tags": [
+        "Email Sending"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/email/identities",
+      "operationId": "ListEmailIdentities",
+      "summary": "Amazon SES List Email Identities",
+      "tags": [
+        "Identities"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/email/identities",
+      "operationId": "CreateEmailIdentity",
+      "summary": "Amazon SES Create Email Identity",
+      "tags": [
+        "Identities"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/email/identities/{EmailIdentity}",
+      "operationId": "GetEmailIdentity",
+      "summary": "Amazon SES Get Email Identity",
+      "tags": [
+        "Identities"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/email/contact-lists",
+      "operationId": "CreateContactList",
+      "summary": "Amazon SES Create Contact List",
+      "tags": [
+        "Contact Lists"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/email/templates",
+      "operationId": "CreateEmailTemplate",
+      "summary": "Amazon SES Create Email Template",
+      "tags": [
+        "Templates"
+      ]
+    }
+  ]
+}
