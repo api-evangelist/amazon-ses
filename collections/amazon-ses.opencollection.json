@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon SES Amazon Simple Email Service (SES)",
+    "version": "2019-09-27"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email Sending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES Send Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/outbound-emails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Identities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES List Email Identities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://email.amazonaws.com/v2/email/identities",
+            "params": [
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of all email identities that are associated with your AWS account."
+        },
+        {
+          "info": {
+            "name": "Amazon SES Create Email Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/identities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts the process of verifying an email identity, which can be either an email address or a domain."
+        },
+        {
+          "info": {
+            "name": "Amazon SES Get Email Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://email.amazonaws.com/v2/email/identities/:EmailIdentity",
+            "params": [
+              {
+                "name": "EmailIdentity",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Provides information about a specific email identity, including its verification status and authentication settings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contact Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES Create Contact List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/contact-lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a contact list for managing email subscription preferences."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES Create Email Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an email template for use with sending emails using the SendEmail operation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

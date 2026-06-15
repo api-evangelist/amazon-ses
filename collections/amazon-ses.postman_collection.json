@@ -1,0 +1,611 @@
+{
+  "item": [
+    {
+      "id": "03693bab-88de-4b25-b22c-f6c1bbdf6550",
+      "name": "Contact Lists",
+      "description": {
+        "content": "Operations for managing contact lists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf75304a-09d5-49d2-848a-32d1b7d6b575",
+          "name": "Amazon SES Create Contact List",
+          "request": {
+            "name": "Amazon SES Create Contact List",
+            "description": {
+              "content": "Creates a contact list for managing email subscription preferences.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "contact-lists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ContactListName\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Topics\": [\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    },\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b4caa31-6613-4aa7-bd1a-fb3d53730985",
+              "name": "Contact list created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "contact-lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ContactListName\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Topics\": [\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    },\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "94f51f8a-6211-4c69-8c28-05d07ec59d8a",
+      "name": "Email Sending",
+      "description": {
+        "content": "Operations for sending email messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cad4bea-1d75-443a-8b8d-8b9c07b6ac47",
+          "name": "Amazon SES Send Email",
+          "request": {
+            "name": "Amazon SES Send Email",
+            "description": {
+              "content": "Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "outbound-emails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Content\": {\n    \"Simple\": {\n      \"Subject\": {\n        \"Data\": \"<string>\",\n        \"Charset\": \"<string>\"\n      },\n      \"Body\": {\n        \"Text\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        },\n        \"Html\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        }\n      }\n    },\n    \"Raw\": {\n      \"Data\": \"<byte>\"\n    },\n    \"Template\": {\n      \"TemplateName\": \"<string>\",\n      \"TemplateArn\": \"<string>\",\n      \"TemplateData\": \"<string>\"\n    }\n  },\n  \"FromEmailAddress\": \"<string>\",\n  \"Destination\": {\n    \"ToAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"CcAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"BccAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"ReplyToAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ConfigurationSetName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91d754c0-899d-4d21-a76e-44c1d3c697ff",
+              "name": "Email sent successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "outbound-emails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Content\": {\n    \"Simple\": {\n      \"Subject\": {\n        \"Data\": \"<string>\",\n        \"Charset\": \"<string>\"\n      },\n      \"Body\": {\n        \"Text\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        },\n        \"Html\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        }\n      }\n    },\n    \"Raw\": {\n      \"Data\": \"<byte>\"\n    },\n    \"Template\": {\n      \"TemplateName\": \"<string>\",\n      \"TemplateArn\": \"<string>\",\n      \"TemplateData\": \"<string>\"\n    }\n  },\n  \"FromEmailAddress\": \"<string>\",\n  \"Destination\": {\n    \"ToAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"CcAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"BccAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"ReplyToAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ConfigurationSetName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MessageId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9eea4e82-b2c0-4b31-8ffe-2eb527a1be5d",
+      "name": "Identities",
+      "description": {
+        "content": "Operations for managing email identities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f32b1f4-3df3-4c5c-8f8e-c9bd11ce39fa",
+          "name": "Amazon SES Create Email Identity",
+          "request": {
+            "name": "Amazon SES Create Email Identity",
+            "description": {
+              "content": "Starts the process of verifying an email identity, which can be either an email address or a domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"EmailIdentity\": \"<string>\",\n  \"DkimSigningAttributes\": {\n    \"DomainSigningSelector\": \"<string>\",\n    \"DomainSigningPrivateKey\": \"<string>\"\n  },\n  \"ConfigurationSetName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "562718e6-62b2-45a2-99f7-9841c3f64ace",
+              "name": "Email identity creation initiated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"EmailIdentity\": \"<string>\",\n  \"DkimSigningAttributes\": {\n    \"DomainSigningSelector\": \"<string>\",\n    \"DomainSigningPrivateKey\": \"<string>\"\n  },\n  \"ConfigurationSetName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"IdentityType\": \"string\",\n  \"VerifiedForSendingStatus\": true,\n  \"DkimAttributes\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a5b99a2-4303-4b23-b829-1b07e5fc9334",
+          "name": "Amazon SES List Email Identities",
+          "request": {
+            "name": "Amazon SES List Email Identities",
+            "description": {
+              "content": "Returns a list of all email identities that are associated with your AWS account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2731c74b-d7e5-472c-9e20-eacc6ddce67c",
+              "name": "List of email identities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"EmailIdentities\": [\n    {\n      \"IdentityType\": \"string\",\n      \"IdentityName\": \"string\",\n      \"SendingEnabled\": false\n    },\n    {\n      \"IdentityType\": \"string\",\n      \"IdentityName\": \"string\",\n      \"SendingEnabled\": false\n    }\n  ],\n  \"NextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a20c579-1468-4b6c-9fe9-8721451fd3d5",
+          "name": "Amazon SES Get Email Identity",
+          "request": {
+            "name": "Amazon SES Get Email Identity",
+            "description": {
+              "content": "Provides information about a specific email identity, including its verification status and authentication settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "identities",
+                ":EmailIdentity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "EmailIdentity",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61d6ff38-97f7-4fd1-b4d1-5d304223aa19",
+              "name": "Email identity details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "identities",
+                    ":EmailIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "EmailIdentity",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"IdentityType\": \"string\",\n  \"VerifiedForSendingStatus\": true,\n  \"DkimAttributes\": {},\n  \"MailFromAttributes\": {},\n  \"Policies\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "aad5485e-eeb7-4094-9f97-c9f46c6ede17",
+      "name": "Templates",
+      "description": {
+        "content": "Operations for managing email templates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81645f1f-61e5-4bb6-ba50-492098acfcdb",
+          "name": "Amazon SES Create Email Template",
+          "request": {
+            "name": "Amazon SES Create Email Template",
+            "description": {
+              "content": "Creates an email template for use with sending emails using the SendEmail operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TemplateName\": \"<string>\",\n  \"TemplateContent\": {\n    \"Subject\": \"<string>\",\n    \"Text\": \"<string>\",\n    \"Html\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "648ad484-c012-4b0b-bde4-6619521f47a9",
+              "name": "Email template created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TemplateName\": \"<string>\",\n  \"TemplateContent\": {\n    \"Subject\": \"<string>\",\n    \"Text\": \"<string>\",\n    \"Html\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://email.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "82abd853-6df7-4b9d-98f8-63f1bf4b52e6",
+    "name": "Amazon SES Amazon Simple Email Service (SES)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}
