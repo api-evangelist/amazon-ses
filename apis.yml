@@ -20,37 +20,37 @@ apis:
       The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing
       identities, contact lists, and email templates.
     url: openapi/amazon-ses-openapi.yml
-    type: openapi
+    type: OpenAPI
     properties: []
   - name: Amazon SES OpenAPI (APIs.guru)
     description: The APIs.guru maintained OpenAPI definition for the Amazon SES API.
     url: https://api.apis.guru/v2/specs/amazonaws.com/sesv2/2019-09-27/openapi.yaml
-    type: openapi
+    type: OpenAPI
     properties: []
   - name: Amazon SES JSON Schema
     description: JSON Schema definitions for the Amazon SES API request and response objects.
     url: json-schema/amazon-ses-emailmessage-schema.json
-    type: json-schema
+    type: JSONSchema
     properties: []
   - name: Amazon SES JSON-LD Context
     description: JSON-LD context document for Amazon SES API resources providing semantic linked data mappings.
     url: json-ld/amazon-ses-context.jsonld
-    type: json-ld
+    type: JSONLD
     properties: []
   - name: Amazon SES Pricing
     description: Pricing details for Amazon SES including email sending, receiving, and additional features.
     url: https://aws.amazon.com/ses/pricing/
-    type: pricing
+    type: Pricing
     properties: []
   - name: Amazon SES Getting Started
     description: Getting started guide for Amazon SES, helping new users set up and begin sending emails.
     url: https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html
-    type: getting-started
+    type: GettingStarted
     properties: []
   - name: Amazon SES FAQ
     description: Frequently asked questions about Amazon SES covering features, pricing, deliverability, and compliance.
     url: https://aws.amazon.com/ses/faqs/
-    type: faq
+    type: FAQ
     properties: []
   - name: Amazon SES User Guide
     description: Comprehensive user guide for Amazon SES covering all features and best practices for email communication.
@@ -72,12 +72,12 @@ apis:
   - name: Amazon SES Security
     description: Security documentation for Amazon SES covering authentication, authorization, and encryption.
     url: https://docs.aws.amazon.com/ses/latest/dg/security.html
-    type: security
+    type: Security
     properties: []
 common:
-  - type: portal
+  - type: Portal
     url: https://aws.amazon.com/
-  - type: website
+  - type: Website
     url: https://aws.amazon.com/ses/
   - type: Documentation
     url: https://docs.aws.amazon.com/ses/
@@ -85,31 +85,31 @@ common:
     url: https://aws.amazon.com/service-terms/
   - type: privacy
     url: https://aws.amazon.com/privacy/
-  - type: support
+  - type: Support
     url: https://aws.amazon.com/support/
-  - type: blog
+  - type: Blog
     url: https://aws.amazon.com/blogs/messaging-and-targeting/
   - type: github
     url: https://github.com/aws
-  - type: console
+  - type: Console
     url: https://console.aws.amazon.com/ses/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
-  - type: login
+  - type: Login
     url: https://signin.aws.amazon.com/
   - type: StatusPage
     url: https://health.aws.amazon.com/health/status
   - type: knowledge-center
     url: https://repost.aws/knowledge-center
-  - type: youtube
+  - type: YouTube
     url: https://www.youtube.com/user/AmazonWebServices
-  - type: stack-overflow
+  - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/amazon-ses
-  - type: contact
+  - type: Contact
     url: https://aws.amazon.com/contact-us/
-  - type: security
+  - type: Security
     url: https://aws.amazon.com/security/
-  - type: compliance
+  - type: Compliance
     url: https://aws.amazon.com/compliance/
   - type: JSONLD
     url: json-ld/amazon-ses-context.jsonld
@@ -125,9 +125,9 @@ common:
     url: json-structure/amazon-ses-emailmessage-structure.json
   - type: JSONStructure
     url: json-structure/amazon-ses-openapi-email-message-structure.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-ses-emailmessage-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-ses-openapi-email-message-example.json
   - type: SpectralRules
     url: rules/amazon-ses-spectral-rules.yml
