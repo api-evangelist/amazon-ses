@@ -75,6 +75,15 @@ apis:
     type: Security
     properties: []
 common:
+  - type: TrustCenter
+    url: security/amazon-ses-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-ses-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-ses-domain-security.yml
+  - name: Agent Skills
+    url: https://github.com/amazon-ses/skills
+    type: AgentSkills
   - type: Portal
     url: https://aws.amazon.com/
   - type: Website
