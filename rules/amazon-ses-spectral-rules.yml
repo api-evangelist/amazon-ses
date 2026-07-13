@@ -1,116 +1,111 @@
+# amazon-ses — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on amazonaws.com
+#   - operationid-casing: pascal @ 100% (n=6)
+#   - merge: kept 19 existing, added 3 measured, upgraded 0
+#   - added: servers-expected-domain, operationid-casing, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
-  # INFO / METADATA
   info-title-required:
     description: API must have a title
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: title
       function: truthy
-
   info-description-required:
     description: API must have a description
     severity: warn
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: API must have a version
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: API must use OpenAPI 3.x
     severity: error
-    given: "$"
+    given: $
     then:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\."
-
-  # SERVERS
+        match: ^3\.
   servers-defined:
     description: Servers must be defined
     severity: error
-    given: "$"
+    given: $
     then:
       field: servers
       function: truthy
-
   server-https:
     description: Server URLs should use HTTPS
     severity: warn
-    given: "$.servers[*]"
+    given: $.servers[*]
     then:
       field: url
       function: pattern
       functionOptions:
-        match: "^https://"
-
-  # OPERATIONS
+        match: ^https://
   operation-summary-required:
     description: Operations must have a summary
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete,options,head]"
+    given: $.paths[*][get,post,put,patch,delete,options,head]
     then:
       field: summary
       function: truthy
-
   operation-description-required:
     description: Operations must have a description
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete,options,head]"
+    given: $.paths[*][get,post,put,patch,delete,options,head]
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: Operations must have an operationId
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete,options,head]"
+    given: $.paths[*][get,post,put,patch,delete,options,head]
     then:
       field: operationId
       function: truthy
-
   operation-id-camel-case:
     description: OperationId should use camelCase
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete,options,head]"
+    given: $.paths[*][get,post,put,patch,delete,options,head]
     then:
       field: operationId
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]*$"
-
+        match: ^[a-z][a-zA-Z0-9]*$
   operation-tags-required:
     description: Operations must have tags
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete,options,head]"
+    given: $.paths[*][get,post,put,patch,delete,options,head]
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: Parameters must have descriptions
     severity: warn
-    given: "$.paths[*][*].parameters[*]"
+    given: $.paths[*][*].parameters[*]
     then:
       field: description
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: Operations must have a success response
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: responses
       function: schema
@@ -118,58 +113,75 @@ rules:
         schema:
           type: object
           anyOf:
-            - required: ['200']
-            - required: ['201']
-            - required: ['202']
-            - required: ['204']
-
+          - required:
+            - '200'
+          - required:
+            - '201'
+          - required:
+            - '202'
+          - required:
+            - '204'
   response-description-required:
     description: Responses must have descriptions
     severity: warn
-    given: "$.paths[*][*].responses[*]"
+    given: $.paths[*][*].responses[*]
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-type-defined:
     description: Schema properties should have types
     severity: warn
-    given: "$.components.schemas[*].properties[*]"
+    given: $.components.schemas[*].properties[*]
     then:
       field: type
       function: truthy
-
   schema-description-required:
     description: Top-level schemas should have descriptions
     severity: info
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: description
       function: truthy
-
-  # SECURITY
   security-schemes-defined:
     description: Security schemes should be defined
     severity: warn
-    given: "$.components"
+    given: $.components
     then:
       field: securitySchemes
       function: truthy
-
-  # HTTP METHOD CONVENTIONS
   get-no-request-body:
     description: GET operations should not have a request body
     severity: error
-    given: "$.paths[*].get"
+    given: $.paths[*].get
     then:
       field: requestBody
       function: falsy
-
   delete-no-request-body:
     description: DELETE operations should not have a request body
     severity: warn
-    given: "$.paths[*].delete"
+    given: $.paths[*].delete
     then:
       field: requestBody
       function: falsy
+  servers-expected-domain:
+    description: Server URLs should be on the amazonaws.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: amazonaws\.com
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: pascal
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
