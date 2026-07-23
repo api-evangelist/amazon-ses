@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Amazon SES Amazon Simple Email Service (SES) Contact Lists Templates API
+  description: Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.
+  version: '2019-09-27'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ses/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://email.amazonaws.com
+  description: Amazon SES API endpoint
+tags:
+- name: Templates
+  description: Operations for managing email templates.
+paths:
+  /v2/email/templates:
+    post:
+      operationId: CreateEmailTemplate
+      summary: Amazon SES Create Email Template
+      description: Creates an email template for use with sending emails using the SendEmail operation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                TemplateName:
+                  type: string
+                  description: The name of the email template.
+                TemplateContent:
+                  type: object
+                  properties:
+                    Subject:
+                      type: string
+                    Text:
+                      type: string
+                    Html:
+                      type: string
+              required:
+              - TemplateName
+              - TemplateContent
+      responses:
+        '200':
+          description: Email template created successfully.
+      tags:
+      - Templates

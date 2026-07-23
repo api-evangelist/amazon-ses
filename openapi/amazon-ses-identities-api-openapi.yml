@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  title: Amazon SES Amazon Simple Email Service (SES) Contact Lists Identities API
+  description: Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.
+  version: '2019-09-27'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ses/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://email.amazonaws.com
+  description: Amazon SES API endpoint
+tags:
+- name: Identities
+  description: Operations for managing email identities.
+paths:
+  /v2/email/identities:
+    post:
+      operationId: CreateEmailIdentity
+      summary: Amazon SES Create Email Identity
+      description: Starts the process of verifying an email identity, which can be either an email address or a domain.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EmailIdentity:
+                  type: string
+                  description: The email address or domain to verify.
+                DkimSigningAttributes:
+                  type: object
+                  properties:
+                    DomainSigningSelector:
+                      type: string
+                    DomainSigningPrivateKey:
+                      type: string
+                ConfigurationSetName:
+                  type: string
+              required:
+              - EmailIdentity
+      responses:
+        '200':
+          description: Email identity creation initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  IdentityType:
+                    type: string
+                  VerifiedForSendingStatus:
+                    type: boolean
+                  DkimAttributes:
+                    type: object
+      tags:
+      - Identities
+    get:
+      operationId: ListEmailIdentities
+      summary: Amazon SES List Email Identities
+      description: Returns a list of all email identities that are associated with your AWS account.
+      parameters:
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of email identities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  EmailIdentities:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        IdentityType:
+                          type: string
+                        IdentityName:
+                          type: string
+                        SendingEnabled:
+                          type: boolean
+                  NextToken:
+                    type: string
+      tags:
+      - Identities
+  /v2/email/identities/{EmailIdentity}:
+    get:
+      operationId: GetEmailIdentity
+      summary: Amazon SES Get Email Identity
+      description: Provides information about a specific email identity, including its verification status and authentication settings.
+      parameters:
+      - name: EmailIdentity
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Email identity details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  IdentityType:
+                    type: string
+                  VerifiedForSendingStatus:
+                    type: boolean
+                  DkimAttributes:
+                    type: object
+                  MailFromAttributes:
+                    type: object
+                  Policies:
+                    type: object
+      tags:
+      - Identities

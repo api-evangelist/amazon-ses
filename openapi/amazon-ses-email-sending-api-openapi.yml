@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: Amazon SES Amazon Simple Email Service (SES) Contact Lists Email Sending API
+  description: Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.
+  version: '2019-09-27'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ses/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://email.amazonaws.com
+  description: Amazon SES API endpoint
+tags:
+- name: Email Sending
+  description: Operations for sending email messages.
+paths:
+  /v2/email/outbound-emails:
+    post:
+      operationId: SendEmail
+      summary: Amazon SES Send Email
+      description: Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                FromEmailAddress:
+                  type: string
+                  description: The email address to use as the From address.
+                Destination:
+                  type: object
+                  description: An object that contains the recipients of the email message.
+                  properties:
+                    ToAddresses:
+                      type: array
+                      items:
+                        type: string
+                    CcAddresses:
+                      type: array
+                      items:
+                        type: string
+                    BccAddresses:
+                      type: array
+                      items:
+                        type: string
+                Content:
+                  $ref: '#/components/schemas/EmailMessage'
+                ReplyToAddresses:
+                  type: array
+                  items:
+                    type: string
+                ConfigurationSetName:
+                  type: string
+              required:
+              - Content
+      responses:
+        '200':
+          description: Email sent successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  MessageId:
+                    type: string
+      tags:
+      - Email Sending
+components:
+  schemas:
+    EmailMessage:
+      type: object
+      description: An object that defines the email message content including simple, raw, and template options.
+      properties:
+        Simple:
+          type: object
+          description: The simple email message with subject and body.
+          properties:
+            Subject:
+              type: object
+              properties:
+                Data:
+                  type: string
+                  description: The content of the message subject.
+                Charset:
+                  type: string
+                  description: The character set for the content.
+              required:
+              - Data
+            Body:
+              type: object
+              properties:
+                Text:
+                  type: object
+                  properties:
+                    Data:
+                      type: string
+                    Charset:
+                      type: string
+                  required:
+                  - Data
+                Html:
+                  type: object
+                  properties:
+                    Data:
+                      type: string
+                    Charset:
+                      type: string
+                  required:
+                  - Data
+          required:
+          - Subject
+          - Body
+        Raw:
+          type: object
+          description: The raw email message.
+          properties:
+            Data:
+              type: string
+              format: byte
+              description: The raw email message in MIME format.
+          required:
+          - Data
+        Template:
+          type: object
+          description: The template email message.
+          properties:
+            TemplateName:
+              type: string
+              description: The name of the template.
+            TemplateArn:
+              type: string
+            TemplateData:
+              type: string
+              description: JSON object of replacement values for template variables.
