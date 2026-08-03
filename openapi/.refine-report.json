@@ -1,0 +1,20 @@
+{
+  "provider": "amazon-ses",
+  "sources": [
+    "amazon-ses-contact-lists-api-openapi.yml",
+    "amazon-ses-email-sending-api-openapi.yml",
+    "amazon-ses-identities-api-openapi.yml",
+    "amazon-ses-templates-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-ses-contact-lists-api-openapi.yml",
+    "amazon-ses-email-sending-api-openapi.yml",
+    "amazon-ses-identities-api-openapi.yml",
+    "amazon-ses-templates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
