@@ -31,7 +31,7 @@ apis:
   description: >-
     The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails,
     managing identities, contact lists, and email templates.
-  url: openapi/amazon-ses-openapi.yml
+  url: openapi/_original/amazon-ses-openapi.yml
   type: OpenAPI
   properties: []
 - name: Amazon SES OpenAPI (APIs.guru)
@@ -194,7 +194,7 @@ common:
   - type: Vocabulary
     url: vocabulary/amazon-ses-vocabulary.yaml
   - type: OpenAPI
-    url: openapi/amazon-ses-openapi.yml
+    url: openapi/_original/amazon-ses-openapi.yml
   - type: Integrations
     url: https://aws.amazon.com/marketplace/
 maintainer:
