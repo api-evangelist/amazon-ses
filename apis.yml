@@ -1,8 +1,16 @@
 name: Amazon SES
 description: >-
-  Amazon Simple Email Service (SES) is a cloud-based email sending service designed to help digital marketers and
-  application developers send marketing, notification, and transactional emails, providing a reliable and scalable
-  infrastructure for email communication.
+  Amazon Simple Email Service (SES) is AWS's cloud email platform for sending and receiving mail at scale —
+  marketing, notification and transactional. The current contract is the SES v2 API (version 2019-09-27), an
+  86-operation REST-JSON service authenticated with AWS Signature Version 4 and reached at a regional endpoint,
+  alongside an SMTP submission interface on ports 25/465/587/2465/2587. It covers email sending and templated
+  bulk sends, domain and address identity verification with DKIM, SPF and DMARC alignment, configuration sets
+  and event publishing to SNS, EventBridge, CloudWatch and Firehose, contact lists and subscription topics,
+  account and configuration-set suppression lists, dedicated IP pools both managed and standard, tenants for
+  per-workload reputation isolation, and Virtual Deliverability Manager for inbox placement and reputation
+  reporting. Mail Manager adds inbound processing with ingress points, traffic policies, rule sets, relays and
+  archives. Every new account starts in the SES sandbox, and a published mailbox simulator forces delivery,
+  bounce, complaint and out-of-office outcomes on demand.
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -18,7 +26,7 @@ accessModel:
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/apis.yml
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-08-13'
 apis:
 - name: Amazon SES Documentation
   description: >-
@@ -91,38 +99,78 @@ apis:
   url: https://docs.aws.amazon.com/ses/latest/dg/security.html
   type: Security
   properties: []
+- aid: amazon-ses:amazon-ses-v2-api
+  name: Amazon SES v2 API
+  description: >-
+    The full Amazon Simple Email Service v2 API (API version 2019-09-27) — 86 operations across email
+    sending, email identities and DKIM, configuration sets and event destinations, contact lists and
+    contacts, email templates, suppression lists, dedicated IP pools, deliverability reporting, tenants,
+    import/export jobs and account settings. Harvested verbatim from the APIs.guru conversion of the
+    first-party AWS SDK service model for sesv2.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Email Sending
+  - Identities
+  - Contact Lists
+  - Templates
+  - Suppression
+  - Deliverability
+  properties:
+  - type: OpenAPI
+    url: openapi/_original/amazon-ses-sesv2-openapi.yml
+  - type: Overlay
+    url: overlays/amazon-ses-sesv2-overlay.yaml
+  - type: ToolCrosswalk
+    url: mcp/amazon-ses-tool-crosswalk.yml
 - aid: amazon-ses:amazon-ses-contact-lists-api
   name: Amazon SES Contact Lists API
   description: Operations for managing contact lists.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
   tags:
   - Contact Lists
   properties:
   - type: OpenAPI
     url: openapi/amazon-ses-contact-lists-api-openapi.yml
+  - type: Overlay
+    url: overlays/amazon-ses-contact-lists-api-overlay.yaml
 - aid: amazon-ses:amazon-ses-email-sending-api
   name: Amazon SES Email Sending API
   description: Operations for sending email messages.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html
+  baseURL: https://email.{region}.amazonaws.com
   tags:
   - Email Sending
   properties:
   - type: OpenAPI
     url: openapi/amazon-ses-email-sending-api-openapi.yml
+  - type: Overlay
+    url: overlays/amazon-ses-email-sending-api-overlay.yaml
 - aid: amazon-ses:amazon-ses-identities-api
   name: Amazon SES Identities API
   description: Operations for managing email identities.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailIdentity.html
+  baseURL: https://email.{region}.amazonaws.com
   tags:
   - Identities
   properties:
   - type: OpenAPI
     url: openapi/amazon-ses-identities-api-openapi.yml
+  - type: Overlay
+    url: overlays/amazon-ses-identities-api-overlay.yaml
 - aid: amazon-ses:amazon-ses-templates-api
   name: Amazon SES Templates API
   description: Operations for managing email templates.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailTemplate.html
+  baseURL: https://email.{region}.amazonaws.com
   tags:
   - Templates
   properties:
   - type: OpenAPI
     url: openapi/amazon-ses-templates-api-openapi.yml
+  - type: Overlay
+    url: overlays/amazon-ses-templates-api-overlay.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-ses-agentic-access.yml
@@ -132,28 +180,39 @@ common:
     url: security/amazon-ses-vulnerability-disclosure.yml
   - type: DomainSecurity
     url: security/amazon-ses-domain-security.yml
-  - name: Agent Skills
+  - name: Amazon SES Agent Skills
+    url: skills/_index.yml
+    type: AgentSkill
+  - name: Amazon SES Agent Skills (provider repository)
     url: https://github.com/amazon-ses/skills
-    type: AgentSkills
+    type: AgentSkill
   - type: Portal
     url: https://aws.amazon.com/
+  - type: DeveloperPortal
+    url: https://docs.aws.amazon.com/ses/
   - type: Website
     url: https://aws.amazon.com/ses/
   - type: Documentation
     url: https://docs.aws.amazon.com/ses/
-  - type: terms
+  - type: APIReference
+    url: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html
+  - type: Pricing
+    url: https://aws.amazon.com/ses/pricing/
+  - type: TermsOfService
     url: https://aws.amazon.com/service-terms/
-  - type: privacy
+  - type: PrivacyPolicy
     url: https://aws.amazon.com/privacy/
   - type: Support
     url: https://aws.amazon.com/support/
   - type: Blog
     url: https://aws.amazon.com/blogs/messaging-and-targeting/
-  - type: github
+  - type: GitHubOrganization
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/ses/
-  - type: Signup
+  - type: SignUp
     url: https://portal.aws.amazon.com/billing/signup
   - type: Login
     url: https://signin.aws.amazon.com/
@@ -195,11 +254,75 @@ common:
     url: vocabulary/amazon-ses-vocabulary.yaml
   - type: OpenAPI
     url: openapi/_original/amazon-ses-openapi.yml
+  - name: Amazon SES v2 OpenAPI (86 operations)
+    type: OpenAPI
+    url: openapi/_original/amazon-ses-sesv2-openapi.yml
   - type: Integrations
     url: https://aws.amazon.com/marketplace/
+  - type: Packages
+    url: packages/amazon-ses-packages.yml
+  - type: SDKs
+    url: packages/amazon-ses-packages.yml
+  - type: CLI
+    url: cli/amazon-ses-cli.yml
+  - type: Authentication
+    url: authentication/amazon-ses-authentication.yml
+  - type: Conventions
+    url: conventions/amazon-ses-conventions.yml
+  - type: ErrorCatalog
+    url: errors/amazon-ses-problem-types.yml
+  - type: DataModel
+    url: data-model/amazon-ses-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/amazon-ses-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/amazon-ses-changelog.yml
+  - type: Conformance
+    url: conformance/amazon-ses-conformance.yml
+  - type: Sandbox
+    url: sandbox/amazon-ses-sandbox.yml
+  - type: Webhooks
+    url: asyncapi/amazon-ses-events.yml
+  - type: MCPServer
+    url: mcp/amazon-ses-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/amazon-ses-tool-crosswalk.yml
+  - type: LLMsTxt
+    url: llms/amazon-ses-llms.txt
+  - name: Amazon SES API v2 Reference llms.txt
+    type: LLMsTxt
+    url: llms/amazon-ses-api-reference-llms.txt
+  - type: WellKnown
+    url: well-known/amazon-ses-well-known.yml
+  - type: SecurityTxt
+    url: well-known/amazon-ses-security.txt
+  - type: Plans
+    url: plans/amazon-ses-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/amazon-ses-rate-limits.yml
+  - type: FinOps
+    url: finops/amazon-ses-finops.yml
+  - type: Overlay
+    url: overlays/amazon-ses-sesv2-overlay.yaml
+  - type: Overlay
+    url: overlays/amazon-ses-email-sending-api-overlay.yaml
+  - type: Overlay
+    url: overlays/amazon-ses-identities-api-overlay.yaml
+  - type: Overlay
+    url: overlays/amazon-ses-contact-lists-api-overlay.yaml
+  - type: Overlay
+    url: overlays/amazon-ses-templates-api-overlay.yaml
+  - type: PostmanCollection
+    url: collections/amazon-ses.postman_collection.json
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
+maintainers:
+  - FN: Kin Lane
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+    X-twitter: apievangelist
 tags:
   - AWS
   - Email
@@ -209,6 +332,11 @@ tags:
   - Notifications
   - SMTP
   - Transactional Email
+  - Bulk Email
+  - Email Receiving
+  - DKIM
+  - Messaging
+  - Cloud Infrastructure
 integrations:
   - name: Sign in
   - name: Agent Mode
@@ -219,3 +347,8 @@ integrations:
   - name: Become a Channel Partner
   - name: Sell in AWS Marketplace
   - name: Manage Your Account
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 26
+  pass: local-v1
