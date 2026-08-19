@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists Email Sending API",
+    "version": "2019-09-27"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email Sending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES Send Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/outbound-emails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

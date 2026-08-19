@@ -1,0 +1,82 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+derived_from: openapi/_original/amazon-ses-sesv2-openapi.yml
+protocol:
+  style: REST-JSON (AWS restJson1)
+  transport: HTTPS only
+  content_type: application/json
+  base_url: https://email.{region}.amazonaws.com
+  regional: true
+  note: SES is a regional service. Every request is scoped to one AWS Region; there is no global endpoint. A multi-region
+    global endpoint feature exists for sending resilience but the control plane stays regional.
+authentication:
+  style: AWS Signature Version 4
+  header: Authorization
+  supporting_headers:
+  - X-Amz-Date
+  - X-Amz-Security-Token
+  - X-Amz-Content-Sha256
+  alternative: SMTP interface with SES SMTP credentials (derived from IAM), ports 25/465/587/2465/2587
+  artifact: authentication/amazon-ses-authentication.yml
+idempotency:
+  supported: false
+  note: Amazon SES v2 publishes NO idempotency-key mechanism. There is no Idempotency-Key header and no ClientToken/ClientRequestToken
+    parameter anywhere in the 86-operation SES v2 contract (grep of the harvested spec returns zero matches for
+    both). Retrying SendEmail after a timeout can therefore send the message twice. Creates are name-addressed,
+    so re-issuing a create returns AlreadyExistsException rather than duplicating the resource — that is name collision,
+    not idempotency. Callers who need send-level dedupe must implement it themselves (for example an application-side
+    key persisted before the call).
+pagination:
+  style: opaque cursor
+  request_params:
+  - NextToken
+  - PageSize
+  response_fields:
+  - NextToken
+  location: query string
+  terminates_when: NextToken is absent from the response
+  error: InvalidNextTokenException when the cursor is malformed or expired
+  note: Used by the 16 List* operations; PageSize appears on the paginated operations only.
+request_tracing:
+  response_header: x-amzn-RequestId
+  note: Every SES response carries x-amzn-RequestId. Include it when contacting AWS Support.
+versioning:
+  scheme: dated API version + URI path prefix
+  api_version: '2019-09-27'
+  path_prefix: /v2/email
+  note: The SES v1 API (2010-12-01) remains available at a separate path/endpoint; v2 is the current contract.
+  artifact: lifecycle/amazon-ses-lifecycle.yml
+errors:
+  envelope: AWS JSON error document
+  type_header: x-amzn-ErrorType
+  body_fields:
+  - __type
+  - message
+  rfc9457: false
+  artifact: errors/amazon-ses-problem-types.yml
+rate_limit_signaling:
+  exception: ThrottlingException / TooManyRequestsException
+  http_status: 400
+  smtp_status: 454
+  headers:
+    published_ratelimit_headers: null
+    note: 'SES publishes NO RateLimit-*/X-RateLimit-* response headers. Throttling is signalled only by the exception
+      type; remaining quota must be polled with GetAccount (SendQuota: Max24HourSend, MaxSendRate, SentLast24Hours).'
+  poll_operation: GetAccount
+  artifact: rate-limits/amazon-ses-rate-limits.yml
+field_expansion:
+  supported: false
+  note: No sparse-fieldset or expand parameter; each operation returns a fixed response shape.
+metadata:
+  supported: true
+  mechanism: Tags (Key/Value) on configuration sets, contact lists, dedicated IP pools, email identities and templates;
+    plus MessageTags / EmailTags on SendEmail for event-publishing dimensions.
+bulk:
+  supported: true
+  operations:
+  - SendBulkEmail
+  - BatchGetMetricData
+  - PutSuppressedDestination
+  - CreateImportJob
+  limits: 50 destinations per templated send; 50 recipients (To/CC/BCC) per message.

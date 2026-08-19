@@ -1,0 +1,87 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/cli/latest/reference/sesv2/
+note: >-
+  SES has no dedicated CLI binary. The first-party command-line surface is the AWS CLI, where SES v2 is the
+  `sesv2` command group and SES v1 is the legacy `ses` group. The binary itself is catalogued in
+  packages/amazon-ses-packages.yml.
+cli:
+  name: AWS CLI
+  binary: aws
+  command_group: sesv2
+  legacy_command_group: ses
+  first_party: true
+  docs: https://docs.aws.amazon.com/cli/latest/reference/sesv2/
+install:
+  - method: pip
+    command: pip install awscli
+  - method: macos
+    command: brew install awscli
+  - method: installer
+    url: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+    note: AWS CLI v2 ships as a signed platform installer (macOS .pkg, Windows .msi, Linux zip), not via pip.
+configure:
+  command: aws configure
+  credentials: AWS access key id + secret access key + region, or an assumed role / SSO profile
+  region_required: true
+  note: Every sesv2 command is region-scoped; --region or a configured default is mandatory.
+command_surface:
+  operations: 86
+  derived_from: openapi/_original/amazon-ses-sesv2-openapi.yml
+  note: The AWS CLI generates one subcommand per SES v2 API operation, kebab-cased (SendEmail -> send-email).
+  groups:
+    - name: sending
+      commands: [send-email, send-bulk-email, send-custom-verification-email]
+    - name: identities
+      commands: [create-email-identity, delete-email-identity, get-email-identity, list-email-identities, put-email-identity-dkim-attributes, put-email-identity-dkim-signing-attributes, put-email-identity-mail-from-attributes, put-email-identity-feedback-attributes, put-email-identity-configuration-set-attributes]
+    - name: identity-policies
+      commands: [create-email-identity-policy, update-email-identity-policy, delete-email-identity-policy, get-email-identity-policies]
+    - name: configuration-sets
+      commands: [create-configuration-set, delete-configuration-set, get-configuration-set, list-configuration-sets, put-configuration-set-delivery-options, put-configuration-set-reputation-options, put-configuration-set-sending-options, put-configuration-set-suppression-options, put-configuration-set-tracking-options]
+    - name: event-destinations
+      commands: [create-configuration-set-event-destination, update-configuration-set-event-destination, delete-configuration-set-event-destination, get-configuration-set-event-destinations]
+    - name: templates
+      commands: [create-email-template, update-email-template, delete-email-template, get-email-template, list-email-templates, test-render-email-template]
+    - name: custom-verification-templates
+      commands: [create-custom-verification-email-template, update-custom-verification-email-template, delete-custom-verification-email-template, get-custom-verification-email-template, list-custom-verification-email-templates]
+    - name: contacts
+      commands: [create-contact-list, delete-contact-list, get-contact-list, list-contact-lists, update-contact-list, create-contact, delete-contact, get-contact, list-contacts, update-contact]
+    - name: suppression
+      commands: [put-suppressed-destination, delete-suppressed-destination, get-suppressed-destination, list-suppressed-destinations, put-account-suppression-attributes]
+    - name: dedicated-ips
+      commands: [create-dedicated-ip-pool, delete-dedicated-ip-pool, list-dedicated-ip-pools, get-dedicated-ip, get-dedicated-ips, put-dedicated-ip-in-pool, put-dedicated-ip-warmup-attributes, put-dedicated-ip-pool-scaling-attributes]
+    - name: deliverability
+      commands: [create-deliverability-test-report, get-deliverability-test-report, list-deliverability-test-reports, put-deliverability-dashboard-option, get-deliverability-dashboard-options, get-domain-deliverability-campaign, get-domain-statistics-report, list-domain-deliverability-campaigns]
+    - name: account
+      commands: [get-account, put-account-details, put-account-dedicated-ip-warmup-attributes, put-account-sending-attributes, put-account-vdm-attributes, put-configuration-set-vdm-options]
+    - name: import
+      commands: [create-import-job, get-import-job, list-import-jobs]
+    - name: metrics
+      commands: [batch-get-metric-data, create-export-job, get-export-job, list-export-jobs, list-recommendations]
+    - name: tags
+      commands: [tag-resource, untag-resource, list-tags-for-resource]
+key_flows:
+  - name: Verify a sending domain and read its DKIM tokens
+    commands:
+      - aws sesv2 create-email-identity --email-identity example.com
+      - aws sesv2 get-email-identity --email-identity example.com
+  - name: Send a test message through the mailbox simulator
+    commands:
+      - >-
+        aws sesv2 send-email --from-email-address sender@example.com
+        --destination ToAddresses=success@simulator.amazonses.com
+        --content 'Simple={Subject={Data=Test},Body={Text={Data=Hello}}}'
+  - name: Check where the account sits against its sending quota
+    commands:
+      - aws sesv2 get-account
+  - name: Wire event publishing to an SNS topic
+    commands:
+      - aws sesv2 create-configuration-set --configuration-set-name my-set
+      - >-
+        aws sesv2 create-configuration-set-event-destination --configuration-set-name my-set
+        --event-destination-name to-sns --event-destination
+        'Enabled=true,MatchingEventTypes=[BOUNCE,COMPLAINT,DELIVERY],SnsDestination={TopicArn=arn:aws:sns:us-east-1:123456789012:ses-events}'
+related:
+  packages: packages/amazon-ses-packages.yml
+  sandbox: sandbox/amazon-ses-sandbox.yml
+  events: asyncapi/amazon-ses-events.yml

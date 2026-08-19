@@ -1,0 +1,94 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/amazon-ses/skills
+note: >-
+  Amazon SES is one of the few providers in the catalog that PUBLISHES its own Agent Skills. The `amazon-ses`
+  GitHub organisation ships github.com/amazon-ses/skills (HTTP 200, probed 2026-08-13), installable with
+  `npx skills add amazon-ses/skills`. Both SKILL.md files carry `metadata.author: aws`, so these are
+  first-party AWS skills, not community work. They are vendored into this repo as a git submodule at
+  skills/skills and are recorded verbatim — nothing in them was authored by API Evangelist. The two
+  API-Evangelist skills at the end of this index are clearly marked as generated and are grounded in
+  operationIds verified against openapi/_original/amazon-ses-sesv2-openapi.yml.
+provider_published:
+  repository: https://github.com/amazon-ses/skills
+  install_all: npx skills add amazon-ses/skills
+  vendored_at: skills/skills
+  vendored_as: git submodule
+  license_note: aws-ses is CC-BY-SA-4.0; aws-mail-manager is Apache-2.0.
+  disclaimer: >-
+    AWS labels the repository as sample code for non-production usage and directs users to review it with
+    their own security and legal teams before deployment.
+skills:
+  - file: skills/aws-ses/SKILL.md
+    name: aws-ses
+    method: searched
+    author: aws
+    version: '1.0'
+    service: ses
+    license: CC-BY-SA-4.0
+    install: npx skills add amazon-ses/skills --skill aws-ses
+    description: >-
+      Send, receive, and manage email at scale with Amazon SES. Covers V2 API patterns, DKIM/SPF/DMARC
+      authentication, configuration sets, suppression lists, bounce/complaint handling, tenants, email
+      validation and dedicated IP management.
+    references:
+      - quickstart/send-first-email.md
+      - sending/send-with-sdk.md
+      - sending/send-bulk-email.md
+      - sending/send-with-smtp.md
+      - identity/verify-domain-identity.md
+      - configuration/configuration-sets.md
+      - configuration/suppression-lists.md
+      - deliverability/reputation-management.md
+      - deliverability/dedicated-ips.md
+      - tenants/tenant-setup.md
+      - validation/email-validation.md
+      - troubleshooting/common-issues.md
+      - java-examples.md
+  - file: skills/aws-mail-manager/SKILL.md
+    name: aws-mail-manager
+    method: searched
+    author: aws
+    version: '1.0'
+    service: mailmanager
+    license: Apache-2.0
+    revision: 1
+    updated_on: '2026-03-20'
+    install: npx skills add amazon-ses/skills --skill aws-mail-manager
+    description: >-
+      Process, route, filter, and archive inbound email with Amazon SES Mail Manager. Covers ingress points,
+      traffic policies, rule sets, relays, archives and address lists.
+    references:
+      - setup/getting-started.md
+      - rule-sets/rule-set-guide.md
+      - traffic-policies/traffic-policy-guide.md
+      - relays/relay-guide.md
+      - archives/archive-guide.md
+      - address-lists/address-list-guide.md
+      - workflows/guided-setup.md
+      - workflows/event-driven-ai-pipeline.md
+      - cleanup/cleanup-guide.md
+      - troubleshooting/troubleshooting-guide.md
+      - api/ses-api-index.md
+    examples:
+      - 01-setup-pipeline/setup_pipeline.py
+      - 02-route-by-recipient/route_by_recipient.py
+      - 03-archive-and-search/archive_search.py
+      - 04-address-list-import/address_list_import.py
+      - 05-update-rule-set/update_failure_policy.py
+      - 06-smtp-relay-replacement/smtp-relay-replacement.yaml
+      - 07-cdk-inbound-pipeline/
+  - file: amazon-ses-verify-domain-and-send.md
+    name: Verify a sending domain and send your first email
+    method: generated
+    api: openapi/_original/amazon-ses-sesv2-openapi.yml
+    operations: [CreateEmailIdentity, GetEmailIdentity, GetAccount, SendEmail]
+  - file: amazon-ses-configure-event-publishing.md
+    name: Configure SES event publishing and consume bounce and complaint events
+    method: generated
+    api: openapi/_original/amazon-ses-sesv2-openapi.yml
+    operations: [CreateConfigurationSet, CreateConfigurationSetEventDestination, GetConfigurationSetEventDestinations, SendEmail, ListSuppressedDestinations]
+agents_md:
+  present: true
+  path: skills/skills/AGENTS.md
+  note: The provider repository also ships AGENTS.md and CLAUDE.md alongside the skills.

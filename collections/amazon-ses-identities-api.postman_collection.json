@@ -1,0 +1,313 @@
+{
+  "item": [
+    {
+      "id": "d26a5ab3-cbc2-4965-9988-504182207485",
+      "name": "Identities",
+      "description": {
+        "content": "Operations for managing email identities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a3b2391-d4c7-446f-9fd2-e2291a18b03c",
+          "name": "Amazon SES Create Email Identity",
+          "request": {
+            "name": "Amazon SES Create Email Identity",
+            "description": {
+              "content": "Starts the process of verifying an email identity, which can be either an email address or a domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"EmailIdentity\": \"<string>\",\n  \"DkimSigningAttributes\": {\n    \"DomainSigningSelector\": \"<string>\",\n    \"DomainSigningPrivateKey\": \"<string>\"\n  },\n  \"ConfigurationSetName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79d89394-2f31-45de-a701-8777022859f9",
+              "name": "Email identity creation initiated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"EmailIdentity\": \"<string>\",\n  \"DkimSigningAttributes\": {\n    \"DomainSigningSelector\": \"<string>\",\n    \"DomainSigningPrivateKey\": \"<string>\"\n  },\n  \"ConfigurationSetName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"IdentityType\": \"string\",\n  \"VerifiedForSendingStatus\": false,\n  \"DkimAttributes\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06557ce6-4fa5-44b4-905b-a21b456045c9",
+          "name": "Amazon SES List Email Identities",
+          "request": {
+            "name": "Amazon SES List Email Identities",
+            "description": {
+              "content": "Returns a list of all email identities that are associated with your AWS account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82c1020c-af50-4c2b-b858-0d68c82c8f8b",
+              "name": "List of email identities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"EmailIdentities\": [\n    {\n      \"IdentityType\": \"string\",\n      \"IdentityName\": \"string\",\n      \"SendingEnabled\": false\n    },\n    {\n      \"IdentityType\": \"string\",\n      \"IdentityName\": \"string\",\n      \"SendingEnabled\": false\n    }\n  ],\n  \"NextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99f5c837-8967-489a-bce3-b996fa427fb8",
+          "name": "Amazon SES Get Email Identity",
+          "request": {
+            "name": "Amazon SES Get Email Identity",
+            "description": {
+              "content": "Provides information about a specific email identity, including its verification status and authentication settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "identities",
+                ":EmailIdentity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "EmailIdentity",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b78c2ef-6cbd-472c-9c7a-c8a38aebdbfc",
+              "name": "Email identity details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "identities",
+                    ":EmailIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "EmailIdentity",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"IdentityType\": \"string\",\n  \"VerifiedForSendingStatus\": false,\n  \"DkimAttributes\": {},\n  \"MailFromAttributes\": {},\n  \"Policies\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://email.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d7adf74f-aea8-4081-86dd-5249334d38c0",
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists Identities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

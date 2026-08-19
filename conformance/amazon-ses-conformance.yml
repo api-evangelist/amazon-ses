@@ -1,0 +1,76 @@
+generated: '2026-08-13'
+method: searched
+source: https://aws.amazon.com/compliance/programs/
+derived_from: openapi/_original/amazon-ses-sesv2-openapi.yml
+standards:
+- id: aws-sigv4
+  conforms: true
+  evidence: components.securitySchemes.hmac declares x-amazon-apigateway-authtype awsSigv4 in openapi/_original/amazon-ses-sesv2-openapi.yml
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in any SES spec; SES authenticates with AWS SigV4 over IAM credentials.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404 on aws.amazon.com (probed 2026-08-13).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the AWS JSON error document with x-amzn-ErrorType, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: https://aws.amazon.com/.well-known/security.txt returned 200 (probed 2026-08-13); saved to well-known/amazon-ses-security.txt.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header documented for the SES v2 API.
+- id: cursor-pagination
+  conforms: true
+  evidence: NextToken/PageSize opaque cursor across the 16 List* operations.
+- id: idempotency-key
+  conforms: false
+  evidence: Zero occurrences of Idempotency-Key or ClientToken in the 86-operation SES v2 spec.
+- id: json-api
+  conforms: false
+  evidence: Plain AWS restJson1 shapes, not JSON:API media type.
+- id: smtp-rfc5321
+  conforms: true
+  evidence: SES publishes an SMTP submission interface on ports 25/465/587/2465/2587 with STARTTLS/TLS Wrapper.
+- id: dkim-rfc6376
+  conforms: true
+  evidence: Easy DKIM and BYODKIM with 1024- and 2048-bit RSA keys; PutEmailIdentityDkimSigningAttributes.
+- id: spf-rfc7208
+  conforms: true
+  evidence: Custom MAIL FROM domain support so SPF aligns with the sending domain.
+- id: dmarc-rfc7489
+  conforms: true
+  evidence: SES documents DMARC alignment via DKIM and custom MAIL FROM; VDM reports DMARC posture.
+- id: bimi
+  conforms: true
+  evidence: SES detects gaps in BIMI configuration and documents BIMI setup in the Developer Guide.
+- id: rfc3464-dsn
+  conforms: true
+  evidence: Mailbox simulator bounce responses are documented as RFC 3464 compliant.
+- id: rfc3834-auto-response
+  conforms: true
+  evidence: Mailbox simulator OOTO responses are documented as RFC 3834 compliant.
+- id: rfc5965-arf
+  conforms: true
+  evidence: Mailbox simulator complaint responses are documented as RFC 5965 (ARF) compliant.
+- id: soc-2
+  conforms: true
+  evidence: AWS SOC 2 Type II; SES is in scope of the AWS compliance programs.
+- id: iso-27001
+  conforms: true
+  evidence: AWS ISO/IEC 27001 certification covers SES.
+- id: pci-dss
+  conforms: true
+  evidence: Recorded in security/amazon-ses-trust-center.yml from https://aws.amazon.com/compliance/
+- id: hipaa
+  conforms: true
+  evidence: Amazon SES achieved HIPAA eligibility (AWS What's New, 2019-07-25).
+- id: fedramp
+  conforms: true
+  evidence: SES is available in AWS GovCloud (US-East/US-West); FedRAMP recorded in the trust-center artifact.
+- id: gdpr
+  conforms: true
+  evidence: AWS GDPR Data Processing Addendum applies to SES.
+compliance_page: https://aws.amazon.com/compliance/programs/
+trust_center: security/amazon-ses-trust-center.yml

@@ -1,0 +1,226 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+derived_from: openapi/_original/amazon-ses-sesv2-openapi.yml
+format: aws-json-error
+note: Amazon SES v2 does not use RFC 9457 problem+json. Errors are returned as an AWS JSON error document whose
+  exception type is carried in the x-amzn-ErrorType response header and in the body "__type"/"message" fields. The
+  4xx codes 480-488 that appear in the harvested OpenAPI are SYNTHETIC placeholders assigned by the aws2openapi
+  converter to distinguish modeled exceptions; they are NOT status codes the service returns. The http_status values
+  below are the real ones published in the AWS API Reference.
+envelope:
+  error_type_header: x-amzn-ErrorType
+  request_id_header: x-amzn-RequestId
+  body_fields:
+  - __type
+  - message
+common_errors:
+- name: AccessDeniedException
+  http_status: 403
+  title: You don't have permission to perform this action. Verify that your IAM policy includes the required permissions.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: ExpiredTokenException
+  http_status: 403
+  title: The security token included in the request has expired. Request a new security token and try again.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: IncompleteSignature
+  http_status: 403
+  title: The request signature doesn't conform to AWS standards. Verify that you're using valid AWS credentials
+    and that your request is properly formatted.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: InternalFailure
+  http_status: 500
+  title: The request can't be processed right now because of an internal server issue. Try again later.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: MalformedHttpRequestException
+  http_status: 400
+  title: The request body can't be processed. Verify that the content encoding header matches the compression format
+    used.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: NotAuthorized
+  http_status: 401
+  title: You don't have permissions to perform this action. Verify that your IAM policy includes the required permissions.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: OptInRequired
+  http_status: 403
+  title: Your AWS account needs a subscription for this service.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: RequestAbortedException
+  http_status: 400
+  title: The request was aborted before a response could be returned.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: RequestEntityTooLargeException
+  http_status: 413
+  title: The request entity is too large. Reduce the size of the request body and try again.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: RequestTimeoutException
+  http_status: 408
+  title: The request timed out. The server didn't receive the complete request within the expected time frame.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: ServiceUnavailable
+  http_status: 503
+  title: The service is temporarily unavailable. Try again later.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: ThrottlingException
+  http_status: 400
+  title: Your request rate is too high. The AWS SDKs automatically retry requests that receive this exception. Reduce
+    the frequency of requests.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: UnknownOperationException
+  http_status: 404
+  title: The action or operation isn't recognized.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: UnrecognizedClientException
+  http_status: 403
+  title: The X.509 certificate or AWS access key ID you provided doesn't exist in our records.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- name: ValidationError
+  http_status: 400
+  title: The input doesn't meet the required format or constraints.
+  source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+service_errors:
+- name: BadRequestException
+  http_status: 400
+  title: The input you provided is invalid.
+  operations: 86
+  example_operations:
+  - BatchGetMetricData
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContact
+  - CreateContactList
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: TooManyRequestsException
+  http_status: 429
+  title: Too many requests have been made to the operation.
+  operations: 86
+  example_operations:
+  - BatchGetMetricData
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContact
+  - CreateContactList
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: NotFoundException
+  http_status: 404
+  title: The resource you attempted to access does not exist.
+  operations: 66
+  example_operations:
+  - BatchGetMetricData
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContact
+  - CreateCustomVerificationEmailTemplate
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: LimitExceededException
+  http_status: 400
+  title: There are too many instances of the specified resource type.
+  operations: 15
+  example_operations:
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContactList
+  - CreateCustomVerificationEmailTemplate
+  - CreateDedicatedIpPool
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: ConcurrentModificationException
+  http_status: 500
+  title: The resource is being modified by another operation or thread.
+  operations: 12
+  example_operations:
+  - CreateConfigurationSet
+  - CreateDedicatedIpPool
+  - CreateDeliverabilityTestReport
+  - CreateEmailIdentity
+  - DeleteConfigurationSet
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: AlreadyExistsException
+  http_status: 400
+  title: The resource specified in your request already exists.
+  operations: 10
+  example_operations:
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContact
+  - CreateContactList
+  - CreateCustomVerificationEmailTemplate
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: SendingPausedException
+  http_status: 400
+  title: The message could not be sent because the account sending ability is currently paused.
+  operations: 4
+  example_operations:
+  - CreateDeliverabilityTestReport
+  - SendBulkEmail
+  - SendCustomVerificationEmail
+  - SendEmail
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: MessageRejected
+  http_status: 400
+  title: The message could not be sent because Amazon SES rejected it.
+  operations: 4
+  example_operations:
+  - CreateDeliverabilityTestReport
+  - SendBulkEmail
+  - SendCustomVerificationEmail
+  - SendEmail
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: MailFromDomainNotVerifiedException
+  http_status: 400
+  title: The message could not be sent because the sending domain is not verified.
+  operations: 4
+  example_operations:
+  - CreateDeliverabilityTestReport
+  - SendBulkEmail
+  - SendCustomVerificationEmail
+  - SendEmail
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: AccountSuspendedException
+  http_status: 400
+  title: The account sending ability has been permanently restricted.
+  operations: 3
+  example_operations:
+  - CreateDeliverabilityTestReport
+  - SendBulkEmail
+  - SendEmail
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: InternalServiceErrorException
+  http_status: 500
+  title: The request could not be processed because of a temporary issue.
+  operations: 1
+  example_operations:
+  - BatchGetMetricData
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: InvalidNextTokenException
+  http_status: 400
+  title: The next token provided in the request is invalid.
+  operations: 1
+  example_operations:
+  - ListSuppressedDestinations
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+- name: ConflictException
+  http_status: 409
+  title: If there is already an ongoing account details update under review.
+  operations: 1
+  example_operations:
+  - PutAccountDetails
+  source_operation: openapi/_original/amazon-ses-sesv2-openapi.yml
+retry:
+  retryable:
+  - ThrottlingException
+  - TooManyRequestsException
+  - InternalServiceErrorException
+  - InternalFailure
+  - ServiceUnavailable
+  - RequestTimeoutException
+  guidance: AWS SDKs retry throttled and 5xx responses automatically with exponential backoff and jitter.
+  docs: https://docs.aws.amazon.com/general/latest/gr/api-retries.html
+smtp_errors:
+- code: '454 Throttling failure: Maximum sending rate exceeded'
+  meaning: The account exceeded its per-second sending rate on the SMTP interface.
+- code: '454 Throttling failure: Daily message quota exceeded'
+  meaning: The account exceeded its 24-hour sending quota on the SMTP interface.
+docs:
+- https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
+- https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas-errors.html
+- https://docs.aws.amazon.com/ses/latest/dg/troubleshoot-error-messages.html

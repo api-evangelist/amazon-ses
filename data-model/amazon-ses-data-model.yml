@@ -1,0 +1,100 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/amazon-ses-sesv2-openapi.yml
+docs: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Types.html
+note: 'Derived from the harvested Amazon SES v2 OpenAPI (86 operations, 424 component schemas) and the AWS SES v2
+  API Reference data-type index. SES has no opaque object-id prefixes: resources are addressed by caller-chosen
+  NAMES (ConfigurationSetName, ContactListName, EmailIdentity, TemplateName, PoolName, TenantName) carried in the
+  path.'
+identifier_style: caller-supplied names in the URI path (no prefixed opaque ids)
+entity_count: 20
+entities:
+- name: email
+  operations: 85
+  example_operations:
+  - BatchGetMetricData
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContact
+  - CreateContactList
+  - CreateCustomVerificationEmailTemplate
+- name: v1
+  operations: 1
+  example_operations:
+  - PutEmailIdentityDkimSigningAttributes
+relationships:
+- from: ConfigurationSet
+  to: EventDestination
+  kind: has_many
+  via: ConfigurationSetName
+  note: A configuration set holds up to 10 event destinations (CloudWatch, Firehose, SNS, EventBridge, Pinpoint).
+- from: ConfigurationSet
+  to: DedicatedIpPool
+  kind: has_one
+  via: DeliveryOptions.SendingPoolName
+  note: A configuration set may route sending through a dedicated IP pool.
+- from: ConfigurationSet
+  to: SuppressionList
+  kind: has_one
+  via: SuppressionOptions.SuppressedReasons
+  note: A configuration set can override account-level suppression behaviour.
+- from: ContactList
+  to: Contact
+  kind: has_many
+  via: ContactListName
+  note: Contacts belong to exactly one contact list; the list name is the path key.
+- from: ContactList
+  to: Topic
+  kind: has_many
+  via: Topics
+  note: Subscription topics are defined on the contact list and referenced by contact preferences.
+- from: Contact
+  to: Topic
+  kind: has_many
+  via: TopicPreferences
+  note: A contact carries per-topic subscription preferences.
+- from: EmailIdentity
+  to: EmailIdentityPolicy
+  kind: has_many
+  via: EmailIdentity
+  note: Sending-authorization policies attach to a verified identity.
+- from: EmailIdentity
+  to: DkimAttributes
+  kind: has_one
+  via: DkimSigningAttributes
+  note: DKIM signing configuration is an attribute set on the identity.
+- from: EmailIdentity
+  to: MailFromAttributes
+  kind: has_one
+  via: MailFromDomain
+  note: A custom MAIL FROM domain is configured on the identity.
+- from: DedicatedIpPool
+  to: DedicatedIp
+  kind: has_many
+  via: PoolName
+  note: Dedicated IPs are assigned to at most one pool at a time.
+- from: EmailTemplate
+  to: EmailContent
+  kind: has_one
+  via: TemplateName
+  note: SendEmail/SendBulkEmail reference a template by name in EmailContent.Template.
+- from: ImportJob
+  to: ImportDestination
+  kind: has_one
+  via: ImportDestination
+  note: An import job targets either a contact list or a suppression list.
+- from: Tenant
+  to: EmailIdentity
+  kind: has_many
+  via: TenantName
+  note: Tenants isolate sending reputation; resources are associated to a tenant.
+- from: Account
+  to: SuppressionList
+  kind: has_one
+  via: SuppressionAttributes
+  note: The account-level suppression list holds suppressed destinations.
+- from: DeliverabilityTestReport
+  to: DeliverabilityTestReportResult
+  kind: has_one
+  via: ReportId
+  note: A deliverability (inbox placement) test report is retrieved by ReportId.

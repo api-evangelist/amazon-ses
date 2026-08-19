@@ -1,0 +1,73 @@
+generated: '2026-08-13'
+method: searched
+source: openapi/_original/amazon-ses-sesv2-openapi.yml
+docs: https://docs.aws.amazon.com/ses/latest/dg/security-iam.html
+note: >-
+  0-working/derive-authentication.py returned zero profiles for this repo because it scans only the top-level
+  openapi/ directory and the four refined SES specs carry no securitySchemes block. The scheme below was read
+  from the harvested SES v2 spec in openapi/_original/ and enriched from the AWS docs, so this file is
+  method: searched rather than derived.
+summary:
+  types: [apiKey, sigv4, smtp-credentials]
+  api_key_in: [header]
+  oauth2_flows: []
+  oauth2: false
+  openid_connect: false
+  mutual_tls: false
+schemes:
+  - name: hmac
+    type: apiKey
+    in: header
+    parameter: Authorization
+    description: Amazon Signature Version 4 (SigV4)
+    x_amazon_apigateway_authtype: awsSigv4
+    sources: [openapi/_original/amazon-ses-sesv2-openapi.yml]
+    applied: global
+    note: >-
+      Declared as type apiKey in the spec because OpenAPI 3.0 has no native SigV4 scheme. It is not a static
+      API key — the Authorization header carries a request signature computed per request from the AWS access
+      key id, secret access key, region, service name (ses) and a canonical request hash.
+model:
+  primary: AWS Signature Version 4
+  credential_source: AWS IAM (long-lived access keys, or short-lived STS credentials from an assumed role)
+  request_headers:
+    - Authorization
+    - X-Amz-Date
+    - X-Amz-Content-Sha256
+    - X-Amz-Security-Token
+  signing_service_name: ses
+  regional: true
+  note: The credential scope embeds the AWS Region, so a signature is valid only for the region it was signed for.
+alternatives:
+  - name: SMTP interface
+    mechanism: SES SMTP credentials (an SMTP username/password pair derived from an IAM user's credentials)
+    endpoints: email-smtp.{region}.amazonaws.com
+    ports: [25, 465, 587, 2465, 2587]
+    transport_security: STARTTLS on 25/587/2587, TLS Wrapper on 465/2465
+    docs: https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
+    note: >-
+      SMTP credentials are NOT the IAM secret access key. They are derived from it with a documented
+      algorithm and must be generated explicitly; an IAM secret key pasted into an SMTP client will fail.
+  - name: Sending authorization policies
+    mechanism: Resource policy attached to a verified identity, delegating send rights to another AWS account
+    operations: [CreateEmailIdentityPolicy, UpdateEmailIdentityPolicy, DeleteEmailIdentityPolicy, GetEmailIdentityPolicies]
+    docs: https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html
+authorization:
+  model: AWS IAM policies
+  action_prefix: 'ses:'
+  granularity: per-operation IAM actions, with resource-level conditions on identities, configuration sets and templates
+  condition_keys:
+    - 'ses:Recipients'
+    - 'ses:FromAddress'
+    - 'ses:FromDisplayName'
+    - 'ses:FeedbackAddress'
+    - 'ses:FromArn'
+  docs: https://docs.aws.amazon.com/ses/latest/dg/security_iam_service-with-iam.html
+  note: >-
+    SES has no OAuth scope surface. Authorization is expressed entirely in IAM policy, which is why no
+    scopes/ artifact is emitted for this provider.
+oauth:
+  supported: false
+  evidence: >-
+    No oauth2 securityScheme in any harvested SES spec; https://aws.amazon.com/.well-known/oauth-authorization-server
+    and /.well-known/openid-configuration both returned 404 when probed 2026-08-13.

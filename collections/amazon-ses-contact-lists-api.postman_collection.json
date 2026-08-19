@@ -1,0 +1,117 @@
+{
+  "item": [
+    {
+      "id": "c8198329-07e8-459a-95a7-53f0a01e58b4",
+      "name": "Contact Lists",
+      "description": {
+        "content": "Operations for managing contact lists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9bf2bac-a6f6-4c34-a022-d6e124d76967",
+          "name": "Amazon SES Create Contact List",
+          "request": {
+            "name": "Amazon SES Create Contact List",
+            "description": {
+              "content": "Creates a contact list for managing email subscription preferences.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "contact-lists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ContactListName\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Topics\": [\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    },\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5cea3b7a-b082-4701-a0ca-a7f54b7c6c4d",
+              "name": "Contact list created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "contact-lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ContactListName\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Topics\": [\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    },\n    {\n      \"TopicName\": \"<string>\",\n      \"DisplayName\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"DefaultSubscriptionStatus\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://email.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea387d63-b891-4494-b942-428aa4b8c958",
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

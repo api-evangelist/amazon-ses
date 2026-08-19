@@ -1,0 +1,103 @@
+generated: '2026-08-13'
+method: searched
+source: https://aws.amazon.com/about-aws/whats-new/recent/feed/
+docs:
+  - https://aws.amazon.com/about-aws/whats-new/recent/feed/
+  - https://aws.amazon.com/blogs/messaging-and-targeting/
+note: >-
+  Amazon SES publishes no dated changelog of its own. There is no /ses/whats-new page (probed 2026-08-13,
+  404) and the SES Developer Guide's document-history page is not exposed in the docs markdown or llms.txt
+  index. The dated record below is assembled from two first-party feeds AWS does publish: the AWS What's New
+  announcements directory (queried through https://aws.amazon.com/api/dirs/items/search and the recent RSS
+  feed) and the AWS Messaging and Targeting blog, whose SES posts are mirrored into blogs/ in this repo.
+  This is a recent window, not a full history.
+scheme:
+  api_versioning: dated API version baked into the service model
+  current_version: '2019-09-27'
+  release_cadence: continuous — features ship without an API version bump
+  breaking_change_policy: >-
+    None published for SES. AWS's practice is additive: new fields and operations are added to the existing
+    2019-09-27 model rather than cutting a new version. See lifecycle/amazon-ses-lifecycle.yml.
+entries:
+  - date: '2026-08-07'
+    type: additions
+    breaking: false
+    highlight: SES identifies automated open and click events in event notifications.
+    detail: >-
+      Event notifications now signal when an open or click was machine-generated (security scanners, link
+      prefetchers) rather than performed by a human, so engagement metrics can exclude them.
+    url: https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ses-automated-email-interactions/
+    affects: [event-publishing]
+  - date: '2026-07-21'
+    type: commercial
+    breaking: false
+    highlight: Amazon SES pricing plans launched — Essentials, Pro and Enterprise.
+    detail: >-
+      Three packaged plans replace add-on-by-add-on purchasing, at up to 22% less than buying the features
+      individually. All new SES accounts start on Essentials, as do returning customers who have not sent
+      since 2025-06-01. Existing senders stay on a-la-carte pricing and can switch at any time. The
+      SES-specific free tier (3,000 message charges/month for 12 months) closed to new customers on this date.
+    url: https://aws.amazon.com/blogs/messaging-and-targeting/introducing-amazon-simple-email-service-ses-pricing-plans/
+    affects: [pricing, billing, console]
+  - date: '2026-07-07'
+    type: additions
+    breaking: false
+    highlight: Per-tenant email suppression isolation.
+    detail: Suppression lists can be isolated per tenant rather than shared across the account.
+    url: https://aws.amazon.com/blogs/messaging-and-targeting/isolate-email-suppression-per-tenant-with-amazon-ses/
+    affects: [tenants, suppression]
+  - date: '2026-06-04'
+    type: additions
+    breaking: false
+    highlight: Amazon SES Agent Skills published for AI-assisted development.
+    detail: >-
+      First-party agent skills (aws-ses, aws-mail-manager) released at github.com/amazon-ses/skills, installable
+      with `npx skills add amazon-ses/skills`. Captured in skills/_index.yml.
+    url: https://aws.amazon.com/blogs/messaging-and-targeting/getting-started-with-amazon-ses-agent-skills-for-ai-assisted-development/
+    affects: [agent-surface, developer-experience]
+  - date: '2026-06-03'
+    type: additions
+    breaking: false
+    highlight: Amazon Mail Manager SMTP relay can send through Amazon SES.
+    url: https://aws.amazon.com/blogs/messaging-and-targeting/using-amazon-mail-manager-smtp-to-send-email-via-amazon-ses/
+    affects: [mail-manager, smtp]
+  - date: '2025-11-26'
+    type: additions
+    breaking: false
+    highlight: Tenants in Amazon SES — multi-tenant reputation isolation.
+    detail: >-
+      Tenants isolate sending reputation across workloads, with per-tenant monitoring and enforcement. Adds
+      CreateTenant / tenant association operations to the v2 contract. Quota is 10,000 tenants per region.
+    url: https://aws.amazon.com/blogs/messaging-and-targeting/implement-tenants-in-your-amazon-ses-environment-part-1/
+    affects: [tenants, reputation]
+  - date: '2024-04-19'
+    type: availability
+    breaking: false
+    highlight: Amazon SES available in AWS GovCloud (US-East).
+    url: https://aws.amazon.com/about-aws/whats-new/2024/04/amazon-simple-email-service-aws-govcloud-us-east-region/
+  - date: '2024-03-15'
+    type: additions
+    breaking: false
+    highlight: Guided onboarding to fully authenticated sending.
+    url: https://aws.amazon.com/about-aws/whats-new/2024/03/amazon-ses-guided-onboarding-fully-authenticated-sending/
+  - date: '2024-03-08'
+    type: additions
+    breaking: false
+    highlight: Custom headers supported when sending email.
+    url: https://aws.amazon.com/about-aws/whats-new/2024/03/amazon-ses-headers-sending-email/
+    affects: [send-email]
+  - date: '2022-11-02'
+    type: additions
+    breaking: false
+    highlight: Virtual Deliverability Manager launched.
+    url: https://aws.amazon.com/about-aws/whats-new/2022/11/amazon-simple-email-service-virtual-deliverability-manager-delivery-rate/
+    affects: [deliverability, pricing]
+  - date: '2022-04-26'
+    type: additions
+    breaking: false
+    highlight: SES v2 raised the maximum message size to 40 MB inbound and outbound.
+    detail: The SES v1 API remains capped at 10 MB — one of the concrete reasons AWS steers senders to v2.
+    url: https://aws.amazon.com/about-aws/whats-new/2022/04/amazon-ses-v2-supports-email-size-40mb-inbound-outbound-emails-default/
+    affects: [send-email, quotas]
+entry_count: 11
+window: 2022-04-26 to 2026-08-07

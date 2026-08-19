@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists Templates API",
+    "version": "2019-09-27"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES Create Email Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an email template for use with sending emails using the SendEmail operation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

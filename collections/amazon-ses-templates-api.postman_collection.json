@@ -1,0 +1,117 @@
+{
+  "item": [
+    {
+      "id": "e0763619-382b-49d2-99b3-6b82e2a51fe0",
+      "name": "Templates",
+      "description": {
+        "content": "Operations for managing email templates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35f1d504-52b8-457c-8953-ca3c87fd66b7",
+          "name": "Amazon SES Create Email Template",
+          "request": {
+            "name": "Amazon SES Create Email Template",
+            "description": {
+              "content": "Creates an email template for use with sending emails using the SendEmail operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TemplateName\": \"<string>\",\n  \"TemplateContent\": {\n    \"Subject\": \"<string>\",\n    \"Text\": \"<string>\",\n    \"Html\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "827a43f5-df56-4b93-a246-51ffacff90e2",
+              "name": "Email template created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TemplateName\": \"<string>\",\n  \"TemplateContent\": {\n    \"Subject\": \"<string>\",\n    \"Text\": \"<string>\",\n    \"Html\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://email.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "636a13ba-4874-414f-a29d-c061dc959be3",
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

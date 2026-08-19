@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists API",
+    "version": "2019-09-27"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon SES Create Contact List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://email.amazonaws.com/v2/email/contact-lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a contact list for managing email subscription preferences."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/ses/latest/dg/send-an-email-from-console.html
+docs:
+  - https://docs.aws.amazon.com/ses/latest/dg/request-production-access.html
+  - https://docs.aws.amazon.com/ses/latest/dg/send-an-email-from-console.html
+  - https://docs.aws.amazon.com/ses/latest/dg/quotas.html
+note: >-
+  Amazon SES uses the word "sandbox" for two different things and both are captured here. (1) The ACCOUNT
+  SANDBOX is a restricted mode every new SES account starts in, in every region, with hard sending limits and
+  a verified-recipients-only rule; you leave it by requesting production access. (2) The MAILBOX SIMULATOR is
+  a set of published magic recipient addresses that force a specific delivery outcome. The simulator works in
+  both sandbox and production mode. There are no test API keys or test/live key prefixes — SES authenticates
+  with ordinary IAM credentials in both modes.
+account_sandbox:
+  name: Amazon SES sandbox
+  scope: per AWS account, per AWS Region
+  default_state: every new account starts in the sandbox
+  restrictions:
+    - Email can only be sent TO verified email addresses and domains, or to the mailbox simulator.
+    - Email can only be sent FROM verified email addresses and domains.
+    - Maximum 200 messages per 24-hour period.
+    - Maximum 1 message per second.
+  exit: Request production access from the SES console or with PutAccountDetails.
+  exit_docs: https://docs.aws.amazon.com/ses/latest/dg/request-production-access.html
+  production_defaults:
+    note: >-
+      AWS no longer publishes a single fixed production quota. The docs state that once out of the sandbox the
+      24-hour quota and sending rate "vary based on your specific use case" and rise automatically with a
+      healthy reputation.
+  observability: GetAccount returns ProductionAccessEnabled, SendQuota.Max24HourSend, SendQuota.MaxSendRate and SendQuota.SentLast24Hours.
+mailbox_simulator:
+  domain: simulator.amazonses.com
+  works_in: [sandbox, production]
+  suppression_safe: true
+  suppression_note: >-
+    A bounce from bounce@simulator.amazonses.com does NOT add the address to the SES suppression list, which
+    is what would happen with a real hard bounce.
+  labeling: >-
+    The simulator supports plus-addressing, so bounce+label1@simulator.amazonses.com and
+    bounce+label2@simulator.amazonses.com both bounce while letting you test VERP and bounce-to-send matching.
+  addresses:
+    - address: success@simulator.amazonses.com
+      outcome: Successful delivery
+      detail: The recipient's provider accepts the message; a Delivery notification is emitted if configured.
+    - address: bounce@simulator.amazonses.com
+      outcome: Hard bounce
+      detail: Rejected with SMTP 550 5.1.1 ("Unknown User"). The bounce response is RFC 3464 compliant.
+    - address: ooto@simulator.amazonses.com
+      outcome: Automatic response (out of office)
+      detail: Delivered, then an automatic reply is sent to the Return-Path / envelope sender. RFC 3834 compliant.
+    - address: complaint@simulator.amazonses.com
+      outcome: Complaint
+      detail: Delivered, then the recipient marks it as spam. The complaint report is RFC 5965 (ARF) compliant.
+    - address: suppressionlist@simulator.amazonses.com
+      outcome: Suppression-list bounce
+      detail: SES generates a hard bounce as if the address were on the global suppression list.
+  billing:
+    note: >-
+      Simulator sends are billable. The AWS Price List API records usage types Recipients-MailboxSim and
+      Recipients-MailboxSim-EC2 at $0.0001 per recipient, with the first 62,000 recipients per month free
+      when sent from Amazon EC2 (group SES-MonthlyFree-OutgoingEmail-Simulator).
+    source: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonSES/current/region_index.json
+test_credentials:
+  test_mode_keys: false
+  note: >-
+    SES publishes no test/live key separation. The same IAM credentials are used in sandbox and production;
+    the account's sandbox state is what changes, not the credential.

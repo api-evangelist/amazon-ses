@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "d11461af-2a34-4009-b194-08e161f32582",
+      "name": "Email Sending",
+      "description": {
+        "content": "Operations for sending email messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "041d08be-58f2-4bf7-9864-d0428e8e61a9",
+          "name": "Amazon SES Send Email",
+          "request": {
+            "name": "Amazon SES Send Email",
+            "description": {
+              "content": "Sends an email message, supporting simple and raw email formats with configurable content, destinations, and sending options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "email",
+                "outbound-emails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Content\": {\n    \"Simple\": {\n      \"Subject\": {\n        \"Data\": \"<string>\",\n        \"Charset\": \"<string>\"\n      },\n      \"Body\": {\n        \"Text\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        },\n        \"Html\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        }\n      }\n    },\n    \"Raw\": {\n      \"Data\": \"<byte>\"\n    },\n    \"Template\": {\n      \"TemplateName\": \"<string>\",\n      \"TemplateArn\": \"<string>\",\n      \"TemplateData\": \"<string>\"\n    }\n  },\n  \"FromEmailAddress\": \"<string>\",\n  \"Destination\": {\n    \"ToAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"CcAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"BccAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"ReplyToAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ConfigurationSetName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e71fe41c-7e4a-49d5-9916-df6fbffaf68e",
+              "name": "Email sent successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "email",
+                    "outbound-emails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Content\": {\n    \"Simple\": {\n      \"Subject\": {\n        \"Data\": \"<string>\",\n        \"Charset\": \"<string>\"\n      },\n      \"Body\": {\n        \"Text\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        },\n        \"Html\": {\n          \"Data\": \"<string>\",\n          \"Charset\": \"<string>\"\n        }\n      }\n    },\n    \"Raw\": {\n      \"Data\": \"<byte>\"\n    },\n    \"Template\": {\n      \"TemplateName\": \"<string>\",\n      \"TemplateArn\": \"<string>\",\n      \"TemplateData\": \"<string>\"\n    }\n  },\n  \"FromEmailAddress\": \"<string>\",\n  \"Destination\": {\n    \"ToAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"CcAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"BccAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"ReplyToAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ConfigurationSetName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MessageId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://email.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a96117d-d61e-411f-bbc9-01c7ec18fd3f",
+    "name": "Amazon SES Amazon Simple Email Service (SES) Contact Lists Email Sending API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Simple Email Service (SES) is a cloud-based email sending service for marketing, notification, and transactional emails with reliable deliverability and scalable infrastructure.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

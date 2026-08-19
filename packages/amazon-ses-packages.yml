@@ -1,0 +1,155 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Registry metadata endpoints queried directly 2026-08-13 (registry.npmjs.org, pypi.org/pypi, rubygems.org/api,
+  crates.io/api, repo1.maven.org, api.nuget.org, proxy.golang.org, repo.packagist.org), cross-checked against
+  https://docs.aws.amazon.com/ses/latest/dg/send-email-sdk.html
+note: >-
+  Amazon SES has no dedicated per-service client library. Access is through the AWS SDK for each language,
+  where SES v2 ships as a service module (sesv2) inside the SDK. Where the SDK is modular (JavaScript v3, Go v2,
+  Java v2, .NET, Rust, Ruby) the SES-specific module is listed; where it is monolithic (boto3, aws-sdk-php)
+  the whole-SDK package is listed and marked accordingly. All entries are first-party AWS.
+packages:
+  - language: javascript
+    registry: npm
+    name: '@aws-sdk/client-sesv2'
+    url: https://www.npmjs.com/package/@aws-sdk/client-sesv2
+    install: npm install @aws-sdk/client-sesv2
+    official: true
+    scope: sesv2-only
+    version: 3.1109.0
+    published: '2026-08-12'
+  - language: javascript
+    registry: npm
+    name: '@aws-sdk/client-ses'
+    url: https://www.npmjs.com/package/@aws-sdk/client-ses
+    install: npm install @aws-sdk/client-ses
+    official: true
+    scope: ses-v1-only
+    version: 3.1109.0
+    published: '2026-08-12'
+    note: SES v1 (2010-12-01) client. Retained for existing integrations; new work should use client-sesv2.
+  - language: javascript
+    registry: npm
+    name: aws-sdk
+    url: https://www.npmjs.com/package/aws-sdk
+    install: npm install aws-sdk
+    official: true
+    scope: full-sdk
+    version: 2.1693.0
+    published: '2025-12-09'
+    note: >-
+      AWS SDK for JavaScript v2. In maintenance mode; AWS ended support for v2 and directs new work to the
+      modular v3 clients. The eight-month gap since its last release relative to the daily v3 cadence is the
+      decay signal, and it is intentional on AWS's part rather than abandonment.
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    scope: full-sdk
+    version: 1.43.70
+    published: '2026-08-12'
+    note: SES v2 is reached with boto3.client('sesv2'); SES v1 with boto3.client('ses').
+  - language: python
+    registry: pypi
+    name: botocore
+    url: https://pypi.org/project/botocore/
+    install: pip install botocore
+    official: true
+    scope: full-sdk-core
+    version: 1.43.70
+    published: '2026-08-12'
+    note: >-
+      Carries the canonical AWS service model for SES at botocore/data/sesv2/2019-09-27/service-2.json — the
+      first-party machine-readable source the harvested OpenAPI is converted from.
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-sesv2
+    url: https://rubygems.org/gems/aws-sdk-sesv2
+    install: gem install aws-sdk-sesv2
+    official: true
+    scope: sesv2-only
+    version: 1.105.0
+    published: '2026-07-22'
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-ses
+    url: https://rubygems.org/gems/aws-sdk-ses
+    install: gem install aws-sdk-ses
+    official: true
+    scope: ses-v1-only
+    version: 1.102.0
+    published: '2026-07-09'
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/sesv2
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/sesv2
+    install: go get github.com/aws/aws-sdk-go-v2/service/sesv2
+    official: true
+    scope: sesv2-only
+    version: v1.66.5
+    published: '2026-08-10'
+  - language: rust
+    registry: crates.io
+    name: aws-sdk-sesv2
+    url: https://crates.io/crates/aws-sdk-sesv2
+    install: cargo add aws-sdk-sesv2
+    official: true
+    scope: sesv2-only
+    version: 1.128.0
+    published: '2026-07-24'
+  - language: java
+    registry: maven-central
+    name: software.amazon.awssdk:sesv2
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/sesv2
+    install: 'Maven: <dependency><groupId>software.amazon.awssdk</groupId><artifactId>sesv2</artifactId></dependency>'
+    official: true
+    scope: sesv2-only
+    version: 2.52.1
+    published: '2026-08-12'
+    note: >-
+      Version and date read from https://repo1.maven.org/maven2/software/amazon/awssdk/sesv2/maven-metadata.xml
+      (lastUpdated 20260812210912). search.maven.org's solrsearch endpoint did not answer at probe time.
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.SimpleEmailV2
+    url: https://www.nuget.org/packages/AWSSDK.SimpleEmailV2
+    install: dotnet add package AWSSDK.SimpleEmailV2
+    official: true
+    scope: sesv2-only
+    version: 4.0.102.2
+    published: null
+    note: >-
+      Version read from the NuGet registration index; the flat registration index does not expose a publish
+      date without walking every page, so the date is recorded as null rather than guessed.
+  - language: php
+    registry: packagist
+    name: aws/aws-sdk-php
+    url: https://packagist.org/packages/aws/aws-sdk-php
+    install: composer require aws/aws-sdk-php
+    official: true
+    scope: full-sdk
+    version: 3.392.1
+    published: '2026-08-12'
+    note: SES v2 is reached through Aws\SesV2\SesV2Client.
+  - language: cli
+    registry: pypi
+    name: awscli
+    url: https://pypi.org/project/awscli/
+    install: pip install awscli
+    official: true
+    scope: full-sdk-cli
+    version: null
+    published: null
+    note: >-
+      The AWS CLI is the first-party command-line surface for SES (aws sesv2 ...). Version not queried in this
+      pass; the command surface is catalogued in cli/amazon-ses-cli.yml. Recorded as null rather than omitted
+      so the gap reads as "not checked in this pass".
+currency:
+  checked: '2026-08-13'
+  finding: >-
+    Every modular SES client shipped within the last three weeks and the two daily-cadence SDKs (JavaScript v3,
+    boto3) shipped the day before this probe. There is no abandonment signal on the SES v2 surface. The only
+    stale package is aws-sdk v2 for JavaScript, which is stale by AWS design.

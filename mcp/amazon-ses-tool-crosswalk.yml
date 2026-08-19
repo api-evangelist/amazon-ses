@@ -1,0 +1,159 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/amazon-ses-mcp.yml + openapi/_original/amazon-ses-sesv2-openapi.yml
+note: 'The finding here is a DIVERGENCE, not a mapping. AWS publishes no SES-specific MCP server. The only remote
+  MCP server AWS operates (AWS Knowledge MCP, probed live 2026-08-13, anonymous) exposes five DOCUMENTATION tools
+  and zero SES operations, so not one of the 86 SES v2 REST operations has a backing MCP tool. Agent access to SES
+  itself runs through the local-stdio awslabs.aws-api-mcp-server, which is a generic AWS CLI passthrough: its call_aws
+  tool can reach every SES operation but exposes no per-operation inputSchema, so the binding is generic rather
+  than per-operation.'
+surfaces:
+  openapi:
+    file: openapi/_original/amazon-ses-sesv2-openapi.yml
+    operations: 86
+    gated: false
+  graphql: null
+  mcp:
+  - name: AWS Knowledge MCP Server
+    url: https://knowledge-mcp.global.api.aws/mcp
+    transport: streamable-http
+    auth: none
+    gated: false
+    tools_list: probed 2026-08-13, 200, 5 tools
+  - name: awslabs.aws-api-mcp-server
+    transport: stdio
+    auth: aws-credentials
+    gated: true
+    tools_list: not probed — local stdio server, requires local install + AWS credentials
+crosswalk:
+- tool: call_aws
+  server: awslabs.aws-api-mcp-server
+  category: generic-passthrough
+  rest:
+  - '*'
+  binding: cli-passthrough
+  confidence: low
+  note: Executes an arbitrary AWS CLI command, so it can invoke any of the 86 sesv2 operations (aws sesv2 <op>).
+    It does not expose per-operation input schemas, so an agent gets no typed contract for SendEmail or any other
+    SES operation from this tool.
+- tool: suggest_aws_commands
+  server: awslabs.aws-api-mcp-server
+  category: discovery
+  rest: []
+  binding: none
+  confidence: low
+  note: Suggests CLI commands from a natural-language description; no direct REST binding.
+mcp_only:
+- tool: aws___search_documentation
+  server: AWS Knowledge MCP Server
+  reason: Documentation retrieval; no SES REST operation backs it.
+- tool: aws___read_documentation
+  server: AWS Knowledge MCP Server
+  reason: Documentation retrieval; no SES REST operation backs it.
+- tool: aws___retrieve_skill
+  server: AWS Knowledge MCP Server
+  reason: Serves AWS agent skills; no SES REST operation backs it.
+- tool: aws___list_regions
+  server: AWS Knowledge MCP Server
+  reason: AWS account/region metadata; not part of the SES contract.
+- tool: aws___get_regional_availability
+  server: AWS Knowledge MCP Server
+  reason: AWS account/region metadata; not part of the SES contract.
+rest_only:
+- capability: email
+  operations:
+  - BatchGetMetricData
+  - CreateConfigurationSet
+  - CreateConfigurationSetEventDestination
+  - CreateContact
+  - CreateContactList
+  - CreateCustomVerificationEmailTemplate
+  - CreateDedicatedIpPool
+  - CreateDeliverabilityTestReport
+  - CreateEmailIdentity
+  - CreateEmailIdentityPolicy
+  - CreateEmailTemplate
+  - CreateImportJob
+  - DeleteConfigurationSet
+  - DeleteConfigurationSetEventDestination
+  - DeleteContact
+  - DeleteContactList
+  - DeleteCustomVerificationEmailTemplate
+  - DeleteDedicatedIpPool
+  - DeleteEmailIdentity
+  - DeleteEmailIdentityPolicy
+  - DeleteEmailTemplate
+  - DeleteSuppressedDestination
+  - GetAccount
+  - GetBlacklistReports
+  - GetConfigurationSet
+  - GetConfigurationSetEventDestinations
+  - GetContact
+  - GetContactList
+  - GetCustomVerificationEmailTemplate
+  - GetDedicatedIp
+  - GetDedicatedIpPool
+  - GetDedicatedIps
+  - GetDeliverabilityDashboardOptions
+  - GetDeliverabilityTestReport
+  - GetDomainDeliverabilityCampaign
+  - GetDomainStatisticsReport
+  - GetEmailIdentity
+  - GetEmailIdentityPolicies
+  - GetEmailTemplate
+  - GetImportJob
+  - GetSuppressedDestination
+  - ListConfigurationSets
+  - ListContactLists
+  - ListContacts
+  - ListCustomVerificationEmailTemplates
+  - ListDedicatedIpPools
+  - ListDeliverabilityTestReports
+  - ListDomainDeliverabilityCampaigns
+  - ListEmailIdentities
+  - ListEmailTemplates
+  - ListImportJobs
+  - ListRecommendations
+  - ListSuppressedDestinations
+  - ListTagsForResource
+  - PutAccountDedicatedIpWarmupAttributes
+  - PutAccountDetails
+  - PutAccountSendingAttributes
+  - PutAccountSuppressionAttributes
+  - PutAccountVdmAttributes
+  - PutConfigurationSetDeliveryOptions
+  - PutConfigurationSetReputationOptions
+  - PutConfigurationSetSendingOptions
+  - PutConfigurationSetSuppressionOptions
+  - PutConfigurationSetTrackingOptions
+  - PutConfigurationSetVdmOptions
+  - PutDedicatedIpInPool
+  - PutDedicatedIpWarmupAttributes
+  - PutDeliverabilityDashboardOption
+  - PutEmailIdentityConfigurationSetAttributes
+  - PutEmailIdentityDkimAttributes
+  - PutEmailIdentityFeedbackAttributes
+  - PutEmailIdentityMailFromAttributes
+  - PutSuppressedDestination
+  - SendBulkEmail
+  - SendCustomVerificationEmail
+  - SendEmail
+  - TagResource
+  - TestRenderEmailTemplate
+  - UntagResource
+  - UpdateConfigurationSetEventDestination
+  - UpdateContact
+  - UpdateContactList
+  - UpdateCustomVerificationEmailTemplate
+  - UpdateEmailIdentityPolicy
+  - UpdateEmailTemplate
+- capability: v1
+  operations:
+  - PutEmailIdentityDkimSigningAttributes
+coverage:
+  mcp_tools_named: 7
+  mcp_tools_bound_to_rest: 1
+  mcp_only: 5
+  rest_operations_total: 86
+  rest_operations_with_a_tool: 0
+  rest_operations_reachable_via_generic_passthrough: 86

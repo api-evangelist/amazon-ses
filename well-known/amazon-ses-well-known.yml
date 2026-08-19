@@ -1,0 +1,66 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of each /.well-known/ path 2026-08-13
+note: >-
+  aws.amazon.com serves an SPA-style HTML 404 body (HTTP status 404, ~328 KB of HTML) for every unmatched
+  /.well-known/ path, so only the security.txt hit is a real document. The SES API hosts
+  (email.{region}.amazonaws.com) answer /.well-known/* with the AWS query-protocol error
+  <UnknownOperationException/> and HTTP 404 — they serve no discovery surface at all, which is expected for a
+  SigV4 REST-JSON service with no browser-facing routes.
+hosts_probed:
+  - https://aws.amazon.com
+  - https://docs.aws.amazon.com
+  - https://email.us-east-1.amazonaws.com
+documents:
+  - host: aws.amazon.com
+    path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 200
+    content_type: text/plain;charset=UTF-8
+    file: amazon-ses-security.txt
+  - host: aws.amazon.com
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: aws.amazon.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: aws.amazon.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: aws.amazon.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: aws.amazon.com
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: aws.amazon.com
+    path: /.well-known/agent.json
+    status: 404
+  - host: docs.aws.amazon.com
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: email.us-east-1.amazonaws.com
+    path: /.well-known/security.txt
+    status: 404
+  - host: email.us-east-1.amazonaws.com
+    path: /.well-known/agent-card.json
+    status: 404
+summary:
+  hits: 1
+  misses: 9
+  served_documents:
+    - security.txt
+  absent:
+    - openid-configuration
+    - oauth-authorization-server
+    - api-catalog
+    - ai-plugin.json
+    - agent-card.json
+    - agent.json
+security_txt:
+  policy: https://vdp.aws.security/
+  program: https://hackerone.com/aws_vdp
+  contact: mailto:aws-security@amazon.com
+  encryption: https://aws.amazon.com/security/aws-pgp-public-key/
+  preferred_languages: en
+  expires: '2026-09-24T16:25:03.000Z'

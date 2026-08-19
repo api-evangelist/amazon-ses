@@ -1,0 +1,75 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+versioning:
+  scheme: dated API version, with a URI path prefix
+  api_version: '2019-09-27'
+  path_prefix: /v2/email
+  current: v2
+  docs: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+  note: >-
+    Two SES API contracts are live at once. SES v1 (API version 2010-12-01) is the original query-protocol API;
+    SES v2 (2019-09-27) is the REST-JSON API this repo profiles. AWS does not version by header or by date
+    train — the version is baked into the service model and the request path.
+  previous_versions:
+    - version: '2010-12-01'
+      name: Amazon SES API (v1 / classic)
+      docs: https://docs.aws.amazon.com/ses/latest/APIReference/
+      status: available
+      note: >-
+        Still supported and still shipped in every AWS SDK (aws-sdk-ses, boto3 client 'ses'). AWS steers new
+        work to v2 — the quotas page tells v1 users with messages over 10 MB to "consider migrating to the
+        SES v2 API" — but publishes no end-of-life date for v1.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  finding: >-
+    No SES-level deprecation policy was found. AWS publishes no Sunset or Deprecation response header for SES,
+    no deprecated: true operation anywhere in the 86-operation v2 spec, and no dated end-of-life notice for
+    the v1 API. The closest published artefact is the AWS SDKs and Tools maintenance policy
+    (https://docs.aws.amazon.com/sdkref/latest/guide/maint-policy.html), which governs SDK major versions and
+    language runtimes — not the SES API contract — so it is recorded here as context and is deliberately NOT
+    wired as a Deprecation pointer.
+  related_sdk_policy: https://docs.aws.amazon.com/sdkref/latest/guide/maint-policy.html
+  observed_sdk_deprecation:
+    - AWS SDK for JavaScript v2 (npm aws-sdk) is in maintenance mode; last release 2025-12-09 against a daily v3 cadence.
+deprecated_operations: []
+feature_lifecycle:
+  - name: SES-specific AWS Free Tier (3,000 message charges/month for 12 months)
+    status: withdrawn for new customers
+    effective: '2026-07-21'
+    detail: >-
+      Existing free-tier customers keep the benefit for the remainder of their 12-month period. New AWS
+      customers instead get up to $200 in AWS Free Tier credits over six months, usable against SES.
+    source: https://aws.amazon.com/blogs/messaging-and-targeting/introducing-amazon-simple-email-service-ses-pricing-plans/
+  - name: Amazon Pinpoint event destination
+    status: available
+    detail: Retained as an SES event-destination type; recorded here because Pinpoint itself is being wound down by AWS.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No SES-specific SLA page was found. https://aws.amazon.com/ses/sla/ returned 404 when probed 2026-08-13,
+    unlike most AWS services which publish a per-service SLA at that path. SES availability commitments sit
+    inside the general AWS Service Terms (https://aws.amazon.com/service-terms/) rather than a dedicated SES
+    SLA document. Recorded as absent rather than guessed.
+  probed:
+    - url: https://aws.amazon.com/ses/sla/
+      status: 404
+      date: '2026-08-13'
+status_page: https://health.aws.amazon.com/health/status
+status_page_note: >-
+  The AWS Health Dashboard is the public status surface. It covers SES per-region alongside every other AWS
+  service; there is no ses.status page.
+support_policy:
+  production_access_review: https://docs.aws.amazon.com/ses/latest/dg/faqs-enforcement.html
+  note: >-
+    SES runs a sending review process that can pause an account's sending ability (SendingPausedException,
+    AccountSuspendedException). That enforcement lifecycle is a real operational state machine and is
+    documented in the Sending review process FAQs.
+regional_availability:
+  note: >-
+    SES is a regional service. The harvested v2 spec enumerates 23 commercial regions plus us-gov-west-1 and
+    us-gov-east-1, with separate endpoints for China (cn-north-1, cn-northwest-1) on amazonaws.com.cn.
+  source: openapi/_original/amazon-ses-sesv2-openapi.yml

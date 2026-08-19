@@ -4,162 +4,293 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Amazon SES
 providerId: amazon-ses
 created: '2026-05-04'
-modified: '2026-05-05'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: probed
 reconciled: true
+sources:
+  - https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonSES/20260722172054/us-east-1/index.json
+  - https://aws.amazon.com/ses/pricing/
+  - https://docs.aws.amazon.com/ses/latest/dg/pricing-plans.html
+  - https://aws.amazon.com/blogs/messaging-and-targeting/introducing-amazon-simple-email-service-ses-pricing-plans/
+note: >-
+  REWRITTEN 2026-08-13. The previous version of this file was a 2026-05-04 bulk-sweep generation that knew
+  only about a-la-carte pricing. On 2026-07-21 Amazon SES introduced three named pricing plans — Essentials,
+  Pro and Enterprise — so a-la-carte is now one option among four. Every price below was read from the AWS
+  Price List API for AmazonSES us-east-1 (publicationDate 2026-07-22T17:20:54Z), which is machine-readable and
+  unauthenticated, hence method: probed rather than searched. Prices are per-region; us-east-1 is recorded as
+  the reference region.
+currency: USD
+region_reference: us-east-1
+plan_count: 4
+billing_note: >-
+  Plans are selected per AWS account PER AWS REGION. Upgrades take effect immediately; downgrades and
+  cancellations take effect at the next billing cycle, except a first downgrade off a default-assigned
+  Essentials plan, which is immediate. Choosing a plan does not enable any feature automatically — each
+  feature is still turned on individually.
+free_tier:
+  status: withdrawn-for-new-customers
+  effective: '2026-07-21'
+  legacy: 3,000 message charges per month for the first 12 months after first SES use
+  replacement: Up to $200 in AWS Free Tier credits over the first six months, applicable to SES.
+  simulator_allowance: First 62,000 recipients/month free when sent from Amazon EC2 to the mailbox simulator.
+plans:
+  - id: amazon-ses-a-la-carte
+    name: À la carte
+    type: usage-based
+    default_for: Accounts that have sent or processed email through SES on or after 2025-06-01.
+    description: >-
+      Pay-per-use pricing for each feature individually. The original SES model, still available and still the
+      default for established senders.
+    monthly_price: '0.00'
+    entries:
+      - label: Outbound email recipients
+        name: outbound_recipients
+        type: metered
+        metric: recipient
+        unit: 1
+        price: '0.0001'
+        usagetype: Recipients
+        timeFrame: usage
+      - label: Outbound attachment data
+        name: outbound_attachments
+        type: metered
+        metric: gb
+        unit: 1
+        price: '0.12'
+        usagetype: AttachmentsSize-Bytes
+        timeFrame: usage
+      - label: Inbound email received
+        name: inbound_emails
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.0001'
+        usagetype: Message (Receiving Email)
+        timeFrame: usage
+      - label: Inbound email chunks (256 KB)
+        name: inbound_chunks
+        type: metered
+        metric: chunk
+        unit: 1
+        price: '0.00009'
+        usagetype: ReceivedChunk
+        timeFrame: usage
+      - label: Dedicated IP (standard)
+        name: dedicated_ip_standard
+        type: recurring
+        metric: ip
+        unit: 1
+        price: '24.95'
+        timeFrame: month
+        usagetype: USE1-DIP-Hours
+      - label: Mail Manager message processing
+        name: mailmanager_message
+        type: metered
+        metric: message
+        unit: 1
+        price: '0.00015'
+        usagetype: USE1-Message
+        timeFrame: usage
+      - label: Mail Manager archive ingestion
+        name: archive_ingestion
+        type: metered
+        metric: gb
+        unit: 1
+        price: '2.00'
+        usagetype: USE1-ArchiveIngestedSize-Byte
+        timeFrame: usage
+      - label: Mail Manager archive storage
+        name: archive_storage
+        type: recurring
+        metric: gb
+        unit: 1
+        price: '0.19'
+        timeFrame: month
+        usagetype: USE1-ArchiveStorageSize-ByteHrs
+      - label: Dedicated ingress endpoint
+        name: ingress_endpoint
+        type: recurring
+        metric: endpoint
+        unit: 1
+        price: '50.00'
+        timeFrame: month
+        usagetype: USE1-IngressPoint-Subscription
+      - label: Virtual Deliverability Manager subscription
+        name: vdm_subscription
+        type: recurring
+        metric: account
+        unit: 1
+        price: '1250.00'
+        timeFrame: month
+        usagetype: USE1-Subscription-VirtDelivMgr
+      - label: Tenant
+        name: tenant
+        type: recurring
+        metric: tenant
+        unit: 1
+        price: '0.005'
+        timeFrame: month
+        usagetype: USE1-Tenant-Count
+      - label: Recipient validation (insight)
+        name: recipient_validation
+        type: metered
+        metric: recipient
+        unit: 1
+        price: '0.01'
+        usagetype: Recipients-Validation (Insight)
+        timeFrame: usage
+  - id: amazon-ses-essentials
+    name: Essentials
+    type: subscription-plus-usage
+    default_for: All new SES accounts from 2026-07-21, and returning customers who have not sent since 2025-06-01.
+    description: >-
+      Entry plan. Send at scale and see what is happening — which emails land, which bounce, and what needs
+      attention — with recommendations to improve deliverability over time.
+    monthly_price: '0.00'
+    monthly_price_note: No Plan-Hours subscription SKU exists for Essentials in the price list; the plan carries no monthly fee.
+    entries:
+      - label: Outbound email (0 – 10M)
+        name: outbound_email_tier1
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00016'
+        beginRange: 0
+        endRange: 10000000
+        usagetype: USE1-Essentials-Outbound-Email
+      - label: Outbound email (10M – 100M)
+        name: outbound_email_tier2
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00014'
+        beginRange: 10000000
+        endRange: 100000000
+      - label: Outbound email (100M+)
+        name: outbound_email_tier3
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00011'
+        beginRange: 100000000
+      - label: Mail Manager message processing (0 – 10M)
+        name: message_tier1
+        type: metered
+        metric: message
+        unit: 1
+        price: '0.00016'
+        usagetype: USE1-Essentials-Message
+    included:
+      - Virtual Deliverability Manager query access at no additional charge
+      - VDM recipient-engagement reporting
+  - id: amazon-ses-pro
+    name: Pro
+    type: subscription-plus-usage
+    description: >-
+      Dedicated sending infrastructure and proactive reputation protection. Sending runs on dedicated IPs so
+      reputation is isolated from other senders, invalid addresses are caught before they bounce, and inbox
+      placement is visible across providers rather than only within SES.
+    monthly_price: '105.00'
+    monthly_price_usagetype: USE1-Pro-Plan-Hours
+    entries:
+      - label: Outbound email (0 – 10M)
+        name: outbound_email_tier1
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00022'
+        beginRange: 0
+        endRange: 10000000
+        usagetype: USE1-Pro-Outbound-Email
+      - label: Outbound email (10M – 100M)
+        name: outbound_email_tier2
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00017'
+        beginRange: 10000000
+        endRange: 100000000
+      - label: Outbound email (100M+)
+        name: outbound_email_tier3
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00012'
+        beginRange: 100000000
+    included:
+      - Dedicated IPs (managed) subscription at no additional charge
+      - VDM subscription at no additional charge
+      - First 1 sending domain monitored in VDM, then $25.00/domain/month
+      - First 1 sending IP monitored in VDM, then $12.50/IP/month
+      - First 2,500 recipient validations/month, then $0.01 each
+      - First 5 inbox placement tests/month, then $10.00 each
+  - id: amazon-ses-enterprise
+    name: Enterprise
+    type: subscription-plus-usage
+    description: >-
+      Everything in Pro, plus multi-region resilience that keeps email flowing if a region goes down,
+      reputation isolation across separate workloads via tenants, and an annual deliverability assessment.
+    monthly_price: '500.00'
+    monthly_price_usagetype: USE1-Enterprise-Plan-Hours
+    entries:
+      - label: Outbound email (0 – 10M)
+        name: outbound_email_tier1
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00023'
+        beginRange: 0
+        endRange: 10000000
+        usagetype: USE1-Enterprise-Outbound-Email
+      - label: Outbound email (10M – 100M)
+        name: outbound_email_tier2
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00018'
+        beginRange: 10000000
+        endRange: 100000000
+      - label: Outbound email (100M+)
+        name: outbound_email_tier3
+        type: metered
+        metric: email
+        unit: 1
+        price: '0.00013'
+        beginRange: 100000000
+    included:
+      - Multi-region global endpoint sending at no additional charge
+      - First 1,000 tenants/month, then $0.005/tenant/month
+      - First 5 sending domains monitored in VDM, then $25.00/domain/month
+      - First 12 sending IPs monitored in VDM, then $12.50/IP/month
+      - First 5,000 recipient validations/month, then $0.01 each
+      - First 25 inbox placement tests/month, then $10.00 each
+      - First dedicated ingress endpoint free, then $50.00/month
+      - Trend Micro and Spamhaus Mail Manager add-on executions at no additional charge
+add_ons:
+  - name: Spamhaus DBL add-on
+    price: '0.000125'
+    unit: per message processed
+  - name: Abusix Mail Intelligence add-on
+    price: '0.000125'
+    unit: per message processed
+  - name: Trend Micro Virus Scan API add-on
+    price: '0.0001875'
+    unit: per message scanned
+  - name: Vade Advanced Email Security add-on
+    price: '0.000415'
+    unit: per message processed
 tags:
   - Amazon
   - AWS
   - Email
   - Transactional Email
   - Marketing Email
-description: Amazon Simple Email Service (SES) is pay-as-you-go - $0.10 per 1,000 outbound emails, $0.12/GB
-  for outbound attachment data, and $0.10/1,000 inbound emails plus $0.09 per 1,000 incoming email chunks.
-  Dedicated IPs are $24.95/IP/month (Standard) or $15/account/month (Managed) with tiered per-message
-  rates. New customers receive 3,000 free message charges per month for 12 months as part of AWS Free
-  Tier.
-sources:
-  - https://aws.amazon.com/ses/pricing/
-plans:
-  - id: amazon-ses-pay-as-you-go
-    name: Pay-As-You-Go
-    type: usage-based
-    description: Default per-message and per-byte pricing for outbound and inbound email.
-    entries:
-      - label: Outbound emails
-        name: outbound_emails
-        type: metered
-        metric: email
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1000
-        price: '0.10'
-        userMultiplied: false
-      - label: Outbound attachment data
-        name: outbound_attachments
-        type: metered
-        metric: gb
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.12'
-        userMultiplied: false
-      - label: Inbound emails
-        name: inbound_emails
-        type: metered
-        metric: email
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1000
-        price: '0.10'
-        userMultiplied: false
-      - label: Incoming email chunks
-        name: inbound_chunks
-        type: metered
-        metric: chunk
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1000
-        price: '0.09'
-        userMultiplied: false
-    elements:
-      - name: Send via SMTP or HTTP API
-      - name: Bounce, complaint, delivery notifications
-      - name: Configurable sending identities
-  - id: amazon-ses-dedicated-ip-standard
-    name: Dedicated IP - Standard
-    type: subscription
-    description: Reserved sending IPs at a flat per-IP monthly rate.
-    entries:
-      - label: Dedicated IP per month
-        name: dedicated_ip_standard
-        type: subscription
-        metric: ip-month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '24.95'
-        userMultiplied: false
-    elements:
-      - name: Per-IP reservation
-      - name: Customer manages IP reputation
-  - id: amazon-ses-dedicated-ip-managed
-    name: Dedicated IP - Managed
-    type: subscription
-    description: SES manages IP warm-up and rotation; flat monthly account fee plus tiered per-message
-      rates.
-    entries:
-      - label: Managed IP monthly fee
-        name: managed_ip_fee
-        type: subscription
-        metric: account-month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '15.00'
-        userMultiplied: false
-      - label: Managed tier 1 per-message
-        name: managed_tier1
-        type: tiered
-        metric: email
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1000
-        price: '0.08'
-        userMultiplied: false
-      - label: Managed tier 2 per-message
-        name: managed_tier2
-        type: tiered
-        metric: email
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1000
-        price: '0.04'
-        userMultiplied: false
-      - label: Managed tier 3 per-message
-        name: managed_tier3
-        type: tiered
-        metric: email
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1000
-        price: '0.02'
-        userMultiplied: false
-    elements:
-      - name: AWS-managed warm-up
-      - name: Reputation pooling
-      - name: Tiered per-message discount
-  - id: amazon-ses-free-tier
-    name: AWS Free Tier
-    type: freemium
-    description: New customers receive 3,000 message charges per month for 12 months. Covers outbound,
-      inbound, and Virtual Deliverability Manager processing combined.
-    entries:
-      - label: Free monthly message charges
-        name: free_messages
-        type: quota
-        metric: email
-        limit: 3000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: 12-month duration for new accounts
-      - name: Combined outbound + inbound + VDM allowance
-maintainers:
-  - name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-  - name: Amazon Web Services
-    email: support@aws.amazon.com
-    url: https://aws.amazon.com
+  - Pricing Plans
+description: >-
+  Amazon SES offers four commercial shapes. À la carte is pay-per-use — $0.0001 per outbound recipient, $0.12/GB
+  of attachments, $0.0001 per inbound email plus $0.00009 per 256 KB chunk, and $24.95/month per standard
+  dedicated IP. Since 2026-07-21 there are also three packaged plans: Essentials at no monthly fee with volume
+  email pricing from $0.00016, Pro at $105/month with dedicated IPs and inbox placement testing bundled, and
+  Enterprise at $500/month adding multi-region resilience, tenant reputation isolation and an annual
+  deliverability assessment. Plans are chosen per account per region.

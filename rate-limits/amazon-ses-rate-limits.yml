@@ -4,76 +4,201 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Amazon SES
 providerId: amazon-ses
 created: '2026-05-04'
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Rate Limiting
-  - AWS
-  - Email
-  - SES
-description: Amazon SES enforces two distinct sending limits per account/region - a 24-hour sending quota
-  and a maximum send rate (TPS). Both start in the sandbox and increase after production access is granted
-  and reputation is established. The control-plane API (CreateConfigurationSet, etc.) follows AWS API
-  throttling. ThrottlingException, MaxSendingRateExceededException, and AccountSendingPausedException
-  signal limit conditions.
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
 sources:
+  - https://docs.aws.amazon.com/ses/latest/dg/quotas.html
   - https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html
-  - https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+  - https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas-errors.html
+  - https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html
   - https://docs.aws.amazon.com/general/latest/gr/api-retries.html
+note: >-
+  Re-read from the AWS docs 2026-08-13, replacing a 2026-05-04 bulk-sweep generation. Two corrections came out
+  of it. First, AWS NO LONGER publishes a fixed production quota — the previous file claimed "starts at 50,000
+  per day / 14 per second"; the current quotas page says only that out-of-sandbox limits "vary based on your
+  specific use case" and rise with reputation, so those numbers are removed rather than carried forward.
+  Second, SES publishes NO rate-limit response headers at all, which is the single most important runtime
+  finding here for an agent.
 headers:
+  rate_limit_headers: null
+  rate_limit_headers_finding: >-
+    Amazon SES returns no RateLimit-*, no X-RateLimit-* and no Retry-After header. A caller cannot learn its
+    remaining budget from a response. The only runtime signal is the exception type on failure, and the only
+    way to read remaining headroom in advance is to poll the GetAccount operation, whose SendQuota object
+    returns Max24HourSend, MaxSendRate and SentLast24Hours.
   requestId: x-amzn-RequestId
-  retryAfter: Retry-After
+  errorType: x-amzn-ErrorType
+poll_operation:
+  operation: GetAccount
+  path: GET /v2/email/account
+  returns: [SendQuota.Max24HourSend, SendQuota.MaxSendRate, SendQuota.SentLast24Hours, ProductionAccessEnabled, SendingEnabled]
+  note: The closest thing SES has to a rate-limit header. Costs an API call.
 responseCodes:
-  throttled: 400
-  quotaExceeded: 454
+  throttled_api: 400
+  throttled_api_exception: ThrottlingException
+  throttled_service_exception: TooManyRequestsException
+  throttled_smtp: 454
   serviceUnavailable: 503
+exhaustion_behaviour: >-
+  When the daily quota or the per-second rate is exceeded, SES DROPS the message and does not attempt
+  redelivery. Over the API the call fails with ThrottlingException carrying either "Daily message quota
+  exceeded" or "Maximum sending rate exceeded". Over SMTP the client sees "454 Throttling failure: ...".
+  AWS's published guidance is to wait up to 10 minutes before retrying a throttled send.
+limit_count: 24
 limits:
   - name: 24-hour sending quota (sandbox)
     scope: account/region
     metric: emails_per_day
     limit: 200
     timeFrame: day
-    notes: Default sandbox quota. Verified senders only.
+    adjustable: true
+    notes: Counted by RECIPIENT, not by message. Sandbox accounts may only send to verified addresses or the mailbox simulator.
   - name: Sending rate (sandbox)
     scope: account/region
     metric: emails_per_second
     limit: 1
     timeFrame: second
-    notes: Default 1 message per second in sandbox.
+    adjustable: true
   - name: 24-hour sending quota (production)
     scope: account/region
     metric: emails_per_day
-    limit: starts at 50000
+    limit: variable
     timeFrame: day
-    notes: Initial production quota; increases automatically with healthy reputation. Raisable via support.
+    adjustable: true
+    notes: >-
+      AWS publishes no fixed starting number. The quotas page states the limit "varies based on your specific
+      use case" once out of the sandbox, and rises automatically as reputation stays healthy. Read the current
+      value with GetAccount.
   - name: Sending rate (production)
     scope: account/region
     metric: emails_per_second
-    limit: starts at 14
+    limit: variable
     timeFrame: second
-    notes: Initial production max send rate; increases with reputation.
-  - name: SES control-plane API
+    adjustable: true
+    notes: Same as above — use-case dependent, read with GetAccount.
+  - name: Maximum message size (SES v2 API and SMTP)
+    scope: message
+    metric: bytes
+    limit: 40 MB after base64 encoding
+    adjustable: false
+    notes: Messages over 10 MB are subject to bandwidth throttling, as low as 40 MB/s aggregate.
+  - name: Maximum message size (SES v1 API)
+    scope: message
+    metric: bytes
+    limit: 10 MB after base64 encoding
+    adjustable: false
+    notes: A concrete reason AWS steers senders from v1 to v2.
+  - name: Recipients per message
+    scope: message
+    metric: recipients
+    limit: 50
+    adjustable: false
+    notes: Any To, CC or BCC address counts.
+  - name: Destinations per templated (bulk) send
+    scope: request
+    metric: destinations
+    limit: 50
+    adjustable: false
+  - name: Verified identities
     scope: account/region
-    metric: varies
-    limit: see Service Quotas console for SES
-    notes: Standard AWS API throttling envelope on management calls.
-policies:
-  - name: Sandbox to production
-    description: Accounts start in sandbox with verified-recipient-only sending; submit a production access
-      request to lift this restriction.
-  - name: Reputation-based scaling
-    description: SES auto-increases the 24-hour quota and TPS based on bounce/complaint rates and consistent
-      sending; misuse triggers AccountSendingPausedException.
-  - name: Backoff on throttling
-    description: Use exponential backoff with jitter on ThrottlingException and MaxSendingRateExceededException;
-      AWS SDKs default to standard retry mode.
+    metric: identities
+    limit: 10000
+    adjustable: contact-aws
+  - name: Tenants
+    scope: account/region
+    metric: tenants
+    limit: 10000
+    adjustable: true
   - name: Configuration sets
-    description: Use configuration sets to apply per-stream sending pools, IP pools, and event publishing
-      to scale traffic independently.
-maintainers:
-  - name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-  - name: Amazon Web Services
-    email: support@aws.amazon.com
-    url: https://aws.amazon.com
+    scope: account/region
+    metric: configuration_sets
+    limit: 10000
+    adjustable: false
+  - name: Configuration set name length
+    scope: resource
+    metric: characters
+    limit: 64
+    adjustable: false
+  - name: Event destinations per configuration set
+    scope: configuration_set
+    metric: destinations
+    limit: 10
+    adjustable: false
+  - name: Dimensions per CloudWatch event destination
+    scope: event_destination
+    metric: dimensions
+    limit: 10
+    adjustable: false
+  - name: Dedicated IP pools (managed and standard combined)
+    scope: account/region
+    metric: pools
+    limit: 50
+    adjustable: false
+  - name: Email templates
+    scope: account/region
+    metric: templates
+    limit: 20000
+    adjustable: false
+  - name: Template size
+    scope: template
+    metric: bytes
+    limit: 500 KB
+    adjustable: false
+  - name: Receipt rules per rule set
+    scope: rule_set
+    metric: rules
+    limit: 200
+    adjustable: false
+  - name: Receipt rule sets per account
+    scope: account
+    metric: rule_sets
+    limit: 40
+    adjustable: false
+  - name: Actions per receipt rule
+    scope: rule
+    metric: actions
+    limit: 10
+    adjustable: false
+  - name: Recipients per receipt rule
+    scope: rule
+    metric: recipients
+    limit: 500
+    adjustable: false
+  - name: IP address filters per account
+    scope: account
+    metric: filters
+    limit: 100
+    adjustable: false
+  - name: Inbound email size stored to S3
+    scope: message
+    metric: bytes
+    limit: 40 MB
+    adjustable: false
+  - name: Inbound email size published to SNS
+    scope: message
+    metric: bytes
+    limit: 150 KB
+    adjustable: false
+    notes: Headers alone are capped at 10 KB over SNS and 50 KB to a Lambda function.
+control_plane:
+  note: >-
+    The SES control plane (CreateConfigurationSet, CreateEmailIdentity and the rest of the 86 v2 operations)
+    is subject to standard AWS API throttling. AWS does not publish per-operation TPS for SES. Handle
+    ThrottlingException / TooManyRequestsException with the SDK's default exponential backoff.
+  docs: https://docs.aws.amazon.com/general/latest/gr/api-retries.html
+increase_process:
+  url: https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas-request-increase.html
+  mechanism: AWS Service Quotas / support case; production access is requested from the SES console or with PutAccountDetails.
+tags:
+  - Rate Limiting
+  - AWS
+  - Email
+  - SES
+  - Quotas
+description: >-
+  Amazon SES enforces two sending limits per account per region — a 24-hour recipient quota and a maximum send
+  rate — plus roughly twenty structural service quotas on identities, tenants, configuration sets, templates
+  and receipt rules. Sandbox accounts are capped at 200 recipients/day and 1/second; production limits are
+  use-case dependent and rise with reputation. SES publishes no rate-limit response headers: exhaustion
+  surfaces as ThrottlingException (HTTP 400) or SMTP 454, and remaining headroom must be polled with GetAccount.

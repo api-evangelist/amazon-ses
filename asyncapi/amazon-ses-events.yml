@@ -1,0 +1,106 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/ses/latest/dg/event-publishing-retrieving-sns-contents.html
+spec_type: null
+spec_type_note: >-
+  AWS publishes NO AsyncAPI document for Amazon SES. Searched the SES Developer Guide event-publishing
+  section, the SES API v2 reference, the AWS docs llms.txt index and the awslabs/aws GitHub orgs; nothing.
+  This file is the webhook/event catalogue captured from the published event-record documentation, so it
+  carries a Webhooks pointer and NOT an AsyncAPI pointer. No AsyncAPI is fabricated.
+delivery_model:
+  name: SES event publishing
+  mechanism: >-
+    SES does not POST to a customer-supplied URL directly. Events are published to a configured event
+    destination attached to a configuration set. One of those destinations is Amazon SNS, and an SNS topic can
+    deliver to an HTTPS endpoint — that composition is how a SES event becomes a webhook.
+  webhook_path: SES -> configuration set event destination -> Amazon SNS topic -> HTTPS subscription
+  configured_by: CreateConfigurationSetEventDestination / UpdateConfigurationSetEventDestination
+  selected_at_send: EmailContent + ConfigurationSetName on SendEmail / SendBulkEmail
+  max_destinations_per_configuration_set: 10
+destinations:
+  - type: SNS
+    http_capable: true
+    docs: https://docs.aws.amazon.com/ses/latest/dg/event-publishing-add-event-destination-sns.html
+    note: The only destination that yields an HTTP callback to a caller-owned endpoint.
+  - type: EventBridge
+    http_capable: false
+    docs: https://docs.aws.amazon.com/ses/latest/dg/event-publishing-add-event-destination-eventbridge.html
+  - type: CloudWatch
+    http_capable: false
+    docs: https://docs.aws.amazon.com/ses/latest/dg/event-publishing-add-event-destination-cloudwatch.html
+  - type: Data Firehose
+    http_capable: false
+    docs: https://docs.aws.amazon.com/ses/latest/dg/event-publishing-add-event-destination-firehose.html
+  - type: Pinpoint
+    http_capable: false
+    docs: https://docs.aws.amazon.com/ses/latest/dg/event-publishing-add-event-destination-pinpoint.html
+envelope:
+  discriminator_field: eventType
+  discriminator_note: >-
+    The field is named eventType when event publishing is configured, and notificationType on the legacy
+    identity-level notification path. A consumer must handle both names.
+  always_present:
+    - eventType
+    - mail
+  payload_field_per_type: the lower-camel field matching the event type (bounce, complaint, delivery, send, reject, open, click, failure, deliveryDelay, subscription)
+  mail_object_fields:
+    - timestamp
+    - messageId
+    - source
+    - sourceArn
+    - sendingAccountId
+    - destination
+    - headersTruncated
+    - headers
+    - commonHeaders
+    - tags
+events:
+  - type: Send
+    payload_field: send
+    description: SES accepted the message and will attempt delivery.
+  - type: Delivery
+    payload_field: delivery
+    description: The recipient's mail server accepted the message.
+  - type: Bounce
+    payload_field: bounce
+    description: The message was returned undelivered.
+    subtypes:
+      bounceType: [Undetermined, Permanent, Transient]
+      bounceSubType: [Undetermined, General, NoEmail, Suppressed, OnAccountSuppressionList, MailboxFull, MessageTooLarge, ContentRejected, AttachmentRejected]
+  - type: Complaint
+    payload_field: complaint
+    description: The recipient marked the message as spam.
+    subtypes:
+      complaintFeedbackType: [abuse, auth-failure, fraud, not-spam, other, virus]
+      complaintSubType: [OnAccountSuppressionList]
+  - type: Reject
+    payload_field: reject
+    description: SES accepted the message then rejected it, most often because it contained a virus.
+  - type: Open
+    payload_field: open
+    description: The recipient opened the message and images were loaded.
+  - type: Click
+    payload_field: click
+    description: The recipient clicked a link in the message.
+  - type: Rendering Failure
+    payload_field: failure
+    description: A templated send failed because template data was missing or malformed.
+  - type: DeliveryDelay
+    payload_field: deliveryDelay
+    description: Delivery was delayed and SES will retry.
+    subtypes:
+      delayType: [InternalFailure, General, MailboxFull, SpamDetected, RecipientServerError, IPFailure, TransientCommunicationFailure, BYOIPHostNameLookupUnavailable, Undetermined, SendingDeferral]
+  - type: Subscription
+    payload_field: subscription
+    description: A contact changed their topic subscription preferences.
+event_count: 10
+recent_change:
+  date: '2026-08-07'
+  summary: Amazon SES now helps identify automated open and click events in event notifications.
+  source: https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ses-automated-email-interactions/
+  note: Adds signalling that distinguishes machine-generated opens/clicks (security scanners, prefetchers) from human ones.
+docs:
+  - https://docs.aws.amazon.com/ses/latest/dg/monitor-using-event-publishing.html
+  - https://docs.aws.amazon.com/ses/latest/dg/event-publishing-retrieving-sns-contents.html
+  - https://docs.aws.amazon.com/ses/latest/dg/event-publishing-retrieving-sns-examples.html
+  - https://docs.aws.amazon.com/ses/latest/dg/event-publishing-retrieving-firehose-contents.html

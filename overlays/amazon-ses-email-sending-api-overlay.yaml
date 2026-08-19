@@ -1,0 +1,41 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon SES (email-sending-api)
+  version: 1.0.0
+extends: openapi/amazon-ses-email-sending-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: apis.yml + all/amazon-ses artifacts
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: amazon-ses
+    x-apievangelist-artifacts:
+      authentication: authentication/amazon-ses-authentication.yml
+      conventions: conventions/amazon-ses-conventions.yml
+      errors: errors/amazon-ses-problem-types.yml
+      rate-limits: rate-limits/amazon-ses-rate-limits.yml
+      lifecycle: lifecycle/amazon-ses-lifecycle.yml
+      sandbox: sandbox/amazon-ses-sandbox.yml
+      data-model: data-model/amazon-ses-data-model.yml
+      events: asyncapi/amazon-ses-events.yml
+    x-apievangelist-idempotency:
+      supported: false
+      note: No idempotency key mechanism published for SES v2.
+- target: $.info
+  update:
+    x-apievangelist-pagination:
+      style: cursor
+      request:
+      - NextToken
+      - PageSize
+      response:
+      - NextToken
+- target: $.servers
+  update:
+  - url: https://email.{region}.amazonaws.com
+    description: Amazon SES v2 regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS Region
