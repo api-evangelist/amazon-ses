@@ -11,6 +11,7 @@ description: >-
   reporting. Mail Manager adds inbound processing with ingress points, traffic policies, rule sets, relays and
   archives. Every new account starts in the SES sandbox, and a published mailbox simulator forces delivery,
   bounce, complaint and out-of-office outcomes on demand.
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: unknown
