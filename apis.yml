@@ -330,6 +330,20 @@ tags:
   - Email Deliverability
   - Email Service
   - Marketing Email
+  - Notification
+  - SMTP
+  - Transactional Email
+  - Bulk Email
+  - Email Receiving
+  - DKIM
+  - Messaging
+  - Cloud Infrastructure
+tags_raw:
+  - AWS
+  - Email
+  - Email Deliverability
+  - Email Service
+  - Marketing Email
   - Notifications
   - SMTP
   - Transactional Email
