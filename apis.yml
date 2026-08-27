@@ -100,30 +100,6 @@ apis:
   url: https://docs.aws.amazon.com/ses/latest/dg/security.html
   type: Security
   properties: []
-- aid: amazon-ses:amazon-ses-v2-api
-  name: Amazon SES v2 API
-  description: >-
-    The full Amazon Simple Email Service v2 API (API version 2019-09-27) — 86 operations across email
-    sending, email identities and DKIM, configuration sets and event destinations, contact lists and
-    contacts, email templates, suppression lists, dedicated IP pools, deliverability reporting, tenants,
-    import/export jobs and account settings. Harvested verbatim from the APIs.guru conversion of the
-    first-party AWS SDK service model for sesv2.
-  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
-  baseURL: https://email.{region}.amazonaws.com
-  tags:
-  - Email Sending
-  - Identities
-  - Contact Lists
-  - Templates
-  - Suppression
-  - Deliverability
-  properties:
-  - type: OpenAPI
-    url: openapi/_original/amazon-ses-sesv2-openapi.yml
-  - type: Overlay
-    url: overlays/amazon-ses-sesv2-overlay.yaml
-  - type: ToolCrosswalk
-    url: mcp/amazon-ses-tool-crosswalk.yml
 - aid: amazon-ses:amazon-ses-contact-lists-api
   name: Amazon SES Contact Lists API
   description: Operations for managing contact lists.
