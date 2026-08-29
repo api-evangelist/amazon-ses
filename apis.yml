@@ -160,6 +160,16 @@ apis:
     url: openapi/amazon-ses-templates-api-openapi.yml
   - type: Overlay
     url: overlays/amazon-ses-templates-api-overlay.yaml
+- aid: amazon-ses:amazon-ses-email-api
+  name: Amazon SES Email API
+  description: The Email API from Amazon SES — 60 operation(s) for email.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Email
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-email-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-ses-agentic-access.yml
