@@ -87,3 +87,21 @@ agent_surface_summary: 'AWS''s real agent investment for SES is in Agent Skills,
   SES today either loads those skills and drives an SDK, or shells out through the local aws-api-mcp-server.
   Nothing exposes SES operations as typed MCP tools over a URL.'
 crosswalk: mcp/amazon-ses-tool-crosswalk.yml
+tools_count: 5
+tools:
+- name: aws___read_documentation
+  description: ''
+- name: aws___search_documentation
+  description: ''
+- name: aws___list_regions
+  description: ''
+- name: aws___get_regional_availability
+  description: ''
+- name: aws___retrieve_skill
+  description: ''
+tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
+authorship: platform
+authorship_note: 'PLATFORM-AUTHORED: this tool shape is shared with at least one other provider in the
+  catalog, so it is a platform default appearing under this provider''s domain rather than an interface
+  this provider designed. Shared shape: (''aws_get_regional_availability'', ''aws_list_regions'', ''aws_read_*'',
+  ''aws_retrieve_skill'', ''aws_search_*'')'
