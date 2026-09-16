@@ -112,54 +112,6 @@ apis:
   url: https://docs.aws.amazon.com/ses/latest/dg/security.html
   type: Security
   properties: []
-- aid: amazon-ses:amazon-ses-contact-lists-api
-  name: Amazon SES Contact Lists API
-  description: Operations for managing contact lists.
-  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
-  baseURL: https://email.{region}.amazonaws.com
-  tags:
-  - Contact Lists
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ses-contact-lists-api-openapi.yml
-  - type: Overlay
-    url: overlays/amazon-ses-contact-lists-api-overlay.yaml
-- aid: amazon-ses:amazon-ses-email-sending-api
-  name: Amazon SES Email Sending API
-  description: Operations for sending email messages.
-  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html
-  baseURL: https://email.{region}.amazonaws.com
-  tags:
-  - Email Sending
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ses-email-sending-api-openapi.yml
-  - type: Overlay
-    url: overlays/amazon-ses-email-sending-api-overlay.yaml
-- aid: amazon-ses:amazon-ses-identities-api
-  name: Amazon SES Identities API
-  description: Operations for managing email identities.
-  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailIdentity.html
-  baseURL: https://email.{region}.amazonaws.com
-  tags:
-  - Identities
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ses-identities-api-openapi.yml
-  - type: Overlay
-    url: overlays/amazon-ses-identities-api-overlay.yaml
-- aid: amazon-ses:amazon-ses-templates-api
-  name: Amazon SES Templates API
-  description: Operations for managing email templates.
-  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailTemplate.html
-  baseURL: https://email.{region}.amazonaws.com
-  tags:
-  - Templates
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ses-templates-api-openapi.yml
-  - type: Overlay
-    url: overlays/amazon-ses-templates-api-overlay.yaml
 - aid: amazon-ses:amazon-ses-email-api
   name: Amazon SES Email API
   description: The Email API from Amazon SES — 60 operation(s) for email.
