@@ -1,22 +1,17 @@
 {
   "provider": "amazon-ses",
   "sources": [
-    "_original/amazon-ses-openapi.yml",
     "_original/amazon-ses-sesv2-openapi.yml"
   ],
   "outputs": [
-    "amazon-ses-contact-lists-api-openapi.yml",
-    "amazon-ses-email-sending-api-openapi.yml",
-    "amazon-ses-identities-api-openapi.yml",
-    "amazon-ses-templates-api-openapi.yml",
     "amazon-ses-email-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "amazon-ses-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "amazon-ses-sesv2-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "amazon-ses-sesv2-openapi.yml: tagged paths POST /v2/email/metrics/batch -> Email",
     "amazon-ses-sesv2-openapi.yml: tagged paths POST /v2/email/configuration-sets -> Email",
@@ -104,12 +99,11 @@
     "amazon-ses-sesv2-openapi.yml: tagged paths POST /v2/email/tags -> Email",
     "amazon-ses-sesv2-openapi.yml: tagged paths POST /v2/email/templates/{TemplateName}/render -> Email",
     "amazon-ses-sesv2-openapi.yml: tagged paths DELETE /v2/email/tags#ResourceArn&TagKeys -> Email",
-    "amazon-ses-sesv2-openapi.yml: declared missing tag: Email"
+    "amazon-ses-sesv2-openapi.yml: declared missing tag: Email",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "amazon-ses-contact-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ses-email-sending-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ses-identities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ses-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "_original/amazon-ses-openapi.yml: archived document superseded by a larger archived document",
+    "amazon-ses-email-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
