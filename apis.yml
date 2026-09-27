@@ -317,5 +317,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 26
   pass: local-v1
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product
