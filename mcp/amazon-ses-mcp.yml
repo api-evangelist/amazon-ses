@@ -90,18 +90,28 @@ crosswalk: mcp/amazon-ses-tool-crosswalk.yml
 tools_count: 5
 tools:
 - name: aws___read_documentation
-  description: ''
+  description: Fetch full AWS doc pages as markdown. `search_documentation` already returns verbatim page
+    chunks, so don't re-read a URL whose chunk you already have to "confirm" or "round out" an answer
+    -- the chunk is the real page text; treat it as aut
 - name: aws___search_documentation
-  description: ''
+  description: AWS docs search. Each result's `context` is verbatim page text -- a real chunk of the actual
+    page, not a short snippet -- and usually already contains the answer, so answer directly from it.
+    Use `read_documentation` only when the chunks gen
 - name: aws___list_regions
-  description: ''
+  description: Retrieve a list of all AWS regions.
 - name: aws___get_regional_availability
-  description: ''
+  description: 'AWS resource availability per region.  - Max 10 regions; multi-region needs `filters`;
+    single-region supports `next_token`. - Status: isAvailableIn | isNotAvailableIn | isPlannedIn | Not
+    Found. - Response key: products | service_apis | cfn_'
 - name: aws___retrieve_skill
-  description: ''
+  description: Retrieve an AWS skill (workflows, references). Returns SKILL.md, or `file` if given.  Call
+    `search_documentation` FIRST and copy `skill_name` verbatim -- it is an opaque registry ID. Never
+    guess or fabricate `skill_name` or `file`.
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: platform
 authorship_note: 'PLATFORM-AUTHORED: this tool shape is shared with at least one other provider in the
   catalog, so it is a platform default appearing under this provider''s domain rather than an interface
   this provider designed. Shared shape: (''aws_get_regional_availability'', ''aws_list_regions'', ''aws_read_*'',
   ''aws_retrieve_skill'', ''aws_search_*'')'
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
