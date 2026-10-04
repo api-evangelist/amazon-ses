@@ -1,31 +1,28 @@
-# Kin Score artifact — amazon-ses — 2026-08-25T154045
+# Kin Score artifact — amazon-ses — 2026-09-24T090406
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: amazon-ses
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T154045
-  composite: 79.7
+  schema_version: 0.22.0
+  scored_at: '2026-09-24'
+  run_ts: 2026-09-24T090406
+  composite: 79.1
   band: exemplar
   facets:
-    discoverability: 74.1
-    contract_quality: 64.5
-    governance: 59.1
+    discoverability: 57.4
+    contract_quality: 75.9
+    contract_governance: 47.0
     operational_transparency: 84.2
-    developer_ergonomics: 90.5
-    commercial_clarity: 100.0
-    contract_governance: 59.1
+    developer_ergonomics: 86.9
     access_clarity: 100.0
   agent_readiness:
-    score: 41.6
+    score: 38.1
     band: agent-ready
-    band_gated_from: agent-native
     dimensions:
       spec_presence: true
       agentic_access: derived
       reversibility_documented: false
-      mcp_server: documented
+      mcp_server: platform
       auth_clarity: bearer
       idempotency: false
       error_semantics: verified
@@ -34,7 +31,7 @@ kin_score:
       event_surface_described: true
       agent_skills: true
       well_known_catalog: false
-      consent_identity: true
+      consent_identity: false
       agent_card: false
       dry_run_mode: false
       delegated_identity: false
@@ -47,7 +44,7 @@ kin_score:
     agentic_access: derived
     conformance: first-party
     contracts:
-      total: 4
+      total: 1
       derived: 0
       coverage: 0.0
       callable: 100.0
