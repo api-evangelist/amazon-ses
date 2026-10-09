@@ -294,3 +294,47 @@ description: >-
   email pricing from $0.00016, Pro at $105/month with dedicated IPs and inbox placement testing bundled, and
   Enterprise at $500/month adding multi-region resilience, tenant reputation isolation and an annual
   deliverability assessment. Plans are chosen per account per region.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units:
+  - data
+  - message
+  - object
+  plans:
+  - name: À la carte
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    - message
+    - object
+    - other
+    periods:
+    - month
+    - per-use
+  - name: Essentials
+    access: other
+    model: hybrid
+    model_how: stated
+    units:
+    - message
+    periods: []
+  - name: Pro
+    access: other
+    model: hybrid
+    model_how: stated
+    units:
+    - message
+    periods: []
+  - name: Enterprise
+    access: other
+    model: hybrid
+    model_how: stated
+    units:
+    - message
+    periods: []
