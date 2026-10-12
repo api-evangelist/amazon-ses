@@ -1,0 +1,36 @@
+edges:
+- partner_name: telnyx
+  partner: telnyx
+  partner_match: domain
+  type: contract
+  channel: contract-enum
+  relationship: migration-import
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/telnyx/blob/main/openapi/telnyx-email-suppression-imports-api-openapi.yml
+  contract_reference:
+    repo: telnyx
+    spec_file: telnyx-email-suppression-imports-api-openapi.yml
+    value: ses
+    property: schemas.EmailBlockImport.provider
+    matched_domain: amazon.com
+    detected_by: sweep-cpaas.py
+    detected: '2026-10-12'
+- partner_name: novu
+  partner: novu
+  partner_match: domain
+  type: contract
+  channel: contract-enum
+  relationship: delivery-provider
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/novu/blob/main/openapi/novu-channel-connections-api-openapi.yml
+  contract_reference:
+    repo: novu
+    spec_file: novu-channel-connections-api-openapi.yml
+    value: ses
+    property: schemas.GetChannelConnectionResponseDto.providerId
+    matched_domain: amazon.com
+    detected_by: sweep-cpaas.py
+    detected: '2026-10-12'
+generated: '2026-10-12'
+method: searched
+checked: []
