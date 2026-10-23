@@ -123,6 +123,8 @@ apis:
   - type: OpenAPI
     url: openapi/amazon-ses-email-api-openapi.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-ses/overview
   - type: AgenticAccess
     url: agentic-access/amazon-ses-agentic-access.yml
   - type: TrustCenter
