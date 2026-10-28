@@ -1,4 +1,4 @@
-# Amazon SES (amazon-ses)
+# Amazon SES
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,166 +64,220 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Amazon Simple Email Service (SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails, providing a reliable and scalable infrastructure for email communication.
+Amazon Simple Email Service (SES) is AWS's cloud email platform for sending and receiving mail at scale — marketing, notification and transactional. The current contract is the SES v2 API (version 2019-09-27), an 86-operation REST-JSON service authenticated with AWS Signature Version 4 and reached at a regional endpoint, alongside an SMTP submission interface on ports 25/465/587/2465/2587. It covers email sending and templated bulk sends, domain and address identity verification with DKIM, SPF and DMARC alignment, configuration sets and event publishing to SNS, EventBridge, CloudWatch and Firehose, contact lists and subscription topics, account and configuration-set suppression lists, dedicated IP pools both managed and standard, tenants for per-workload reputation isolation, and Virtual Deliverability Manager for inbox placement and reputation reporting. Mail Manager adds inbound processing with ingress points, traffic policies, rule sets, relays and archives. Every new account starts in the SES sandbox, and a published mailbox simulator forces delivery, bounce, complaint and out-of-office outcomes on demand.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/apis.yml)
+**Areas:** AWS · Email · Email Deliverability · Email Service · Marketing Email · Notification · SMTP · Transactional Email · Bulk Email · Email Receiving · DKIM · Messaging
 
-## Tags
+## Amazon SES on APIs.io
 
-- AWS
-- Email
-- Email Deliverability
-- Email Service
-- Marketing Email
-- Notifications
-- SMTP
-- Transactional Email
+Everything profiled for Amazon SES is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-ses/](https://apis.io/providers/amazon-ses/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+- [Amazon SES Documentation](https://apis.io/apis/amazon-ses/amazon-ses-documentation/) — Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references, and tutorials for email sending and management.
+- [Amazon SES OpenAPI](https://apis.io/apis/amazon-ses/amazon-ses-openapi/) — The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing identities, contact lists, and email templates.
+- [Amazon SES OpenAPI (APIs.guru)](https://apis.io/apis/amazon-ses/amazon-ses-openapi-apisguru/) — The APIs.guru maintained OpenAPI definition for the Amazon SES API.
+- [Amazon SES JSON Schema](https://apis.io/apis/amazon-ses/amazon-ses-json-schema/) — JSON Schema definitions for the Amazon SES API request and response objects.
+- [Amazon SES JSON-LD Context](https://apis.io/apis/amazon-ses/amazon-ses-json-ld-context/) — JSON-LD context document for Amazon SES API resources providing semantic linked data mappings.
+- [Amazon SES Pricing](https://apis.io/apis/amazon-ses/amazon-ses-pricing/) — Pricing details for Amazon SES including email sending, receiving, and additional features.
+- [Amazon SES Getting Started](https://apis.io/apis/amazon-ses/amazon-ses-getting-started/) — Getting started guide for Amazon SES, helping new users set up and begin sending emails.
+- [Amazon SES FAQ](https://apis.io/apis/amazon-ses/amazon-ses-faq/) — Frequently asked questions about Amazon SES covering features, pricing, deliverability, and compliance.
+- [Amazon SES User Guide](https://apis.io/apis/amazon-ses/amazon-ses-user-guide/) — Comprehensive user guide for Amazon SES covering all features and best practices for email communication.
+- [Amazon SES API Reference](https://apis.io/apis/amazon-ses/amazon-ses-api-reference/) — Complete API reference documentation for Amazon SES with detailed descriptions of all operations, parameters, and data types.
+- [Amazon SES CLI Reference](https://apis.io/apis/amazon-ses/amazon-ses-cli-reference/) — AWS CLI reference for Amazon SES, providing command-line access to all SES operations.
+- [Amazon SES Security](https://apis.io/apis/amazon-ses/amazon-ses-security/) — Security documentation for Amazon SES covering authentication, authorization, and encryption.
+- [Amazon SES Email API](https://apis.io/apis/amazon-ses/amazon-ses-email-api/) — The Email API from Amazon SES — 60 operation(s) for email.
 
-## APIs
+### Published properties
 
-### Amazon SES Documentation
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references, and tutorials for email sending and management.
+#### AsyncAPI (1)
 
-#### Properties
+Event-driven and webhook contracts.
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Amazon Ses Events](https://apis.io/asyncapis/amazon-ses/amazon-ses-events/)
 
-### Amazon SES OpenAPI
+#### MCP servers (1)
 
-The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing identities, contact lists, and email templates.
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [amazon-ses-mcp.yml](https://apis.io/servers/amazon-ses/amazon-ses-mcp-yml/)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Agent skills (2)
 
-### Amazon SES OpenAPI (APIs.guru)
+Agent skills built on the API.
 
-The APIs.guru maintained OpenAPI definition for the Amazon SES API.
+- [aws-mail-manager](https://apis.io/agent-skills/amazon-ses/aws-mail-manager/)
+- [aws-ses](https://apis.io/agent-skills/amazon-ses/aws-ses/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Amazon SES JSON Schema
+- [Amazon Ses Agentic Access](https://apis.io/agentic-access/amazon-ses/amazon-ses-agentic-access/)
 
-JSON Schema definitions for the Amazon SES API request and response objects.
+#### JSON Schema (2)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [EmailMessage](https://apis.io/schemas/amazon-ses/amazon-ses-emailmessage/)
+- [EmailMessage](https://apis.io/schemas/amazon-ses/amazon-ses-openapi-email-message/)
 
-### Amazon SES JSON-LD Context
+#### JSON Structure (3)
 
-JSON-LD context document for Amazon SES API resources providing semantic linked data mappings.
+Data models expressed in JSON Structure.
 
-#### Properties
+- [Amazon Ses Emailmessage Structure](https://apis.io/json-structure/amazon-ses/amazon-ses-emailmessage-structure/)
+- [Amazon Ses Openapi Email Message Structure](https://apis.io/json-structure/amazon-ses/amazon-ses-openapi-email-message-structure/)
+- [Amazon Ses Structure](https://apis.io/json-structure/amazon-ses/amazon-ses-structure/)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### JSON-LD (3)
 
-### Amazon SES Pricing
+Linked-data contexts for the provider's vocabulary.
 
-Pricing details for Amazon SES including email sending, receiving, and additional features.
+- [Amazon Ses Context](https://apis.io/jsonld/amazon-ses/amazon-ses-context/)
+- [Amazon Ses Emailmessage Context](https://apis.io/jsonld/amazon-ses/amazon-ses-emailmessage-context/)
+- [Amazon Ses Openapi Email Message Context](https://apis.io/jsonld/amazon-ses/amazon-ses-openapi-email-message-context/)
 
-#### Properties
+#### Vocabulary (1)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The provider's domain terms, defined.
 
-### Amazon SES Getting Started
+- [Amazon Ses Vocabulary](https://apis.io/vocabularies/amazon-ses/amazon-ses-vocabulary/)
 
-Getting started guide for Amazon SES, helping new users set up and begin sending emails.
+#### Examples (2)
 
-#### Properties
+Example requests and responses.
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Amazon Ses Emailmessage Example](https://apis.io/examples/amazon-ses/amazon-ses-emailmessage-example/)
+- [Amazon Ses Openapi Email Message Example](https://apis.io/examples/amazon-ses/amazon-ses-openapi-email-message-example/)
 
-### Amazon SES FAQ
+#### Collections (5)
 
-Frequently asked questions about Amazon SES covering features, pricing, deliverability, and compliance.
+Postman and Open Collection request collections.
 
-#### Properties
+- [Amazon SES Amazon Simple Email Service (SES)](https://apis.io/collections/amazon-ses/open-amazon-ses/)
+- [Amazon SES Amazon Simple Email Service (SES) Contact Lists API](https://apis.io/collections/amazon-ses/open-amazon-ses-contact-lists-api/)
+- [Amazon SES Amazon Simple Email Service (SES) Contact Lists Email Sending API](https://apis.io/collections/amazon-ses/open-amazon-ses-email-sending-api/)
+- [Amazon SES Amazon Simple Email Service (SES) Contact Lists Identities API](https://apis.io/collections/amazon-ses/open-amazon-ses-identities-api/)
+- [Amazon SES Amazon Simple Email Service (SES) Contact Lists Templates API](https://apis.io/collections/amazon-ses/open-amazon-ses-templates-api/)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Overlays (6)
 
-### Amazon SES User Guide
+OpenAPI overlays, including conversational phrasing for each operation.
 
-Comprehensive user guide for Amazon SES covering all features and best practices for email communication.
+- [Amazon Ses Contact Lists Api Overlay](https://apis.io/overlays/amazon-ses/amazon-ses-contact-lists-api-overlay/)
+- [Amazon Ses Email Api Phrasing Overlay](https://apis.io/overlays/amazon-ses/amazon-ses-email-api-phrasing-overlay/)
+- [Amazon Ses Email Sending Api Overlay](https://apis.io/overlays/amazon-ses/amazon-ses-email-sending-api-overlay/)
+- [Amazon Ses Identities Api Overlay](https://apis.io/overlays/amazon-ses/amazon-ses-identities-api-overlay/)
+- [Amazon Ses Sesv2 Overlay](https://apis.io/overlays/amazon-ses/amazon-ses-sesv2-overlay/)
+- [Amazon Ses Templates Api Overlay](https://apis.io/overlays/amazon-ses/amazon-ses-templates-api-overlay/)
 
-#### Properties
+#### Governance rules (2)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-### Amazon SES API Reference
+- [Amazon SES — jsonschema rules](https://apis.io/rules/amazon-ses/amazon-ses-jsonschema-spectral-rules/)
+- [Amazon SES API Rules](https://apis.io/rules/amazon-ses/amazon-ses-spectral-rules/)
 
-Complete API reference documentation for Amazon SES with detailed descriptions of all operations, parameters, and data types.
+#### Security (4)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Amazon Ses Authentication](https://apis.io/security/amazon-ses/amazon-ses-authentication/)
+- [Amazon Ses Domain Security](https://apis.io/security/amazon-ses/amazon-ses-domain-security/)
+- [Amazon Ses Trust Center](https://apis.io/security/amazon-ses/amazon-ses-trust-center/)
+- [Amazon Ses Vulnerability Disclosure](https://apis.io/security/amazon-ses/amazon-ses-vulnerability-disclosure/)
 
-### Amazon SES CLI Reference
+#### Plans and pricing (1)
 
-AWS CLI reference for Amazon SES, providing command-line access to all SES operations.
+Published plans, tiers and prices.
 
-#### Properties
+- [Amazon Ses Plans Pricing](https://apis.io/plans/amazon-ses/amazon-ses-plans-pricing/)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Amazon SES Security
+Published request limits.
 
-Security documentation for Amazon SES covering authentication, authorization, and encryption.
+- [Amazon Ses Rate Limits](https://apis.io/rate-limits/amazon-ses/amazon-ses-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Postman Collection](collections/amazon-ses.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ses.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-## Common Properties
+- [Amazon Ses Finops](https://apis.io/finops/amazon-ses/amazon-ses-finops/)
 
-- [portal](https://aws.amazon.com/)
-- [website](https://aws.amazon.com/ses/)
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/ses/)
 - [Documentation](https://docs.aws.amazon.com/ses/)
-- [terms](https://aws.amazon.com/service-terms/)
-- [privacy](https://aws.amazon.com/privacy/)
-- [support](https://aws.amazon.com/support/)
-- [blog](https://aws.amazon.com/blogs/messaging-and-targeting/)
-- [github](https://github.com/aws)
-- [console](https://console.aws.amazon.com/ses/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [login](https://signin.aws.amazon.com/)
-- [Status Page](https://health.aws.amazon.com/health/status)
-- [knowledge-center](https://repost.aws/knowledge-center)
-- [youtube](https://www.youtube.com/user/AmazonWebServices)
-- [stack-overflow](https://stackoverflow.com/questions/tagged/amazon-ses)
-- [contact](https://aws.amazon.com/contact-us/)
-- [security](https://aws.amazon.com/security/)
-- [compliance](https://aws.amazon.com/compliance/)
-- [JSON-LD](json-ld/amazon-ses-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON-LD](json-ld/amazon-ses-emailmessage-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON-LD](json-ld/amazon-ses-openapi-email-message-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/amazon-ses-emailmessage-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-ses-openapi-email-message-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/amazon-ses-emailmessage-structure.json)
-- [JSON Structure](json-structure/amazon-ses-openapi-email-message-structure.json)
-- [Example](examples/amazon-ses-emailmessage-example.json)
-- [Example](examples/amazon-ses-openapi-email-message-example.json)
-- [Spectral Rules](rules/amazon-ses-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-ses-vocabulary.yaml)
-- [OpenAPI](openapi/amazon-ses-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Integrations](https://aws.amazon.com/marketplace/)
+- [Getting started](https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html)
+- [API reference](https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html)
+- [Pricing](https://aws.amazon.com/ses/pricing/)
+- [Sign up](https://portal.aws.amazon.com/billing/signup)
+- [Support](https://aws.amazon.com/support/)
+- [Blog](https://aws.amazon.com/blogs/messaging-and-targeting/)
+- [Security](https://aws.amazon.com/security/)
+- [Compliance](https://aws.amazon.com/compliance/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
+
+## API Evangelist rating
+
+**Kin Score 79.0** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.3 |
+| Contract quality | 70.1 |
+| Contract governance | 45.5 |
+| Operational transparency | 84.2 |
+| Developer ergonomics | 86.9 |
+| Access clarity | 92.1 |
+
+**Agent readiness 39.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-ses/](https://apis.io/providers/amazon-ses/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon SES: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-ses/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
