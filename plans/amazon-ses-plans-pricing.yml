@@ -1,0 +1,222 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/ses/pricing/
+sources:
+- https://aws.amazon.com/ses/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T120612
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+  managed_tier: Essentials
+published: true
+note: Pay-as-you-go email volume pricing with three named plans plus à la carte line items; Bring Your
+  Own IP at $24.95/month/IP also listed.
+plan_count: 12
+currency: USD
+plans:
+- name: Essentials
+  price_text: $0.16 per 1,000 emails
+  price: 0.16
+  currency: USD
+  period: per-use
+  unit: 1,000 emails
+  included_quota: 0 – 10M emails / month tier; 10–100M at $0.14 per 1,000 emails; >100M at $0.11 per 1,000
+    emails; no per account monthly fee
+  overage: Tiered rates are applied marginally
+- name: Pro
+  price_text: $105
+  price: 105
+  currency: USD
+  period: month
+  unit: per account per region per month
+  included_quota: $0.22 per 1,000 emails (0–10M), $0.17 (10–100M), $0.12 (>100M)
+  overage: Extra API validations at $0.01/validation
+- name: Enterprise
+  price_text: $500
+  price: 500
+  currency: USD
+  period: month
+  unit: per account per region per month
+  included_quota: $0.23 per 1,000 emails (0–10M), $0.18 (10–100M), $0.13 (>100M)
+  overage: $0.005/month/tenant for additional tenants
+- name: À la carte - Outbound email
+  price_text: $0.10 / 1,000 emails
+  price: 0.1
+  currency: USD
+  period: per-use
+  unit: 1,000 emails
+  overage: $0.12 per GB of attachment data sent
+- name: À la carte - Inbound email
+  price_text: $0.10 / 1,000 emails
+  price: 0.1
+  currency: USD
+  period: per-use
+  unit: 1,000 emails
+  overage: $0.09 for every 1,000 incoming email chunks
+- name: Dedicated IPs – Standard
+  price_text: $24.95 / month / IP
+  price: 24.95
+  currency: USD
+  period: month
+  unit: IP
+- name: Dedicated IPs – Managed
+  price_text: $15 / month / account + per-email fee
+  price: 15
+  currency: USD
+  period: month
+  unit: account
+  overage: $0.08/1,000 emails (0–10M), $0.04 (10–50M), $0.02 (50–100M), Contact us (>100M)
+- name: Virtual Deliverability Manager – Global deliverability
+  price_text: $1,250 / month
+  price: 1250
+  currency: USD
+  period: month
+  unit: per region per account
+  included_quota: 5 domains, 12 IPs, and 25 seed list tests/month
+  overage: $25/domain, $12.50/IP, $10/seed list test
+- name: Mail Manager – Open / mTLS Ingress Endpoints
+  price_text: $50 / month / endpoint
+  price: 50
+  currency: USD
+  period: month
+  unit: endpoint
+- name: Mail Manager – Email Processing
+  price_text: $0.15 / 1,000 emails
+  price: 0.15
+  currency: USD
+  period: per-use
+  unit: 1,000 emails
+  overage: $0.10/1,000 recipients beyond the first; $0.09 per 1,000 mail chunks over 256KB
+- name: Mail Manager – Archiving
+  price_text: $2 per GB of emails ingested; $0.19 per GB per month for storage and search
+  currency: USD
+  period: per-use
+  unit: GB
+- name: AWS Free Tier
+  price_text: up to $200 in AWS Free Tier credits
+  price: 200
+  currency: USD
+  period: one-time
+  unit: credits
+  included_quota: Free plan available for 6 months after account creation
+rate_limit_statements:
+- 1,000 tenants included per account per region
+- Pro plan includes 2,500 API validations/account/region/month and Enterprise plan includes 5,000 API
+  validations/account/region/month
+- The minimum number of addresses you can bring is 256
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - credit
+  - data
+  - message
+  - object
+  plans:
+  - name: Essentials
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - message
+    periods:
+    - other
+  - name: Pro
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: À la carte - Outbound email
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - message
+    periods:
+    - other
+  - name: À la carte - Inbound email
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - message
+    periods:
+    - other
+  - name: Dedicated IPs – Standard
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Dedicated IPs – Managed
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Virtual Deliverability Manager – Global deliverability
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Mail Manager – Open / mTLS Ingress Endpoints
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Mail Manager – Email Processing
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - message
+    periods:
+    - other
+  - name: Mail Manager – Archiving
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: AWS Free Tier
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - one-time
