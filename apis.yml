@@ -26,15 +26,22 @@ deliveryModel:
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
-  onboarding: unknown
+  onboarding: self-serve
   trial: false
-  try_now: false
+  try_now: true
   public: false
-  label: Freemium
-  confidence: medium
+  gated: none
+  gated_source:
+  - onboarding
+  label: Freemium · Self-serve signup
+  confidence: high
   source:
   - plans
-  generated: '2026-07-22'
+  - authentication
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-11-02'
   method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/apis.yml
