@@ -112,7 +112,7 @@ rate_limit_statements:
   validations/account/region/month
 - The minimum number of addresses you can bring is 256
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
@@ -123,6 +123,7 @@ x-canonical:
   - data
   - message
   - object
+  - period
   plans:
   - name: Essentials
     access: other
@@ -137,7 +138,7 @@ x-canonical:
     model: hybrid
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - month
   - name: Enterprise
@@ -145,7 +146,7 @@ x-canonical:
     model: hybrid
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - month
   - name: À la carte - Outbound email
