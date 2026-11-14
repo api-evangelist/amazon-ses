@@ -5,12 +5,21 @@ artifacts:
   agentic-access/amazon-ses-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-ses-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   asyncapi/amazon-ses-events.yml:
     method: searched
     evidence: declared in the artifact
   authentication/amazon-ses-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/amazon-ses-changelog.yml:
     method: searched
     evidence: declared in the artifact
@@ -50,6 +59,9 @@ artifacts:
   collections/amazon-ses.postman_collection.json:
     method: derived
     evidence: openapi/amazon-ses
+  compliance/amazon-ses-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
   conformance/amazon-ses-conformance.yml:
     method: searched
     evidence: declared in the artifact
@@ -74,6 +86,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-ses-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -89,10 +104,352 @@ artifacts:
   json-ld/amazon-ses-openapi-email-message-context.jsonld:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-ses-create-addon-instance-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-addon-instance-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-addon-subscription-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-addon-subscription-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-address-list-import-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-address-list-import-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-address-list-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-archive-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-archive-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-configuration-set-tracking-options-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-configuration-set-tracking-options-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-ingress-point-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-receipt-filter-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-receipt-filter-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-receipt-rule-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-receipt-rule-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-receipt-rule-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-relay-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-relay-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-rule-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-template-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-create-traffic-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-address-list-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-configuration-set-tracking-options-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-configuration-set-tracking-options-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-identity-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-receipt-filter-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-receipt-filter-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-receipt-rule-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-receipt-rule-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-rule-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-template-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-delete-traffic-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-describe-receipt-rule-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-describe-receipt-rule-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-describe-receipt-rule-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-describe-receipt-rule-set-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-email-send-email-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-ses-emailmessage-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-ses-get-account-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-addon-instance-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-addon-instance-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-addon-subscription-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-addon-subscription-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-address-list-import-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-address-list-import-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-address-list-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-address-list-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-archive-export-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-archive-export-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-archive-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-archive-search-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-archive-search-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-email-identity-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-identity-policies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-identity-policies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-ingress-point-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-ingress-point-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-relay-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-rule-set-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-template-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-get-traffic-policy-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-addon-instances-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-addon-instances-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-addon-subscriptions-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-addon-subscriptions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-address-list-import-jobs-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-address-list-import-jobs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-address-lists-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-address-lists-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-archive-exports-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-archive-exports-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-archives-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-archives-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-identity-policies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-identity-policies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-ingress-points-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-ingress-points-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-receipt-filters-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-receipt-filters-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-receipt-rule-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-receipt-rule-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-relays-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-relays-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-rule-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-rule-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-templates-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-templates-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-traffic-policies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-list-traffic-policies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-ses-openapi-email-message-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-put-email-identity-dkim-signing-attributes-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-put-identity-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-send-bounce-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-send-bulk-email-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-send-bulk-templated-email-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-send-email-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-send-raw-email-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-send-templated-email-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-set-identity-mail-from-domain-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-set-identity-notification-topic-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-start-archive-export-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-start-archive-search-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-start-archive-search-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-stop-archive-export-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-stop-archive-search-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-stop-archive-search-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-archive-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-configuration-set-tracking-options-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-configuration-set-tracking-options-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-ingress-point-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-receipt-rule-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-relay-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-rule-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-template-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-ses-update-traffic-policy-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-structure/amazon-ses-emailmessage-structure.json:
@@ -107,7 +464,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -176,10 +533,16 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/amazon-ses-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
   llms/amazon-ses-api-reference-llms.txt:
+    method: searched
+    evidence: 'derive-llms-provenance.py: harvested'
+  llms/amazon-ses-llms-provenance.yml:
     method: searched
     evidence: 'derive-llms-provenance.py: harvested'
   llms/amazon-ses-llms.txt:
@@ -191,17 +554,63 @@ artifacts:
   mcp/amazon-ses-tool-crosswalk.yml:
     method: derived
     evidence: declared in the artifact
-  openapi/_original/amazon-ses-openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/amazon-ses-sesv2-openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  openapi/amazon-ses-addon-instance-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-addon-subscription-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-address-list-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-address-list-import-job-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-archive-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-archive-export-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-archive-search-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-configuration-set-tracking-option-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-ses-email-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-identity-policy-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-ingress-point-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-operations-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-receipt-filter-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-receipt-rule-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-receipt-rule-set-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-relay-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-rule-set-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-template-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-ses-traffic-policy-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   overlays/amazon-ses-contact-lists-api-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
@@ -223,6 +632,9 @@ artifacts:
   packages/amazon-ses-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/amazon-ses-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-ses-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -233,6 +645,9 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   rules/amazon-ses-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/amazon-ses-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-ses-spectral-rules.yml:
@@ -262,15 +677,30 @@ artifacts:
   sla/amazon-ses-sla.yml:
     method: generated
     evidence: declared in the artifact
+  smithy/mailmanager-2023-10-17.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/mailmanager/service/2023-10-17/mailmanager-2023-10-17.json
+      (sha256 7e6d05d13cac, fetched 2026-11-11T21:15:26+00:00)
   smithy/ses-2010-12-01.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/ses/service/2010-12-01/ses-2010-12-01.json
+      (sha256 eb061a201fd2, fetched 2026-11-11T21:15:24+00:00)
+  smithy/sesv2-2019-09-27.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/sesv2/service/2019-09-27/sesv2-2019-09-27.json
+      (sha256 8866fe8e17fe, fetched 2026-11-11T21:15:25+00:00)
+  terms/amazon-ses-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-ses-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-ses-vocabulary.yaml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-ses-vocabulary.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: declared in the artifact
   well-known/amazon-ses-security.txt:
     method: unknown
     evidence: no authorship recorded

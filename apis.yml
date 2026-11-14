@@ -1,16 +1,12 @@
 name: Amazon SES
-description: >-
-  Amazon Simple Email Service (SES) is AWS's cloud email platform for sending and receiving mail at scale —
-  marketing, notification and transactional. The current contract is the SES v2 API (version 2019-09-27), an
-  86-operation REST-JSON service authenticated with AWS Signature Version 4 and reached at a regional endpoint,
-  alongside an SMTP submission interface on ports 25/465/587/2465/2587. It covers email sending and templated
-  bulk sends, domain and address identity verification with DKIM, SPF and DMARC alignment, configuration sets
-  and event publishing to SNS, EventBridge, CloudWatch and Firehose, contact lists and subscription topics,
-  account and configuration-set suppression lists, dedicated IP pools both managed and standard, tenants for
-  per-workload reputation isolation, and Virtual Deliverability Manager for inbox placement and reputation
-  reporting. Mail Manager adds inbound processing with ingress points, traffic policies, rule sets, relays and
-  archives. Every new account starts in the SES sandbox, and a published mailbox simulator forces delivery,
-  bounce, complaint and out-of-office outcomes on demand.
+description: Amazon Simple Email Service (SES) is AWS's cloud email platform for sending and receiving mail at scale — marketing, notification
+  and transactional. The current contract is the SES v2 API (version 2019-09-27), an 86-operation REST-JSON service authenticated with AWS Signature
+  Version 4 and reached at a regional endpoint, alongside an SMTP submission interface on ports 25/465/587/2465/2587. It covers email sending
+  and templated bulk sends, domain and address identity verification with DKIM, SPF and DMARC alignment, configuration sets and event publishing
+  to SNS, EventBridge, CloudWatch and Firehose, contact lists and subscription topics, account and configuration-set suppression lists, dedicated
+  IP pools both managed and standard, tenants for per-workload reputation isolation, and Virtual Deliverability Manager for inbox placement and
+  reputation reporting. Mail Manager adds inbound processing with ingress points, traffic policies, rule sets, relays and archives. Every new
+  account starts in the SES sandbox, and a published mailbox simulator forces delivery, bounce, complaint and out-of-office outcomes on demand.
 deliveryModel:
   model: saas
   open_source: false
@@ -41,84 +37,290 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://raw.githubusercontent.com/api-evangelist/amazon-ses/refs/heads/main/apis.yml
 created: '2024-01-15'
 modified: '2026-08-13'
+maintainers:
+- FN: Kin Lane
+  name: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+  X-twitter: apievangelist
+tags:
+- Amazon Web Services
+- Email
+- Email Deliverability
+- Email Service
+- Marketing Email
+- Notification
+- SMTP
+- Transactional Email
+- Bulk Email
+- Email Receiving
+- DKIM
+- Messaging
+- Cloud Infrastructure
+tags_raw:
+- AWS
+- Email
+- Email Deliverability
+- Email Service
+- Marketing Email
+- Notification
+- SMTP
+- Transactional Email
+- Bulk Email
+- Email Receiving
+- DKIM
+- Messaging
+- Cloud Infrastructure
+common:
+- type: Spectral
+  url: rules/amazon-ses-spectral-rules.yml
+- type: Spectral
+  url: rules/amazon-ses-rules.yml
+- type: Spectral
+  url: rules/amazon-ses-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-ses-vocabulary.yml
+- type: Deprecation
+  url: lifecycle/amazon-ses-lifecycle.yml
+- type: Hosts
+  url: hosts/amazon-ses-hosts.yml
+- type: IntegrationEdges
+  url: integrations/amazon-ses-integration-edges.yml
+- type: Vendors
+  url: vendors/amazon-ses-vendors.yml
+- type: Newsroom
+  url: https://aws.amazon.com/media/?nc2=h_sol_ind_med
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-ses/overview
+- type: AgenticAccess
+  url: agentic-access/amazon-ses-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-ses-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-ses-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-ses-domain-security.yml
+- name: Amazon SES Agent Skills
+  url: skills/_index.yml
+  type: AgentSkill
+- name: Amazon SES Agent Skills (provider repository)
+  url: https://github.com/amazon-ses/skills
+  type: AgentSkill
+- type: Portal
+  url: https://aws.amazon.com/
+- type: DeveloperPortal
+  url: https://docs.aws.amazon.com/ses/
+- type: Website
+  url: https://aws.amazon.com/ses/
+- type: Documentation
+  url: https://docs.aws.amazon.com/ses/
+- type: APIReference
+  url: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
+- type: GettingStarted
+  url: https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html
+- type: Pricing
+  url: https://aws.amazon.com/ses/pricing/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
+- type: Support
+  url: https://aws.amazon.com/support/
+- type: Blog
+  url: https://aws.amazon.com/blogs/messaging-and-targeting/
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: Console
+  url: https://console.aws.amazon.com/ses/
+- type: SignUp
+  url: https://portal.aws.amazon.com/billing/signup
+- type: Login
+  url: https://signin.aws.amazon.com/
+- type: StatusPage
+  url: https://health.aws.amazon.com/health/status
+- type: knowledge-center
+  url: https://repost.aws/knowledge-center
+- type: YouTube
+  url: https://www.youtube.com/user/AmazonWebServices
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/amazon-ses
+- type: Contact
+  url: https://aws.amazon.com/contact-us/
+- type: Security
+  url: https://aws.amazon.com/security/
+- type: Compliance
+  url: https://aws.amazon.com/compliance/
+- type: JSONLD
+  url: json-ld/amazon-ses-context.jsonld
+- type: JSONLD
+  url: json-ld/amazon-ses-emailmessage-context.jsonld
+- type: JSONLD
+  url: json-ld/amazon-ses-openapi-email-message-context.jsonld
+- type: JSONSchema
+  url: json-schema/amazon-ses-emailmessage-schema.json
+- type: JSONSchema
+  url: json-schema/amazon-ses-openapi-email-message-schema.json
+- type: JSONStructure
+  url: json-structure/amazon-ses-emailmessage-structure.json
+- type: JSONStructure
+  url: json-structure/amazon-ses-openapi-email-message-structure.json
+- type: Examples
+  url: examples/amazon-ses-emailmessage-example.json
+- type: Examples
+  url: examples/amazon-ses-openapi-email-message-example.json
+- type: SpectralRules
+  url: rules/amazon-ses-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-ses-vocabulary.yaml
+- type: OpenAPI
+  url: openapi/_superseded/amazon-ses-openapi.yml
+- name: Amazon SES v2 OpenAPI (86 operations)
+  type: OpenAPI
+  url: openapi/_superseded/amazon-ses-sesv2-openapi.yml
+- type: Integrations
+  url: https://aws.amazon.com/marketplace/
+- type: Packages
+  url: packages/amazon-ses-packages.yml
+- type: SDKs
+  url: packages/amazon-ses-packages.yml
+- type: CLI
+  url: cli/amazon-ses-cli.yml
+- type: Authentication
+  url: authentication/amazon-ses-authentication.yml
+- type: Conventions
+  url: conventions/amazon-ses-conventions.yml
+- type: ErrorCatalog
+  url: errors/amazon-ses-problem-types.yml
+- type: DataModel
+  url: data-model/amazon-ses-data-model.yml
+- type: Lifecycle
+  url: lifecycle/amazon-ses-lifecycle.yml
+- type: ChangeLog
+  url: changelog/amazon-ses-changelog.yml
+- type: Conformance
+  url: conformance/amazon-ses-conformance.yml
+- type: Sandbox
+  url: sandbox/amazon-ses-sandbox.yml
+- type: Webhooks
+  url: asyncapi/amazon-ses-events.yml
+- type: MCPServer
+  url: mcp/amazon-ses-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/amazon-ses-tool-crosswalk.yml
+- type: LLMsTxt
+  url: llms/amazon-ses-llms.txt
+- name: Amazon SES API v2 Reference llms.txt
+  type: LLMsTxt
+  url: llms/amazon-ses-api-reference-llms.txt
+- type: WellKnown
+  url: well-known/amazon-ses-well-known.yml
+- type: SecurityTxt
+  url: well-known/amazon-ses-security.txt
+- type: Plans
+  url: plans/amazon-ses-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-ses-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-ses-finops.yml
+- type: Overlay
+  url: overlays/amazon-ses-sesv2-overlay.yaml
+- type: Overlay
+  url: overlays/amazon-ses-email-sending-api-overlay.yaml
+- type: Overlay
+  url: overlays/amazon-ses-identities-api-overlay.yaml
+- type: Overlay
+  url: overlays/amazon-ses-contact-lists-api-overlay.yaml
+- type: Overlay
+  url: overlays/amazon-ses-templates-api-overlay.yaml
+- type: PostmanCollection
+  url: collections/amazon-ses.postman_collection.json
+- type: UsageTerms
+  url: terms/amazon-ses-terms-of-service.yml
+- type: Attestations
+  url: compliance/amazon-ses-compliance.yml
+- type: AIPreferences
+  url: ai-preferences/amazon-ses-ai-preferences.yml
 apis:
 - name: Amazon SES Documentation
-  description: >-
-    Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references,
-    and tutorials for email sending and management.
+  description: Official AWS documentation for Amazon Simple Email Service, providing comprehensive guides, API references, and tutorials for email
+    sending and management.
   url: https://docs.aws.amazon.com/ses/
   type: Documentation
   properties: []
+  aid: amazon-ses:amazon-ses-documentation
 - name: Amazon SES OpenAPI
-  description: >-
-    The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails,
-    managing identities, contact lists, and email templates.
-  url: openapi/_original/amazon-ses-openapi.yml
+  description: The OpenAPI definition for the Amazon SES API, describing all available operations for sending emails, managing identities, contact
+    lists, and email templates.
+  url: openapi/_superseded/amazon-ses-openapi.yml
   type: OpenAPI
   properties: []
+  aid: amazon-ses:amazon-ses-openapi
 - name: Amazon SES OpenAPI (APIs.guru)
   description: The APIs.guru maintained OpenAPI definition for the Amazon SES API.
   url: https://api.apis.guru/v2/specs/amazonaws.com/sesv2/2019-09-27/openapi.yaml
   type: OpenAPI
   properties: []
+  aid: amazon-ses:amazon-ses-openapi-apis-guru
 - name: Amazon SES JSON Schema
   description: JSON Schema definitions for the Amazon SES API request and response objects.
   url: json-schema/amazon-ses-emailmessage-schema.json
   type: JSONSchema
   properties: []
+  aid: amazon-ses:amazon-ses-json-schema
 - name: Amazon SES JSON-LD Context
-  description: >-
-    JSON-LD context document for Amazon SES API resources providing semantic linked data mappings.
+  description: JSON-LD context document for Amazon SES API resources providing semantic linked data mappings.
   url: json-ld/amazon-ses-context.jsonld
   type: JSONLD
   properties: []
+  aid: amazon-ses:amazon-ses-json-ld-context
 - name: Amazon SES Pricing
-  description: >-
-    Pricing details for Amazon SES including email sending, receiving, and additional features.
+  description: Pricing details for Amazon SES including email sending, receiving, and additional features.
   url: https://aws.amazon.com/ses/pricing/
   type: Pricing
   properties: []
+  aid: amazon-ses:amazon-ses-pricing
 - name: Amazon SES Getting Started
   description: Getting started guide for Amazon SES, helping new users set up and begin sending emails.
   url: https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html
   type: GettingStarted
   properties: []
+  aid: amazon-ses:amazon-ses-getting-started
 - name: Amazon SES FAQ
-  description: >-
-    Frequently asked questions about Amazon SES covering features, pricing, deliverability, and compliance.
+  description: Frequently asked questions about Amazon SES covering features, pricing, deliverability, and compliance.
   url: https://aws.amazon.com/ses/faqs/
   type: FAQ
   properties: []
+  aid: amazon-ses:amazon-ses-faq
 - name: Amazon SES User Guide
-  description: >-
-    Comprehensive user guide for Amazon SES covering all features and best practices for email communication.
+  description: Comprehensive user guide for Amazon SES covering all features and best practices for email communication.
   url: https://docs.aws.amazon.com/ses/latest/dg/Welcome.html
   type: user-guide
   properties: []
+  aid: amazon-ses:amazon-ses-user-guide
 - name: Amazon SES API Reference
-  description: >-
-    Complete API reference documentation for Amazon SES with detailed descriptions of all operations,
-    parameters, and data types.
+  description: Complete API reference documentation for Amazon SES with detailed descriptions of all operations, parameters, and data types.
   url: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
   type: api-reference
   properties: []
+  aid: amazon-ses:amazon-ses-api-reference
 - name: Amazon SES CLI Reference
   description: AWS CLI reference for Amazon SES, providing command-line access to all SES operations.
   url: https://docs.aws.amazon.com/cli/latest/reference/sesv2/
   type: cli-reference
   properties: []
+  aid: amazon-ses:amazon-ses-cli-reference
 - name: Amazon SES Security
-  description: >-
-    Security documentation for Amazon SES covering authentication, authorization, and encryption.
+  description: Security documentation for Amazon SES covering authentication, authorization, and encryption.
   url: https://docs.aws.amazon.com/ses/latest/dg/security.html
   type: Security
   properties: []
+  aid: amazon-ses:amazon-ses-security
 - aid: amazon-ses:amazon-ses-email-api
   name: Amazon SES Email API
   description: The Email API from Amazon SES — 60 operation(s) for email.
@@ -129,202 +331,445 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-ses-email-api-openapi.yml
-common:
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/amazon-ses/overview
-  - type: AgenticAccess
-    url: agentic-access/amazon-ses-agentic-access.yml
-  - type: TrustCenter
-    url: security/amazon-ses-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/amazon-ses-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/amazon-ses-domain-security.yml
-  - name: Amazon SES Agent Skills
-    url: skills/_index.yml
-    type: AgentSkill
-  - name: Amazon SES Agent Skills (provider repository)
-    url: https://github.com/amazon-ses/skills
-    type: AgentSkill
-  - type: Portal
-    url: https://aws.amazon.com/
-  - type: DeveloperPortal
-    url: https://docs.aws.amazon.com/ses/
-  - type: Website
-    url: https://aws.amazon.com/ses/
-  - type: Documentation
-    url: https://docs.aws.amazon.com/ses/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html
-  - type: Pricing
-    url: https://aws.amazon.com/ses/pricing/
-  - type: TermsOfService
-    url: https://aws.amazon.com/service-terms/
-  - type: PrivacyPolicy
-    url: https://aws.amazon.com/privacy/
-  - type: Support
-    url: https://aws.amazon.com/support/
-  - type: Blog
-    url: https://aws.amazon.com/blogs/messaging-and-targeting/
-  - type: GitHubOrganization
-    url: https://github.com/aws
-  - type: Console
-    url: https://console.aws.amazon.com/ses/
-  - type: SignUp
-    url: https://portal.aws.amazon.com/billing/signup
-  - type: Login
-    url: https://signin.aws.amazon.com/
-  - type: StatusPage
-    url: https://health.aws.amazon.com/health/status
-  - type: knowledge-center
-    url: https://repost.aws/knowledge-center
-  - type: YouTube
-    url: https://www.youtube.com/user/AmazonWebServices
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/amazon-ses
-  - type: Contact
-    url: https://aws.amazon.com/contact-us/
-  - type: Security
-    url: https://aws.amazon.com/security/
-  - type: Compliance
-    url: https://aws.amazon.com/compliance/
-  - type: JSONLD
-    url: json-ld/amazon-ses-context.jsonld
-  - type: JSONLD
-    url: json-ld/amazon-ses-emailmessage-context.jsonld
-  - type: JSONLD
-    url: json-ld/amazon-ses-openapi-email-message-context.jsonld
   - type: JSONSchema
-    url: json-schema/amazon-ses-emailmessage-schema.json
+    url: json-schema/amazon-ses-send-email-request-schema.json
   - type: JSONSchema
-    url: json-schema/amazon-ses-openapi-email-message-schema.json
-  - type: JSONStructure
-    url: json-structure/amazon-ses-emailmessage-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-ses-openapi-email-message-structure.json
-  - type: Examples
-    url: examples/amazon-ses-emailmessage-example.json
-  - type: Examples
-    url: examples/amazon-ses-openapi-email-message-example.json
-  - type: SpectralRules
-    url: rules/amazon-ses-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/amazon-ses-vocabulary.yaml
+    url: json-schema/amazon-ses-send-bulk-email-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-email-send-email-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-email-identity-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-put-email-identity-dkim-signing-attributes-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-account-response-schema.json
+- aid: amazon-ses:amazon-ses-addon-instance-api
+  name: Amazon SES Ses Addon Instance API
+  description: The Ses Addon Instance API from Amazon SES — 4 operation(s) for ses addon instance.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Addon Instance
+  properties:
   - type: OpenAPI
-    url: openapi/_original/amazon-ses-openapi.yml
-  - name: Amazon SES v2 OpenAPI (86 operations)
-    type: OpenAPI
-    url: openapi/_original/amazon-ses-sesv2-openapi.yml
-  - type: Integrations
-    url: https://aws.amazon.com/marketplace/
-  - type: Packages
-    url: packages/amazon-ses-packages.yml
-  - type: SDKs
-    url: packages/amazon-ses-packages.yml
-  - type: CLI
-    url: cli/amazon-ses-cli.yml
-  - type: Authentication
-    url: authentication/amazon-ses-authentication.yml
-  - type: Conventions
-    url: conventions/amazon-ses-conventions.yml
-  - type: ErrorCatalog
-    url: errors/amazon-ses-problem-types.yml
-  - type: DataModel
-    url: data-model/amazon-ses-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/amazon-ses-lifecycle.yml
-  - type: ChangeLog
-    url: changelog/amazon-ses-changelog.yml
-  - type: Conformance
-    url: conformance/amazon-ses-conformance.yml
-  - type: Sandbox
-    url: sandbox/amazon-ses-sandbox.yml
-  - type: Webhooks
-    url: asyncapi/amazon-ses-events.yml
-  - type: MCPServer
-    url: mcp/amazon-ses-mcp.yml
-  - type: ToolCrosswalk
-    url: mcp/amazon-ses-tool-crosswalk.yml
-  - type: LLMsTxt
-    url: llms/amazon-ses-llms.txt
-  - name: Amazon SES API v2 Reference llms.txt
-    type: LLMsTxt
-    url: llms/amazon-ses-api-reference-llms.txt
-  - type: WellKnown
-    url: well-known/amazon-ses-well-known.yml
-  - type: SecurityTxt
-    url: well-known/amazon-ses-security.txt
-  - type: Plans
-    url: plans/amazon-ses-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/amazon-ses-rate-limits.yml
-  - type: FinOps
-    url: finops/amazon-ses-finops.yml
-  - type: Overlay
-    url: overlays/amazon-ses-sesv2-overlay.yaml
-  - type: Overlay
-    url: overlays/amazon-ses-email-sending-api-overlay.yaml
-  - type: Overlay
-    url: overlays/amazon-ses-identities-api-overlay.yaml
-  - type: Overlay
-    url: overlays/amazon-ses-contact-lists-api-overlay.yaml
-  - type: Overlay
-    url: overlays/amazon-ses-templates-api-overlay.yaml
-  - type: PostmanCollection
-    url: collections/amazon-ses.postman_collection.json
+    url: openapi/amazon-ses-addon-instance-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-addon-instance-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-addon-instance-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-addon-instances-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-addon-instances-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-addon-instance-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-addon-instance-request-schema.json
+- aid: amazon-ses:amazon-ses-addon-subscription-api
+  name: Amazon SES Ses Addon Subscription API
+  description: The Ses Addon Subscription API from Amazon SES — 4 operation(s) for ses addon subscription.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Addon Subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-addon-subscription-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-addon-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-addon-subscriptions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-addon-subscriptions-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-addon-subscription-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-addon-subscription-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-addon-subscription-request-schema.json
+- aid: amazon-ses:amazon-ses-address-list-api
+  name: Amazon SES Ses Address List API
+  description: The Ses Address List API from Amazon SES — 4 operation(s) for ses address list.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Address List
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-address-list-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-address-list-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-address-list-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-address-lists-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-address-lists-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-address-list-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-address-list-request-schema.json
+- aid: amazon-ses:amazon-ses-address-list-import-job-api
+  name: Amazon SES Ses Address List Import Job API
+  description: The Ses Address List Import Job API from Amazon SES — 5 operation(s) for ses address list import job.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Address List Import Job
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-address-list-import-job-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-address-list-import-job-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-address-list-import-jobs-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-address-list-import-job-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-address-list-import-jobs-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-address-list-import-job-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-address-list-import-job-request-schema.json
+- aid: amazon-ses:amazon-ses-archive-api
+  name: Amazon SES Ses Archive API
+  description: The Ses Archive API from Amazon SES — 5 operation(s) for ses archive.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Archive
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-archive-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-archive-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-archives-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-archives-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-archive-response-schema.json
+- aid: amazon-ses:amazon-ses-archive-export-api
+  name: Amazon SES Ses Archive Export API
+  description: The Ses Archive Export API from Amazon SES — 4 operation(s) for ses archive export.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Archive Export
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-archive-export-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-start-archive-export-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-archive-export-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-archive-exports-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-archive-exports-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-archive-export-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-stop-archive-export-request-schema.json
+- aid: amazon-ses:amazon-ses-archive-search-api
+  name: Amazon SES Ses Archive Search API
+  description: The Ses Archive Search API from Amazon SES — 3 operation(s) for ses archive search.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Archive Search
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-archive-search-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-archive-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-start-archive-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-archive-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-stop-archive-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-start-archive-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-stop-archive-search-response-schema.json
+- aid: amazon-ses:amazon-ses-configuration-set-tracking-option-api
+  name: Amazon SES Ses Configuration Set Tracking Option API
+  description: The Ses Configuration Set Tracking Option API from Amazon SES — 3 operation(s) for ses configuration set tracking option.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Configuration Set Tracking Option
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-configuration-set-tracking-option-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-configuration-set-tracking-options-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-configuration-set-tracking-options-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-configuration-set-tracking-options-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-configuration-set-tracking-options-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-configuration-set-tracking-options-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-configuration-set-tracking-options-response-schema.json
+- aid: amazon-ses:amazon-ses-identity-policy-api
+  name: Amazon SES Ses Identity Policy API
+  description: The Ses Identity Policy API from Amazon SES — 4 operation(s) for ses identity policy.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Identity Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-identity-policy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-put-identity-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-identity-policies-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-identity-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-identity-policies-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-identity-policies-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-identity-policies-response-schema.json
+- aid: amazon-ses:amazon-ses-ingress-point-api
+  name: Amazon SES Ses Ingress Point API
+  description: The Ses Ingress Point API from Amazon SES — 5 operation(s) for ses ingress point.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Ingress Point
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-ingress-point-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-ingress-point-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-ingress-point-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-ingress-point-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-ingress-points-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-ingress-points-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-ingress-point-request-schema.json
+- aid: amazon-ses:amazon-ses-operations-api
+  name: Amazon SES Ses Operations API
+  description: The Ses Operations API from Amazon SES — 47 operation(s) for ses operations.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-operations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-send-bulk-templated-email-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-send-templated-email-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-send-raw-email-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-send-bounce-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-set-identity-mail-from-domain-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-set-identity-notification-topic-request-schema.json
+- aid: amazon-ses:amazon-ses-receipt-filter-api
+  name: Amazon SES Ses Receipt Filter API
+  description: The Ses Receipt Filter API from Amazon SES — 3 operation(s) for ses receipt filter.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Receipt Filter
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-receipt-filter-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-receipt-filters-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-receipt-filter-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-receipt-filter-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-receipt-filter-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-receipt-filter-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-receipt-filters-request-schema.json
+- aid: amazon-ses:amazon-ses-receipt-rule-api
+  name: Amazon SES Ses Receipt Rule API
+  description: The Ses Receipt Rule API from Amazon SES — 4 operation(s) for ses receipt rule.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Receipt Rule
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-receipt-rule-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-receipt-rule-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-receipt-rule-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-describe-receipt-rule-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-receipt-rule-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-describe-receipt-rule-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-receipt-rule-response-schema.json
+- aid: amazon-ses:amazon-ses-receipt-rule-set-api
+  name: Amazon SES Ses Receipt Rule Set API
+  description: The Ses Receipt Rule Set API from Amazon SES — 4 operation(s) for ses receipt rule set.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Receipt Rule Set
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-receipt-rule-set-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-receipt-rule-sets-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-receipt-rule-set-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-describe-receipt-rule-set-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-receipt-rule-sets-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-describe-receipt-rule-set-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-receipt-rule-set-request-schema.json
+- aid: amazon-ses:amazon-ses-relay-api
+  name: Amazon SES Ses Relay API
+  description: The Ses Relay API from Amazon SES — 5 operation(s) for ses relay.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Relay
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-relay-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-relay-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-relay-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-relay-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-relays-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-relays-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-relay-response-schema.json
+- aid: amazon-ses:amazon-ses-rule-set-api
+  name: Amazon SES Ses Rule Set API
+  description: The Ses Rule Set API from Amazon SES — 5 operation(s) for ses rule set.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Rule Set
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-rule-set-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-rule-set-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-rule-set-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-rule-set-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-rule-sets-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-rule-sets-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-rule-set-request-schema.json
+- aid: amazon-ses:amazon-ses-template-api
+  name: Amazon SES Ses Template API
+  description: The Ses Template API from Amazon SES — 5 operation(s) for ses template.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Template
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-template-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-templates-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-template-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-template-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-template-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-template-request-schema.json
+- aid: amazon-ses:amazon-ses-traffic-policy-api
+  name: Amazon SES Ses Traffic Policy API
+  description: The Ses Traffic Policy API from Amazon SES — 5 operation(s) for ses traffic policy.
+  humanURL: https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html
+  baseURL: https://email.{region}.amazonaws.com
+  tags:
+  - Ses Traffic Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ses-traffic-policy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ses-create-traffic-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-get-traffic-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-update-traffic-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-traffic-policies-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-list-traffic-policies-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ses-delete-traffic-policy-request-schema.json
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
-maintainers:
-  - FN: Kin Lane
-    name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-    X-twitter: apievangelist
-tags:
-  - Amazon Web Services
-  - Email
-  - Email Deliverability
-  - Email Service
-  - Marketing Email
-  - Notification
-  - SMTP
-  - Transactional Email
-  - Bulk Email
-  - Email Receiving
-  - DKIM
-  - Messaging
-  - Cloud Infrastructure
 tags_raw:
-  - AWS
-  - Email
-  - Email Deliverability
-  - Email Service
-  - Marketing Email
-  - Notifications
-  - SMTP
-  - Transactional Email
-  - Bulk Email
-  - Email Receiving
-  - DKIM
-  - Messaging
-  - Cloud Infrastructure
+- AWS
+- Email
+- Email Deliverability
+- Email Service
+- Marketing Email
+- Notifications
+- SMTP
+- Transactional Email
+- Bulk Email
+- Email Receiving
+- DKIM
+- Messaging
+- Cloud Infrastructure
 integrations:
-  - name: Sign in
-  - name: Agent Mode
-  - name: Why AWS Marketplace?
-  - name: Get started in AWS Marketplace
-  - name: Industry
-  - name: Resources
-  - name: Become a Channel Partner
-  - name: Sell in AWS Marketplace
-  - name: Manage Your Account
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account
 x-enrichment:
-  date: '2026-08-13'
+  date: '2026-11-11'
   status: enriched
-  artifacts_added: 26
-  pass: local-v1
+  artifacts_added: 0
+  pass: local-v6
 x-parent: amazon-web-services
 x-relationship: product
